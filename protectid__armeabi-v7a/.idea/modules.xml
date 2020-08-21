@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/protectid__armeabi-v7a.iml" filepath="$PROJECT_DIR$/.idea/modules/protectid__armeabi-v7a.iml" group="protectid__armeabi-v7a" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/protectid__armeabi-v7a.iml" filepath="$PROJECT_DIR$/.idea/protectid__armeabi-v7a.iml" group="protectid__armeabi-v7a" />
     </modules>
   </component>
 </project>

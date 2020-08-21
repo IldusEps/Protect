@@ -28,20 +28,26 @@ import com.androidhiddencamera.config.CameraFacing;
 import com.androidhiddencamera.config.CameraFocus;
 import com.androidhiddencamera.config.CameraImageFormat;
 import com.androidhiddencamera.config.CameraResolution;
+import com.androidhiddencamera.config.CameraRotation;
 
 import org.bytedeco.javacpp.DoublePointer;
 import org.bytedeco.javacpp.IntPointer;
 import org.bytedeco.javacpp.opencv_core;
 import org.bytedeco.javacpp.opencv_face;
 import org.bytedeco.javacpp.opencv_objdetect;
+import org.kivy.protectid.ShowActivity;
 import org.renpy.android.ResourceManager;
 
 import java.io.File;
 
 import static android.app.admin.DevicePolicyManager.FLAG_EVICT_CREDENTIAL_ENCRYPTION_KEY;
+import static android.content.Context.DEVICE_POLICY_SERVICE;
+import static android.support.v4.content.ContextCompat.getSystemService;
+import static android.support.v4.content.ContextCompat.startActivity;
 import static org.bytedeco.javacpp.opencv_face.createLBPHFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_imgcodecs.CV_LOAD_IMAGE_GRAYSCALE;
 import static org.bytedeco.javacpp.opencv_imgcodecs.imread;
+import static org.bytedeco.javacpp.opencv_imgcodecs.imwrite;
 
 public class MyService extends HiddenCameraService {
     opencv_face.FaceRecognizer faceRecognizer;
@@ -81,6 +87,7 @@ public class MyService extends HiddenCameraService {
             if (HiddenCameraUtils.canOverDrawOtherApps(this)) {
                 CameraConfig cameraConfig = new CameraConfig()
                         .getBuilder(this)
+                        .setImageRotation(CameraRotation.ROTATION_270)
                         .setCameraFacing(CameraFacing.FRONT_FACING_CAMERA)
                         .setCameraResolution(CameraResolution.MEDIUM_RESOLUTION)
                         .setImageFormat(CameraImageFormat.FORMAT_JPEG)
@@ -128,7 +135,7 @@ public class MyService extends HiddenCameraService {
                     //for (int j = 0; j < label.sizeof(); j++) {
                         Log.v("Hie", Integer.toString(label.get(0)));
                         Log.v("Hie", Double.toString(confidence.get(0)));
-                        if (confidence.get(0) > 65) bool = true;
+                        if (confidence.get(0) > 10) bool = true;
                     //}
                 }
             Log.v("Hie", Integer.toString(label.get(0)));
@@ -154,6 +161,8 @@ public class MyService extends HiddenCameraService {
                     } else {
                          //devicePolicyManager.setKeyguardDisabled(compName,false);
                         devicePolicyManager.lockNow();
+                        //Intent ShowIntent=new Intent(this, ShowActivity.class);
+                        //startActivity(ShowIntent);
 
                     }
 

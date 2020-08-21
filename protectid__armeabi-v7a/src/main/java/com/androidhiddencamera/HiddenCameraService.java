@@ -127,10 +127,11 @@ public abstract class HiddenCameraService extends Service implements CameraCallb
                 Build.VERSION.SDK_INT < Build.VERSION_CODES.O ?
                         WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY :
                         WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
-                WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
 
         mWindowManager.addView(cameraSourceCameraPreview, params);
+        cameraSourceCameraPreview.setZOrderOnTop(true);
         return cameraSourceCameraPreview;
     }
 }

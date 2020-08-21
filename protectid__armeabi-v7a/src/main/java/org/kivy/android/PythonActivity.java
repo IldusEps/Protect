@@ -51,6 +51,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -79,12 +80,15 @@ public class PythonActivity extends SDLActivity {
     AlarmManager alarmManager;
     PendingIntent pendingIntent;
 
-
+    public String getLang(){
+        Log.v("Hie",Locale.getDefault().getLanguage());
+        return Locale.getDefault().getLanguage();
+    }
     public void restartNotify() {
         //requestPermissions(new String[] {Manifest.permission.SYSTEM_ALERT_WINDOW});
         //checkSelfPermission(Manifest.permission.SYSTEM_ALERT_WINDOW);
 
-        if (!(checkSelfPermission(Manifest.permission.SYSTEM_ALERT_WINDOW) == PackageManager.PERMISSION_GRANTED)){
+        if (!(Settings.canDrawOverlays(this))){
             Intent permIntent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
             startActivityForResult(permIntent, 0);
         }
@@ -99,7 +103,6 @@ public class PythonActivity extends SDLActivity {
             startActivity(intent);
         }
         Log.v("Hi!","Hi");
-
         //alarmManager.set(AlarmManager.RTC_WAKEUP, 0, pendingIntent);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, 0, pendingIntent);
@@ -170,14 +173,14 @@ public boolean Predict (String line) {
         //for (int j = 0; j < label.sizeof(); j++) {
         Log.v("Hie", Integer.toString(label.get(0)));
         Log.v("Hie", Double.toString(confidence.get(0)));
-        if (confidence.get(i) > 65) bool = true;
+        if (confidence.get(i) > 10) bool = true;
         //}
     }
     Log.v("Hie", Integer.toString(label.get(0)));
     Log.v("Hie", Double.toString(confidence.get(0)));
     Log.v("Hie",Boolean.toString(bool));
    // new File(getFilesDir()+"/"+line).delete();
-    return true;
+    return bool;
 
 }
     public String[] Images(){
