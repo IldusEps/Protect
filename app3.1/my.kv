@@ -1,0 +1,356 @@
+<sm>:
+	first:first
+	MainContainer:
+		name:"menu"
+	
+	PredictContainer:
+		name:"predict"
+		on_enter:self.on_enter()
+	Container:
+		name:"SuperFirst"
+
+	firstContainer:
+		id:first
+		name:"first"
+		on_enter:self.enter()
+	FaceContainer:
+		name:"face"
+	TrainContainer:
+		name:"train"
+		on_enter:self.train()
+
+<FImage>:
+	size_hint:1,1
+	height:self.width
+
+<FaceContainer>:
+	ident5:ident5
+	ident6:ident6
+	grid:grid
+	nav_layout:nav_layout
+	FloatLayout:
+		BoxLayout:
+			orientation:'vertical'
+			size_hint:1,1
+			Carousel:
+				id:grid
+				direction: 'right'
+				loop:False
+			BoxLayout:
+				pos_hint:{'x':0,'y':0}
+				size_hint:1,0.1
+				Button:
+					# ident: 5
+					id:ident5
+					pos_hint:{'x':0}
+					text:"Удалить лицо"
+					on_release:root.delete()
+				Button:
+					id:ident6
+					# ident: 6
+					pos_hint:{'x':0.5}
+					text:"Добавить лицо"
+					on_release:app.first()
+		NavLayout:
+			id:nav_layout
+
+
+<TrainContainer>:
+	ident2:ident2
+	Image:
+		pos_hint:{'top':0.96,'center_x':0.5} 
+		source:'imgff6.png'
+		size_hint:0.8,0.1
+	Label:
+		id:ident2
+		pos_hint:{'top':0.6,'center_x':0.5} 
+		color:[0.6,0.6,0.6,1]
+		font_size:50
+		# ident: 2
+		text:"Распознание фотографий, обучение..."
+		size_hint:0.8,0.1
+
+<firstContainer>:
+	shot:shot
+	ident1:ident1
+	FloatLayout:
+		Button:
+			id:shot
+			on_release:root.on()
+			pos_hint:{'center_x':0.5,'y':0.05}
+			size_hint:0.25,None
+			height:self.width
+			background_normal:''
+			background_color:[0,0,0,0]
+			canvas:
+				Rectangle:
+					source:"frame8-1.png"
+					size: self.size
+					pos: self.pos
+					
+		Image:
+			pos_hint:{'top':0.96,'center_x':0.5} 
+			source:'imgff6.png'
+			size_hint:0.8,0.1
+		Label:
+			id:ident1
+			pos_hint:{'center_y':0.85,'center_x':0.5} 
+			color:[0.6,0.6,0.6,1]
+			# ident: 1
+			text:"Сделайте 5 разных снимком своего лица"
+			size_hint:0.8,0.1
+
+<PredictContainer>:
+	ident:ident
+	FloatLayout:		
+		Image:
+			pos_hint:{'top':0.96,'center_x':0.5} 
+			source:'imgff6.png'
+			size_hint:0.8,0.1
+		Label:
+			id:ident
+			pos_hint:{'center_y':0.85,'center_x':0.5} 
+			color:[0.6,0.6,0.6,1]
+			# ident: 3
+			text:"Идентификация"
+			size_hint:0.8,0.1
+		Button:
+			id:shot
+			on_release:root.on()
+			pos_hint:{'center_x':0.5,'y':0.05}
+			size_hint:0.25,None
+			height:self.width
+			background_normal:''
+			background_color:[0,0,0,0]
+			canvas:
+				Rectangle:
+					source:"frame8-1.png"
+					size: self.size
+					pos: self.pos
+<myCamera>:
+	#index:1
+	play:True
+	#size:(480,640)
+	#resolution: (480,640)
+	canvas.before:
+		PushMatrix
+		
+		Rotate:
+			angle: 90
+			origin: self.center
+	canvas.after:
+		PopMatrix
+
+<Container>:
+	next:next
+	img_start:img_start
+	arrow_rigth:arrow_rigth
+	arrow_left:arrow_left   
+
+	Image:
+		pos_hint:{'top':0.96,'center_x':0.5} 
+		source:'imgff6.png'
+		size_hint:0.8,0.1       
+	Carousel:
+		size_hint_x:0.8
+		pos_hint:{'x':0.1}
+		id:img_start
+		direction: 'right'
+		loop:False
+		BoxLayout:
+			pos_hint:{'y':0.15}
+			size_hint:1,0.5
+			orientation:'vertical'
+			spacing:50
+			AsyncImage:
+				source: 'Img7.png'
+			Label:
+				size_hint:1,0.1
+				halign:'center'
+				text:'Безопасность'
+		BoxLayout:
+			pos_hint:{'y':0.15}
+			size_hint:1,0.5
+			orientation:'vertical'
+			spacing:50
+			AsyncImage:
+				source: 'Img2.png'
+			Label:
+				size_hint:1,0.1
+				halign:'center'
+				text:'Полная защита\n от нежеланных гостей'
+		BoxLayout:
+			pos_hint:{'y':0.15}
+			size_hint:1,0.5
+			orientation:'vertical'
+			spacing:50
+			AsyncImage:
+				source: 'Img3.png'
+			Label:
+				halign:'center'
+				size_hint:1,0.1
+				text:'Безопасность'     
+	Button:
+
+		id:arrow_left
+		pos_hint:{'center_y':0.5,'x':0.04}
+		size_hint:0.05,0.05
+		on_release:root.change_image('L')
+		background_normal:''
+		background_color:[0,0,0,0]
+		canvas:
+			Rectangle:
+				source: "Img5.png"
+				size: self.size
+				pos: self.pos
+	Button:
+		id:arrow_rigth
+		pos_hint:{'center_y':0.5,'right':0.96}
+		size_hint:0.05,0.05
+		on_release:root.change_image('R')
+		background_normal:''
+		background_color:[0,0,0,0]
+		canvas:
+			Rectangle:
+				source: "Img4.png"
+				size: self.size
+				pos: self.pos
+	BoxLayout:
+		size_hint:0.25,0.05
+		pos_hint:{'center_x':0.5,'y':0.04}
+		Button:
+			id:next
+			text:'Начать'
+			background_normal:''
+			background_color:[0.21, 0.22, 0.62, 1] #2e30b8,3459c7
+			on_release:root.Start_()
+
+<ItemDrawer>:
+	theme_text_color: "Custom"
+	on_release: self.parent.set_color_item(self)
+
+	IconLeftWidget:
+		id: icon
+		#icon: root.icon
+		theme_text_color: "Custom"
+		#text_color: root.text_color
+
+
+<ContentNavigationDrawer>:
+    orientation: "vertical"
+    padding: "8dp"
+    spacing: "8dp"
+
+    AnchorLayout:
+        anchor_x: "left"
+        size_hint_y: None
+        height: avatar.height
+
+        Image:
+            id: avatar
+            size_hint: None, None
+            size: "56dp", "56dp"
+            #source: "data/logo/kivy-icon-256.png"
+
+    MDLabel:
+        text: "Protect ID"
+        font_style: "Button"
+        size_hint_y: None
+        height: self.texture_size[1]
+
+    ScrollView:
+
+        DrawerList:
+            id: md_list
+
+<MainContainer>:
+	nav_layout:nav_layout
+	drop:drop_item
+	float:float
+	startBut:startBut
+	FloatLayout:	
+		id:float
+		canvas: 
+			Color:
+				rgba:0.24,0.73,1,1
+			Rectangle:
+				size:self.size
+		
+		Image:
+			source:'Image1.png'
+			pos_hint:{'x':0.18,'y':0.2}
+			size_hint:0.15,0.15
+		Image:
+			source:'Image2.png'
+			pos_hint:{'x':0.8,'y':0.6}
+			size_hint:0.16,0.16
+		Image:
+			source:'Image3.png'
+			pos_hint:{'x':0.12,'y':0.70}
+			size_hint:0.17,0.17
+		Image:
+			source:'Image4.png'
+			pos_hint:{'x':0.2,'y':0.45}
+			size_hint:0.15,0.15
+		Image:
+			source:'Image5.png'
+			pos_hint:{'x':0.6,'y':0.33}
+			size_hint:0.15,0.15
+		ToggleButton:
+			id:startBut
+			border: 0, 0, 0, 0
+			background_normal:'Start1.png'
+			background_down:'Start2.png'   
+			size_hint:None,None
+			height:root.height/4
+			width:self.height
+			pos_hint:{'center_x':0.5,'center_y':0.70} 
+			on_state:root.StartStop(self.state)
+		MDDropDownItem:
+			id:drop_item
+			pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+			text: '15сек.'
+			on_release: root.menu.open()
+
+		#Button:
+		#	on_release:root.Start()
+		#	pos_hint:{'center_x':0.5,'center_y':0.5}
+		#	size_hint:0.2,0.2
+		#Label:
+		#	id:text1
+		#	text:"Время запуска"
+		#	pos_hint:{'center_x':0.1,'center_y':0.3} 
+		#MDDropDownItem:
+		#	id: dropdown_item
+		#	pos_hint: {'center_x':0.6,'center_y':0.3}
+		#	dropdown_bg: [1, 1, 1, 1]
+		#	on_release: app.menu.open()
+		NavLayout:
+			id:nav_layout
+
+<NavLayout>:
+	content_drawer:content_drawer
+	nav_drawer:nav_drawer
+	NavigationLayout:
+		id:nav_layout
+		ScreenManager:
+
+			Screen:
+
+				BoxLayout:
+					
+					orientation: 'vertical'
+
+					MDToolbar:
+						title: "Protect ID"
+						elevation: 10
+						left_action_items: [['frame11.png', lambda x: nav_drawer.toggle_nav_drawer()]]
+
+					Widget:
+
+
+		MDNavigationDrawer:
+			id: nav_drawer
+
+			ContentNavigationDrawer:
+				id: content_drawer
