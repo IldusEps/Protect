@@ -10,39 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96fbffca-2fa7-4f95-9522-1e1ba84ed714" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_solver_1_1_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/protectid__armeabi-v7a.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/protectid__armeabi-v7a.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/protectid__armeabi-v7a.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_python_bundle/_python_bundle/stdlib.zip" beforeDir="false" afterPath="$PROJECT_DIR$/_python_bundle/_python_bundle/stdlib.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist_info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/assets/private.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/assets/private.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/androidhiddencamera/CameraCallbacks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/androidhiddencamera/CameraCallbacks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/androidhiddencamera/CameraPreview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/androidhiddencamera/CameraPreview.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/FirstFragment.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/HideService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/HideService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/MainActivit.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/PythonActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/PythonActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/SecondFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/protectid/HideReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/protectid/HideReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/protectid/ShowActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_show.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/content_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_first.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_second.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/notl1ayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/notlayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/notlayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/navigation/nav_graph.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values/dimens.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/myapp/Hardware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myapp/Hardware.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +136,19 @@
       <option name="presentableId" value="Default" />
       <updated>1600338044050</updated>
     </task>
+    <task id="LOCAL-00001" summary="gg">
+      <created>1600427076708</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1600427076709</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="gg" />
+    <option name="LAST_COMMIT_MESSAGE" value="gg" />
   </component>
   <component name="WindowStateProjectService">
     <state x="200" y="132" width="952" height="525" key="#PSD" timestamp="1600346839205">
@@ -183,33 +167,37 @@
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="196" y="26" width="960" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1600427054397" />
-    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl" timestamp="1600351484292">
+    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl" timestamp="1600429474903">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl/0.26.1360.742@0.26.1360.742" timestamp="1600351484292" />
-    <state width="1312" height="566" key="GridCell.Tab.0.bottom" timestamp="1600426972454">
+    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl/0.26.1360.742@0.26.1360.742" timestamp="1600429474903" />
+    <state width="1312" height="566" key="GridCell.Tab.0.bottom" timestamp="1600441712952">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="566" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1600426972454" />
-    <state width="1312" height="566" key="GridCell.Tab.0.center" timestamp="1600426972452">
+    <state width="1312" height="566" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1600441712952" />
+    <state width="1312" height="566" key="GridCell.Tab.0.center" timestamp="1600441712949">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="566" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1600426972452" />
-    <state width="1312" height="566" key="GridCell.Tab.0.left" timestamp="1600426972451">
+    <state width="1312" height="566" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1600441712949" />
+    <state width="1312" height="566" key="GridCell.Tab.0.left" timestamp="1600441712947">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="566" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1600426972451" />
-    <state width="1312" height="566" key="GridCell.Tab.0.right" timestamp="1600426972453">
+    <state width="1312" height="566" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1600441712947" />
+    <state width="1312" height="566" key="GridCell.Tab.0.right" timestamp="1600441712950">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="566" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1600426972453" />
-    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1600423341264">
+    <state width="1312" height="566" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1600441712950" />
+    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1600441815343">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2/0.26.1360.742@0.26.1360.742" timestamp="1600423341264" />
-    <state x="373" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1600422358074">
+    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2/0.26.1360.742@0.26.1360.742" timestamp="1600441815343" />
+    <state x="373" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1600428148660">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="373" y="224" key="com.intellij.ide.util.TipDialog/0.26.1360.742@0.26.1360.742" timestamp="1600422358074" />
+    <state x="373" y="224" key="com.intellij.ide.util.TipDialog/0.26.1360.742@0.26.1360.742" timestamp="1600428148660" />
+    <state x="485" y="317" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600441989478">
+      <screen x="0" y="26" width="1360" height="742" />
+    </state>
+    <state x="485" y="317" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.26.1360.742@0.26.1360.742" timestamp="1600441989478" />
   </component>
 </project>

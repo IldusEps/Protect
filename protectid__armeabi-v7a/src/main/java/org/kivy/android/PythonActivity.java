@@ -11,6 +11,7 @@ import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -94,6 +95,19 @@ public class PythonActivity extends SDLActivity {
     Notification notification;
 
     public void restartNotify(String line) {
+        SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=prefs.edit();
+        Log.v("hi",line);
+        line=line.replace("сек.","");
+        Log.v("Hi", Integer.toString(line.indexOf("мин.")));
+        if (line.indexOf("мин.")>-1) line=line.replace("мин.","");
+        line=line.replace("sec.","");
+        if (line.indexOf("min.")>-1) line=line.replace("min.","");
+        Log.v("hi",line);
+        int gg=Integer.parseInt(line);
+
+        editor.putInt("wait",gg).apply();
+        editor.putString("state","on").apply();
         //requestPermissions(new String[] {Manifest.permission.SYSTEM_ALERT_WINDOW});
         //checkSelfPermission(Manifest.permission.SYSTEM_ALERT_WINDOW);
         Intent notificationIntent = new Intent(PythonActivity.this, PythonActivity.class);
@@ -129,16 +143,7 @@ public class PythonActivity extends SDLActivity {
             Intent permIntent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
             startActivityForResult(permIntent, 0);
         }
-        DevicePolicyManager devicePolicyManager = (DevicePolicyManager) getSystemService(DEVICE_POLICY_SERVICE);
-        ComponentName compName = new ComponentName(this, MyAdmin.class);
-        boolean active = devicePolicyManager.isAdminActive(compName);
-        if (active==false){
 
-            Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
-            intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, compName);
-            intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, "Additional text explaining why we need this permission");
-            startActivity(intent);
-        }
         Log.v("Hi!","Hi");
         //alarmManager.set(AlarmManager.RTC_WAKEUP, 0, pendingIntent);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -156,10 +161,17 @@ public class PythonActivity extends SDLActivity {
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.cancel(1);
-
+        SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=prefs.edit();
+        editor.putString("state","off").apply();
     }
 
 public void delete(int i){
+    SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
+
+    if (prefs.contains("state")){
+        if (prefs.getString("state","off")=="on") stopNotify();
+    }
     FilenameFilter imgFilter = new FilenameFilter() {
         public boolean accept(File dir, String name) {
             name = name.toLowerCase();
@@ -183,7 +195,7 @@ public void delete(int i){
 
         }
     }
-   Hardware.train();
+   new Hardware().train();
 }
 
 public boolean Predict (String line) {
