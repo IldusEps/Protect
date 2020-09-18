@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Protect ID</string>
-    <string name="private_version">1595266832.365388</string>
+    <string name="private_version">1600357274.224059</string>
     <string name="presplash_color">#000000</string>
     <string name="urlScheme">kivy</string>
-    <string name="Not_Face">Лицо не распознано</string>
-    <string name="title_activity_main">MainActivit</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

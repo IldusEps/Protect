@@ -42,6 +42,7 @@ import java.util.List;
  */
 
 @SuppressLint("ViewConstructor")
+public
 class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
     private CameraCallbacks mCameraCallbacks;
 

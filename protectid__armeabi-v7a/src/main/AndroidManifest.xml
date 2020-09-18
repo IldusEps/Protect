@@ -35,10 +35,10 @@
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar">
-        <activity
-            android:name="org.kivy.android.MainActivit"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <receiver
+            android:name=".HideReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
 
         <meta-data
             android:name="wakelock"
@@ -58,7 +58,7 @@
         </activity>
 
         <service android:name="org.kivy.android.MyService" />
-
+        <service android:name="org.kivy.android.HideService" />
         <receiver android:name="org.kivy.android.MyReceiver" />
         <receiver
             android:name="org.kivy.android.MyAdmin"
@@ -69,7 +69,6 @@
 
             <intent-filter>
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
     </application>

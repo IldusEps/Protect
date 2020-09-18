@@ -10,6 +10,8 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
+import android.graphics.PixelFormat;
 import android.nfc.Tag;
 import android.os.Build;
 import android.os.Environment;
@@ -18,10 +20,17 @@ import android.os.PowerManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
+import android.view.SurfaceView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.androidhiddencamera.CameraConfig;
+import com.androidhiddencamera.CameraPreview;
 import com.androidhiddencamera.HiddenCameraService;
 import com.androidhiddencamera.HiddenCameraUtils;
 import com.androidhiddencamera.config.CameraFacing;
@@ -35,7 +44,8 @@ import org.bytedeco.javacpp.IntPointer;
 import org.bytedeco.javacpp.opencv_core;
 import org.bytedeco.javacpp.opencv_face;
 import org.bytedeco.javacpp.opencv_objdetect;
-import org.kivy.protectid.ShowActivity;
+import org.kivy.protectid.HideReceiver;
+import org.kivy.protectid.R;
 import org.renpy.android.ResourceManager;
 
 import java.io.File;
@@ -56,7 +66,6 @@ public class MyService extends HiddenCameraService {
     IntPointer label;
     DoublePointer confidence;
     Integer i;
-    @Override
     public void onCreate(){
         i=0;
       faceRecognizer = createLBPHFaceRecognizer();
@@ -66,6 +75,7 @@ public class MyService extends HiddenCameraService {
         face_cascade = new opencv_objdetect.CascadeClassifier(
                 getFilesDir().getAbsolutePath()+"/app/lbpcascade_frontalface.xml");
         faces = new opencv_core.RectVector();
+
     }
     protected void onHandleIntent(@Nullable Intent intent) {
 
@@ -96,15 +106,20 @@ public class MyService extends HiddenCameraService {
 
                 startCamera(cameraConfig);
 
-                new android.os.Handler().postDelayed(new Runnable() {
+                Thread run=new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        while(true) {
+                            try {
+                                Thread.sleep(5000);
+                                takePicture();
+                            } catch(InterruptedException ex){
 
-
-                        takePicture();
-
+                            }
+                        }
                     }
-                }, 2000L);
+                });
+                run.start();
             } else {
 
                 //Open settings to grant permission for "Draw other apps".
@@ -135,7 +150,7 @@ public class MyService extends HiddenCameraService {
                     //for (int j = 0; j < label.sizeof(); j++) {
                         Log.v("Hie", Integer.toString(label.get(0)));
                         Log.v("Hie", Double.toString(confidence.get(0)));
-                        if (confidence.get(0) > 10) bool = true;
+                        if (confidence.get(0) > 1) bool = true;
                     //}
                 }
             Log.v("Hie", Integer.toString(label.get(0)));
@@ -150,30 +165,36 @@ public class MyService extends HiddenCameraService {
             }
             else {*/
                 Log.v("Hi", "Lock");
-                DevicePolicyManager devicePolicyManager = (DevicePolicyManager) getSystemService(DEVICE_POLICY_SERVICE);
+               // DevicePolicyManager devicePolicyManager = (DevicePolicyManager) getSystemService(DEVICE_POLICY_SERVICE);
                 ComponentName compName = new ComponentName(this, MyAdmin.class);
-                boolean active = devicePolicyManager.isAdminActive(compName);
-
-                if (active) {
+                //boolean active = devicePolicyManager.isAdminActive(compName);
+            Intent intent = new Intent(getApplicationContext(), HideService.class);
+            getApplicationContext().startService(intent);
+                /*if (active) {
                     KeyguardManager myKM = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
                     if( myKM.inKeyguardRestrictedInputMode()) {
                         //it is locked
                     } else {
                          //devicePolicyManager.setKeyguardDisabled(compName,false);
-                        devicePolicyManager.lockNow();
+                        //devicePolicyManager.lockNow();
+
                         //Intent ShowIntent=new Intent(this, ShowActivity.class);
                         //startActivity(ShowIntent);
 
                     }
 
                 } else {
+
                     Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
                     intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, compName);
                     intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, "Additional text explaining why we need this permission");
                     startActivity(intent);
-                }
-        } 
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                }*/
+        } else{
+            Intent intent = new Intent(getApplicationContext(), HideService.class);
+            getApplicationContext().stopService(intent);
+        }
+        /*AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Log.v("Hi!!","Hi");
         Intent alarmIntent = new Intent(this, MyReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
@@ -185,14 +206,15 @@ public class MyService extends HiddenCameraService {
             alarmManager.set(AlarmManager.RTC_WAKEUP, 5000, pendingIntent);
         }
         //Log.v("Hi",Integer.toString(faceRecognizer.predict_label(image)));
-        //Log.v("Hi",Integer.toString(predicted));
+        //Log.v("Hi",Integer.toString(predicted));*/
 
-        stopSelf();
     }
 
     @Override
     public void onCameraError(int errorCode) {
 
     }
+
+
 
 }

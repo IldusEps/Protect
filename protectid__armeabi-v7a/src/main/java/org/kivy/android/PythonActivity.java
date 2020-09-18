@@ -3,6 +3,9 @@ package org.kivy.android;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
@@ -22,6 +25,9 @@ import android.os.Environment;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.SurfaceView;
 import android.view.ViewGroup;
@@ -34,6 +40,7 @@ import org.bytedeco.javacpp.opencv_core;
 import org.bytedeco.javacpp.opencv_face;
 import org.bytedeco.javacpp.opencv_objdetect;
 import org.kivy.android.launcher.Project;
+import org.kivy.protectid.R;
 import org.libsdl.app.SDLActivity;
 import org.myapp.Hardware;
 import org.renpy.android.ResourceManager;
@@ -84,9 +91,39 @@ public class PythonActivity extends SDLActivity {
         Log.v("Hie",Locale.getDefault().getLanguage());
         return Locale.getDefault().getLanguage();
     }
-    public void restartNotify() {
+    Notification notification;
+
+    public void restartNotify(String line) {
         //requestPermissions(new String[] {Manifest.permission.SYSTEM_ALERT_WINDOW});
         //checkSelfPermission(Manifest.permission.SYSTEM_ALERT_WINDOW);
+        Intent notificationIntent = new Intent(PythonActivity.this, PythonActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(PythonActivity.this,
+                0, notificationIntent,
+                PendingIntent.FLAG_CANCEL_CURRENT);
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(getContext(),"ProtectID")
+                        .setSmallIcon(R.drawable.icon)
+                        .setContentTitle("ProtectID")
+                        .setContentText("Нажмите, что бы остановить приложение")
+                .setContentIntent(contentIntent)
+                .setAutoCancel(true)
+                .setDefaults(Notification.COLOR_DEFAULT)
+                .setPriority(NotificationManager.IMPORTANCE_LOW)
+                ;
+
+        notification = builder.build();
+        notification.flags=notification.flags|Notification.FLAG_NO_CLEAR;
+
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        NotificationChannel notfChannel=new NotificationChannel("ProtectID","ProtectID",notificationManager.IMPORTANCE_DEFAULT);
+        notfChannel.enableVibration(false);
+        notfChannel.enableLights(false);
+        notfChannel.setImportance(NotificationManager.IMPORTANCE_LOW);
+        notificationManager.createNotificationChannel(notfChannel);
+
+        notificationManager.notify(1, notification);
 
         if (!(Settings.canDrawOverlays(this))){
             Intent permIntent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
@@ -116,6 +153,10 @@ public class PythonActivity extends SDLActivity {
     }
     public void stopNotify() {
         alarmManager.cancel(pendingIntent);
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.cancel(1);
+
     }
 
 public void delete(int i){
@@ -675,6 +716,8 @@ public boolean Predict (String line) {
             this.mWakeLock.release();
         }
 
+        //NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        //notificationManager.cancel(1);
         Log.v(TAG, "onPause()");
         try {
             super.onPause();
