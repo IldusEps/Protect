@@ -45,7 +45,6 @@ import org.bytedeco.javacpp.IntPointer;
 import org.bytedeco.javacpp.opencv_core;
 import org.bytedeco.javacpp.opencv_face;
 import org.bytedeco.javacpp.opencv_objdetect;
-import org.kivy.protectid.HideReceiver;
 import org.kivy.protectid.R;
 import org.renpy.android.ResourceManager;
 

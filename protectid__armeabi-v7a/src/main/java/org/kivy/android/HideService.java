@@ -15,9 +15,6 @@ import android.view.SurfaceView;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
-import com.androidhiddencamera.CameraCallbacks;
-import com.androidhiddencamera.CameraPreview;
-
 public class HideService extends Service  {
     public HideService() {
     }
@@ -56,7 +53,7 @@ public class HideService extends Service  {
             tPaint.setTextAlign(Paint.Align.CENTER);
             tPaint.setTextSize(35f);
             canvas.drawPaint(mPaint);
-            canvas.drawText("Device locked",tPaint);
+            canvas.drawText("Device locked",0,0,tPaint);
             cameraSourceCameraPreview.draw(canvas);
             cameraSourceCameraPreview.setZOrderOnTop(true);
     }
