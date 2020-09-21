@@ -58,9 +58,9 @@ public class Hardware {
         Log.v("My","Hi");
         File[] imageFiles = root.listFiles(imgFilter);
 
-        MatVector images = new MatVector(imageFiles.length*3);
+        MatVector images = new MatVector(imageFiles.length*2);
 
-        Mat labels = new Mat(imageFiles.length*3, 1, CV_32SC1);
+        Mat labels = new Mat(imageFiles.length*2, 1, CV_32SC1);
         IntBuffer labelsBuf = labels.createBuffer();
         Log.v("My","Hi");
         opencv_objdetect.CascadeClassifier face_cascade = new opencv_objdetect.CascadeClassifier(
@@ -90,13 +90,14 @@ public class Hardware {
         Log.v("My","Hi");
         faceRecognizer.train(images, labels);
         Log.v("My","Hi");
-        IntPointer label = new IntPointer(1);
-        DoublePointer confidence = new DoublePointer(1);
-        faceRecognizer.predict(testImage, label, confidence);
-        int predictedLabel = label.get(0);
+        //IntPointer label = new IntPointer(1);
+       // DoublePointer confidence = new DoublePointer(1);
+       // face_cascade.detectMultiScale(testImage, faces);
+        //faceRecognizer.predict(new Mat(testImage,faces.get(0)), label, confidence);
+       // int predictedLabel = label.get(0);
         faceRecognizer.save(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/mymodel.xml");
-        System.out.println("Predicted label: " + predictedLabel);
-        System.out.println("Predicted: " + confidence.get(0));
+       // System.out.println("Predicted label: " + predictedLabel);
+        //System.out.println("Predicted: " + confidence.get(0));
         state=1;
     }
 }

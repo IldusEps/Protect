@@ -95,17 +95,21 @@ public class PythonActivity extends SDLActivity {
     Notification notification;
 
     public void restartNotify(String line, String line1) {
+        Log.v("Helllo","I an");
         SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=prefs.edit();
-        Log.v("hi",line);
-        line=line.replace("сек.","");
-        Log.v("Hi", Integer.toString(line.indexOf("мин.")));
-        if (line.indexOf("мин.")>-1) line=line.replace("мин.","");
-        line=line.replace("sec.","");
-        if (line.indexOf("min.")>-1) line=line.replace("min.","");
-        Log.v("hi",line);
-        int gg=Integer.parseInt(line);
-        Log.v("Hi",line1);
+        if (line != "") Log.v("hi",line);
+        int gg=2;
+        if (line != "") {
+            line = line.replace("сек.", "");
+            Log.v("Hi", Integer.toString(line.indexOf("мин.")));
+            if (line.indexOf("мин.") > -1) line = line.replace("мин.", "");
+            line = line.replace("sec.", "");
+            if (line.indexOf("min.") > -1) line = line.replace("min.", "");
+            Log.v("hi", line);
+             gg= Integer.parseInt(line);
+        }
+        if (line1 != "") Log.v("Hi",line1);
         editor.putInt("wait",gg);
         editor.putString("state","on").apply();
         //requestPermissions(new String[] {Manifest.permission.SYSTEM_ALERT_WINDOW});
@@ -200,6 +204,7 @@ public void delete(int i){
 
 public boolean Predict (String line) {
     SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
+    Log.v("Hi","h");
     if (prefs.contains("state")){
         if (prefs.getString("state","off")=="on") stopNotify();
     }
