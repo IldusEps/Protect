@@ -42,6 +42,7 @@ public class HideService extends Service  {
                             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
                     WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
                     PixelFormat.TRANSLUCENT);
+
             mWindowManager.addView(cameraSourceCameraPreview, params);
             cameraSourceCameraPreview.setZOrderOnTop(true);
     }

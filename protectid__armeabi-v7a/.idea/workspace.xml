@@ -9,8 +9,103 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96fbffca-2fa7-4f95-9522-1e1ba84ed714" name="Default Changelist" comment="gg">
+    <list default="true" id="96fbffca-2fa7-4f95-9522-1e1ba84ed714" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../app3.1/DF.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Frame 12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Group.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Group2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/HDZB.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Image1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Image2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Image3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Image4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Image5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Img1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Img2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Img3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Img4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Img5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Img6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Img7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Parametr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Rectangle 24.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Rectangle 25.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Start1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Start1.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Start2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/Start2.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/buildozer.spec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/frame11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/frame8-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/frame8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/imgff6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/lbpcascade_frontalface.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../app3.1/my.kv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____src_main_libs_ffmpeg_android_arm_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____src_main_libs_javacpp_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____src_main_libs_javacv_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____src_main_libs_opencv_3_2_0_1_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____src_main_libs_opencv_android_arm_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_common_1_1_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_common_1_1_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_navigation_navigation_common_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_navigation_navigation_fragment_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_navigation_navigation_runtime_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_navigation_navigation_ui_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cardview_v7_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_collections_28_0_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cursoradapter_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_customview_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_design_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_documentfile_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_interpolator_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_loader_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_localbroadcastmanager_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_print_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_annotations_28_0_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_transition_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_viewpager_28_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/protectid__armeabi-v7a.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_python_bundle/_python_bundle/stdlib.zip" beforeDir="false" afterPath="$PROJECT_DIR$/_python_bundle/_python_bundle/stdlib.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/assets/private.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/assets/private.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/androidhiddencamera/CameraCallbacks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/androidhiddencamera/CameraCallbacks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/androidhiddencamera/CameraPreview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/androidhiddencamera/CameraPreview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/HideService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/HideService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/PythonActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/PythonActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/protectid/HideReceiver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/myapp/Hardware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myapp/Hardware.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600442117102</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="gg">
+      <created>1600442361948</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1600442361948</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -166,38 +268,38 @@
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="407" y="44" width="537" height="700" key="#protectid__armeabi-v7a/0.26.1360.742@0.26.1360.742" timestamp="1600361205500" />
-    <state x="196" y="26" width="960" height="737" key="CommitChangelistDialog2" timestamp="1600442201681">
+    <state x="196" y="26" width="960" height="737" key="CommitChangelistDialog2" timestamp="1600672091421">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="196" y="26" width="960" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1600442201681" />
+    <state x="196" y="26" width="960" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1600672091421" />
     <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl" timestamp="1600429474903">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl/0.26.1360.742@0.26.1360.742" timestamp="1600429474903" />
-    <state width="1312" height="566" key="GridCell.Tab.0.bottom" timestamp="1600441712952">
+    <state width="1312" height="566" key="GridCell.Tab.0.bottom" timestamp="1600670071078">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="566" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1600441712952" />
-    <state width="1312" height="566" key="GridCell.Tab.0.center" timestamp="1600441712949">
+    <state width="1312" height="566" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1600670071078" />
+    <state width="1312" height="566" key="GridCell.Tab.0.center" timestamp="1600670071076">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="566" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1600441712949" />
-    <state width="1312" height="566" key="GridCell.Tab.0.left" timestamp="1600441712947">
+    <state width="1312" height="566" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1600670071076" />
+    <state width="1312" height="566" key="GridCell.Tab.0.left" timestamp="1600670071076">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="566" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1600441712947" />
-    <state width="1312" height="566" key="GridCell.Tab.0.right" timestamp="1600441712950">
+    <state width="1312" height="566" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1600670071076" />
+    <state width="1312" height="566" key="GridCell.Tab.0.right" timestamp="1600670071077">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="566" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1600441712950" />
-    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1600442125069">
+    <state width="1312" height="566" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1600670071077" />
+    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1600672037144">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2/0.26.1360.742@0.26.1360.742" timestamp="1600442125069" />
-    <state x="373" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1600428148660">
+    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2/0.26.1360.742@0.26.1360.742" timestamp="1600672037144" />
+    <state x="373" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1600665239749">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="373" y="224" key="com.intellij.ide.util.TipDialog/0.26.1360.742@0.26.1360.742" timestamp="1600428148660" />
+    <state x="373" y="224" key="com.intellij.ide.util.TipDialog/0.26.1360.742@0.26.1360.742" timestamp="1600665239749" />
     <state x="485" y="317" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1600442196363">
       <screen x="0" y="26" width="1360" height="742" />
     </state>

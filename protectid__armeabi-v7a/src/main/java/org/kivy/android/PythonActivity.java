@@ -106,7 +106,7 @@ public class PythonActivity extends SDLActivity {
         Log.v("hi",line);
         int gg=Integer.parseInt(line);
 
-        editor.putInt("wait",gg).apply();
+        editor.putInt("wait",gg);
         editor.putString("state","on").apply();
         //requestPermissions(new String[] {Manifest.permission.SYSTEM_ALERT_WINDOW});
         //checkSelfPermission(Manifest.permission.SYSTEM_ALERT_WINDOW);
@@ -199,7 +199,10 @@ public void delete(int i){
 }
 
 public boolean Predict (String line) {
-
+    SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
+    if (prefs.contains("state")){
+        if (prefs.getString("state","off")=="on") stopNotify();
+    }
     faceRecognizer.load(getFilesDir().getAbsolutePath()+"/mymodel.xml");
     opencv_core.RectVector faces;
     IntPointer label;
@@ -442,12 +445,12 @@ public boolean Predict (String line) {
         }
     }
 
-    public static ViewGroup getLayout() {
-        return   mLayout;
-    }
-
     public static SurfaceView getSurface() {
         return   mSurface;
+    }
+
+    public static ViewGroup getLayout() {
+        return   mLayout;
     }
 
     //----------------------------------------------------------------------------

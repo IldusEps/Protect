@@ -18,7 +18,6 @@ import java.nio.IntBuffer;
 import java.nio.file.Files;
 
 import static org.bytedeco.javacpp.opencv_core.CV_32SC1;
-import static org.bytedeco.javacpp.opencv_face.createEigenFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_face.createLBPHFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_imgcodecs.CV_LOAD_IMAGE_GRAYSCALE;
 import static org.bytedeco.javacpp.opencv_imgcodecs.imread;
@@ -83,20 +82,7 @@ public class Hardware {
 
             counter++;}
         }
-        for (File image : imageFiles) {
-            if (!image.getName().startsWith("predict")){
-                Log.v("My",image.getName());
-                Mat img = imread(image.getAbsolutePath(), CV_LOAD_IMAGE_GRAYSCALE);
-                face_cascade.detectMultiScale(img, faces);
 
-                int label = Integer.parseInt(image.getName().split("\\-")[0]);
-
-                images.put(counter, new Mat(img,faces.get(0)));
-
-                labelsBuf.put(counter, label);
-
-                counter++;}
-        }
         //FaceRecognizer faceRecognizer = createFisherFaceRecognizer();
         // FaceRecognizer faceRecognizer = EigenFaceRecognizer.create();
          FaceRecognizer faceRecognizer = createLBPHFaceRecognizer();

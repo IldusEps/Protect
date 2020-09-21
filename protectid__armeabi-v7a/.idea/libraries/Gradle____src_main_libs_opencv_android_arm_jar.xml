@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: ./src/main/libs/opencv-android-arm.jar">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/src/main/libs/opencv-android-arm.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

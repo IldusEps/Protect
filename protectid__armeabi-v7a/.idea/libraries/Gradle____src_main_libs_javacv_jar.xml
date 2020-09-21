@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: ./src/main/libs/javacv.jar">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/src/main/libs/javacv.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
