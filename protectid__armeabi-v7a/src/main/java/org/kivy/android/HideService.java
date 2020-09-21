@@ -3,6 +3,9 @@ package org.kivy.android;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.os.Build;
 import android.os.IBinder;
@@ -42,8 +45,19 @@ public class HideService extends Service  {
                             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
                     WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
                     PixelFormat.TRANSLUCENT);
-
             mWindowManager.addView(cameraSourceCameraPreview, params);
+            Canvas canvas=new Canvas();
+            Paint mPaint=new Paint();
+            mPaint.setColor(Color.rgb(61,183,1));
+            mPaint.setStyle(Paint.Style.FILL);
+            Paint tPaint=new Paint();
+            tPaint.setColor(Color.RED);
+            tPaint.setStyle(Paint.Style.STROKE);
+            tPaint.setTextAlign(Paint.Align.CENTER);
+            tPaint.setTextSize(35f);
+            canvas.drawPaint(mPaint);
+            canvas.drawText("Device locked",tPaint);
+            cameraSourceCameraPreview.draw(canvas);
             cameraSourceCameraPreview.setZOrderOnTop(true);
     }
 
