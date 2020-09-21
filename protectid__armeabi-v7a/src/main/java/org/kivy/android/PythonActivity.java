@@ -94,7 +94,7 @@ public class PythonActivity extends SDLActivity {
     }
     Notification notification;
 
-    public void restartNotify(String line) {
+    public void restartNotify(String line, String line1) {
         SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=prefs.edit();
         Log.v("hi",line);
@@ -105,7 +105,7 @@ public class PythonActivity extends SDLActivity {
         if (line.indexOf("min.")>-1) line=line.replace("min.","");
         Log.v("hi",line);
         int gg=Integer.parseInt(line);
-
+        Log.v("Hi",line1);
         editor.putInt("wait",gg);
         editor.putString("state","on").apply();
         //requestPermissions(new String[] {Manifest.permission.SYSTEM_ALERT_WINDOW});
@@ -229,7 +229,7 @@ public boolean Predict (String line) {
         //for (int j = 0; j < label.sizeof(); j++) {
         Log.v("Hie", Integer.toString(label.get(0)));
         Log.v("Hie", Double.toString(confidence.get(0)));
-        if (confidence.get(i) > 10) bool = true;
+        if (confidence.get(0) > 10) bool = true;
         //}
     }
     Log.v("Hie", Integer.toString(label.get(0)));
