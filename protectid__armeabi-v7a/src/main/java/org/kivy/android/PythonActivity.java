@@ -127,7 +127,8 @@ public class PythonActivity extends SDLActivity {
                 .setContentIntent(contentIntent)
                 .setAutoCancel(true)
                 .setDefaults(Notification.COLOR_DEFAULT)
-                .setPriority(NotificationManager.IMPORTANCE_LOW);
+                .setPriority(NotificationManager.IMPORTANCE_LOW)
+                ;
 
         notification = builder.build();
         notification.flags=notification.flags|Notification.FLAG_NO_CLEAR;
@@ -204,7 +205,6 @@ public void delete(int i){
 
 public boolean Predict (String line) {
     SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
-    Log.v("Hi","h");
     if (prefs.contains("state")){
         if (prefs.getString("state","off")=="on") stopNotify();
     }
