@@ -66,12 +66,13 @@ public class MyService extends HiddenCameraService {
     IntPointer label;
     DoublePointer confidence;
     Integer i;
+    Thread run;
     public void onCreate(){
         i=0;
-      faceRecognizer = createLBPHFaceRecognizer();
-      faceRecognizer.load(getFilesDir().getAbsolutePath()+"/mymodel.xml");
-      label = new IntPointer(1);
-      confidence = new DoublePointer(1);
+        faceRecognizer = createLBPHFaceRecognizer();
+        faceRecognizer.load(getFilesDir().getAbsolutePath()+"/mymodel.xml");
+        label = new IntPointer(1);
+        confidence = new DoublePointer(1);
         face_cascade = new opencv_objdetect.CascadeClassifier(
                 getFilesDir().getAbsolutePath()+"/app/lbpcascade_frontalface.xml");
         faces = new opencv_core.RectVector();
@@ -86,6 +87,14 @@ public class MyService extends HiddenCameraService {
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Intent intent = new Intent(getApplicationContext(), HideService.class);
+        getApplicationContext().stopService(intent);
+        run.stop();
     }
 
     @Override
@@ -106,7 +115,7 @@ public class MyService extends HiddenCameraService {
 
                 startCamera(cameraConfig);
 
-                Thread run=new Thread(new Runnable() {
+                run=new Thread(new Runnable() {
                     @Override
                     public void run() {
                         while(true) {
@@ -117,6 +126,7 @@ public class MyService extends HiddenCameraService {
                                 if (prefs.contains("state")){
                                     if (prefs.getString("state","off")=="off") stopSelf();
                                 }
+                                Log.v("Hi","This is me!");
                                 takePicture();
                             } catch(InterruptedException ex){
 
@@ -148,18 +158,21 @@ public class MyService extends HiddenCameraService {
         // Get the prediction and associated confidence from the model
         face_cascade.detectMultiScale(image,faces);
         Boolean bool=false;
-                for (int i = 0; i < faces.size(); i++) {
-                    opencv_core.Rect face_i = faces.get(i);
-                    faceRecognizer.predict(new opencv_core.Mat(image, face_i), label, confidence);
-                    Log.v("My","1");
-                    //for (int j = 0; j < label.sizeof(); j++) {
-                        Log.v("Hie", Integer.toString(label.get(0)));
-                        Log.v("Hie", Double.toString(confidence.get(0)));
-                        if (confidence.get(0) > 1) bool = true;
-                    //}
-                }
+        for (int i = 0; i < faces.size(); i++) {
+            opencv_core.Rect face_i = faces.get(i);
+            faceRecognizer.predict(new opencv_core.Mat(image, face_i), label, confidence);
+            Log.v("My","1");
+            //for (int j = 0; j < label.sizeof(); j++) {
             Log.v("Hie", Integer.toString(label.get(0)));
             Log.v("Hie", Double.toString(confidence.get(0)));
+            if (confidence.get(0) > 1) {
+                bool = true;
+                Log.v("HI", "Very good!");
+            }
+            //}
+        }
+        Log.v("Hie", Integer.toString(label.get(0)));
+        Log.v("Hie", Double.toString(confidence.get(0)));
         Toast.makeText(MyService.this,
                 "Capturing image."+Double.toString(confidence.get(0)), Toast.LENGTH_SHORT).show();
         i=i+1;
@@ -169,10 +182,10 @@ public class MyService extends HiddenCameraService {
                 takePicture();
             }
             else {*/
-                Log.v("Hi", "Lock");
-               // DevicePolicyManager devicePolicyManager = (DevicePolicyManager) getSystemService(DEVICE_POLICY_SERVICE);
-                ComponentName compName = new ComponentName(this, MyAdmin.class);
-                //boolean active = devicePolicyManager.isAdminActive(compName);
+            Log.v("Hi", "Lock");
+            // DevicePolicyManager devicePolicyManager = (DevicePolicyManager) getSystemService(DEVICE_POLICY_SERVICE);
+            ComponentName compName = new ComponentName(this, MyAdmin.class);
+            //boolean active = devicePolicyManager.isAdminActive(compName);
             Intent intent = new Intent(getApplicationContext(), HideService.class);
             getApplicationContext().startService(intent);
                 /*if (active) {

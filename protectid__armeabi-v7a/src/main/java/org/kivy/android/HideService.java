@@ -55,6 +55,7 @@ public class HideService extends Service  {
             canvas.drawPaint(mPaint);
             canvas.drawText("Device locked",0,0,tPaint);
             cameraSourceCameraPreview.draw(canvas);
+            cameraSourceCameraPreview.onDrawForeground(canvas);
             cameraSourceCameraPreview.setZOrderOnTop(true);
     }
 
