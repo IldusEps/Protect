@@ -58,15 +58,18 @@ public class Hardware {
         Log.v("My","Hi");
         File[] imageFiles = root.listFiles(imgFilter);
 
-        MatVector images = new MatVector(imageFiles.length*2);
+        MatVector images = new MatVector(imageFiles.length*3);
 
-        Mat labels = new Mat(imageFiles.length*2, 1, CV_32SC1);
+        Mat labels = new Mat(imageFiles.length*3, 1, CV_32SC1);
         IntBuffer labelsBuf = labels.createBuffer();
         Log.v("My","Hi");
         opencv_objdetect.CascadeClassifier face_cascade = new opencv_objdetect.CascadeClassifier(
                 Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/lbpcascade_frontalface.xml");
         Log.v("My","Hero");
         opencv_core.RectVector faces = new opencv_core.RectVector();
+
+
+
         int counter = 0;
 
         for (File image : imageFiles) {
@@ -79,6 +82,18 @@ public class Hardware {
 
                     labelsBuf.put(counter, label);
                     counter++;
+            }
+        }
+        for (File image : imageFiles) {
+            if (!image.getName().startsWith("predict")){
+                Log.v("My",image.getName());
+                Mat img = imread(image.getAbsolutePath(), CV_LOAD_IMAGE_GRAYSCALE);
+                face_cascade.detectMultiScale(img, faces);
+                int label = Integer.parseInt(image.getName().split("\\-")[0]);
+                images.put(counter, new Mat(img,faces.get(0)));
+
+                labelsBuf.put(counter, label);
+                counter++;
             }
         }
         for (File image : imageFiles) {
