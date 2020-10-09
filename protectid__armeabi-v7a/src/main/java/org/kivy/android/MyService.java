@@ -31,6 +31,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.androidhiddencamera.CameraConfig;
+import com.androidhiddencamera.CameraError;
 import com.androidhiddencamera.CameraPreview;
 import com.androidhiddencamera.HiddenCameraService;
 import com.androidhiddencamera.HiddenCameraUtils;
@@ -126,8 +127,9 @@ public class MyService extends HiddenCameraService {
                                 if (prefs.contains("state")){
                                     if (prefs.getString("state","off")=="off") stopSelf();
                                 }
-                                Log.v("Hi","This is me!");
                                 takePicture();
+                                Log.v("Hi","This is me!");
+
                             } catch(InterruptedException ex){
 
                             }
@@ -156,6 +158,7 @@ public class MyService extends HiddenCameraService {
         int predicted_label = -1;
         double predicted_confidence = 0.0;
         // Get the prediction and associated confidence from the model
+        Log.v("Hi","Yy");
         face_cascade.detectMultiScale(image,faces);
         Boolean bool=false;
         for (int i = 0; i < faces.size(); i++) {
@@ -230,7 +233,13 @@ public class MyService extends HiddenCameraService {
 
     @Override
     public void onCameraError(int errorCode) {
-
+        if (errorCode==CameraError.ERROR_CAMERA_OPEN_FAILED){
+            Log.v("Hi","ERROR_CAMERA_OPEN_FAILED");
+        }
+        if (errorCode==CameraError.ERROR_IMAGE_WRITE_FAILED) Log.v("Hi","ERROR_IMAGE_WRITE_FAILED");
+        if (errorCode==CameraError.ERROR_CAMERA_PERMISSION_NOT_AVAILABLE) Log.v("Hi","ERROR_CAMERA_PERMISSION_NOT_AVAILABLE");
+        if (errorCode==CameraError.ERROR_DOES_NOT_HAVE_FRONT_CAMERA) Log.v("Hi","ERROR_DOES_NOT_HAVE_FRONT_CAMERA");
+        if (errorCode==CameraError.ERROR_DOES_NOT_HAVE_FRONT_CAMERA) Log.v("Hi","ERROR_DOES_NOT_HAVE_FRONT_CAMERA");
     }
 
 

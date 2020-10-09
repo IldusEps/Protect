@@ -44,7 +44,9 @@ public class HideService extends Service  {
                             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
                     WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
                     PixelFormat.TRANSLUCENT);
-            mWindowManager.addView(lockView, params);
+            Log.v("Hi","LockView");
+            mWindowManager.addView(cameraSourceCameraPreview, params);
+            //CameraSourceCameraPreview.addView
            /* Canvas canvas=new Canvas();
             Paint mPaint=new Paint();
             mPaint.setColor(Color.rgb(61,183,1));
@@ -63,7 +65,7 @@ public class HideService extends Service  {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         mWindowManager.removeView(cameraSourceCameraPreview);
+        super.onDestroy();
     }
 }
