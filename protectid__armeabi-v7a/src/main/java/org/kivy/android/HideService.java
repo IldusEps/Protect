@@ -35,7 +35,7 @@ public class HideService extends Service  {
         Log.v("Hi","SHOW");
             cameraSourceCameraPreview = new SurfaceView(this);
             //cameraSourceCameraPreview.set;
-            LockView lockView = new LockView(this);
+            //LockView lockView = new LockView(this);
             mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
             WindowManager.LayoutParams params = new WindowManager.LayoutParams(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_FULLSCREEN,

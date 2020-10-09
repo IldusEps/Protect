@@ -102,7 +102,7 @@ public abstract class HiddenCameraService extends Service implements CameraCallb
             }
         } else {
             throw new RuntimeException("Background camera not initialized. Call startCamera() to initialize the camera.");
-            Log.v("Hi","Background camera not initialized. Call startCamera() to initialize the camera.");
+            //Log.v("Hi","Background camera not initialized. Call startCamera() to initialize the camera.");
         }
     }
 

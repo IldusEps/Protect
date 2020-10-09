@@ -46,6 +46,7 @@ import org.bytedeco.javacpp.IntPointer;
 import org.bytedeco.javacpp.opencv_core;
 import org.bytedeco.javacpp.opencv_face;
 import org.bytedeco.javacpp.opencv_objdetect;
+import org.kivy.protectid.HideReceiver;
 import org.kivy.protectid.R;
 import org.renpy.android.ResourceManager;
 
@@ -68,15 +69,22 @@ public class MyService extends HiddenCameraService {
     DoublePointer confidence;
     Integer i;
     Thread run;
-    public void onCreate(){
-        i=0;
+    int wait_int;
+    boolean boolHideServ;
+    public void onCreate() {
+        i = 0;
         faceRecognizer = createLBPHFaceRecognizer();
-        faceRecognizer.load(getFilesDir().getAbsolutePath()+"/mymodel.xml");
+        faceRecognizer.load(getFilesDir().getAbsolutePath() + "/mymodel.xml");
         label = new IntPointer(1);
         confidence = new DoublePointer(1);
         face_cascade = new opencv_objdetect.CascadeClassifier(
-                getFilesDir().getAbsolutePath()+"/app/lbpcascade_frontalface.xml");
+                getFilesDir().getAbsolutePath() + "/app/lbpcascade_frontalface.xml");
         faces = new opencv_core.RectVector();
+        boolHideServ = false;
+        SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
+        if (prefs.contains("wait")){
+            wait_int=prefs.getInt("wait",2)*1000;
+        } else wait_int=2000;
 
     }
     protected void onHandleIntent(@Nullable Intent intent) {
@@ -84,18 +92,16 @@ public class MyService extends HiddenCameraService {
 
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        run.stop();
+    }
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         return null;
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Intent intent = new Intent(getApplicationContext(), HideService.class);
-        getApplicationContext().stopService(intent);
-        run.stop();
     }
 
     @Override
@@ -109,8 +115,8 @@ public class MyService extends HiddenCameraService {
                         .getBuilder(this)
                         .setImageRotation(CameraRotation.ROTATION_270)
                         .setCameraFacing(CameraFacing.FRONT_FACING_CAMERA)
-                        .setCameraResolution(CameraResolution.MEDIUM_RESOLUTION)
-                        .setImageFormat(CameraImageFormat.FORMAT_JPEG)
+                        .setCameraResolution(CameraResolution.HIGH_RESOLUTION)
+                        .setImageFormat(CameraImageFormat.FORMAT_PNG)
                         .setCameraFocus(CameraFocus.AUTO)
                         .build();
 
@@ -121,15 +127,15 @@ public class MyService extends HiddenCameraService {
                     public void run() {
                         while(true) {
                             try {
-                                Thread.sleep(5000);
+                                Thread.sleep(wait_int);
                                 SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
-
                                 if (prefs.contains("state")){
-                                    if (prefs.getString("state","off")=="off") stopSelf();
+                                    if (prefs.getString("state","off")=="off"){
+                                        //run.stop();
+                                        stopSelf();
+                                    }
                                 }
                                 takePicture();
-                                Log.v("Hi","This is me!");
-
                             } catch(InterruptedException ex){
 
                             }
@@ -158,7 +164,6 @@ public class MyService extends HiddenCameraService {
         int predicted_label = -1;
         double predicted_confidence = 0.0;
         // Get the prediction and associated confidence from the model
-        Log.v("Hi","Yy");
         face_cascade.detectMultiScale(image,faces);
         Boolean bool=false;
         for (int i = 0; i < faces.size(); i++) {
@@ -168,10 +173,7 @@ public class MyService extends HiddenCameraService {
             //for (int j = 0; j < label.sizeof(); j++) {
             Log.v("Hie", Integer.toString(label.get(0)));
             Log.v("Hie", Double.toString(confidence.get(0)));
-            if (confidence.get(0) > 1) {
-                bool = true;
-                Log.v("HI", "Very good!");
-            }
+            if (confidence.get(0) > 1) bool = true;
             //}
         }
         Log.v("Hie", Integer.toString(label.get(0)));
@@ -180,60 +182,23 @@ public class MyService extends HiddenCameraService {
                 "Capturing image."+Double.toString(confidence.get(0)), Toast.LENGTH_SHORT).show();
         i=i+1;
         if (bool==false){
-           /* if (i==3) i=0;
-            if (i==1) {
-                takePicture();
-            }
-            else {*/
             Log.v("Hi", "Lock");
-            // DevicePolicyManager devicePolicyManager = (DevicePolicyManager) getSystemService(DEVICE_POLICY_SERVICE);
-            ComponentName compName = new ComponentName(this, MyAdmin.class);
-            //boolean active = devicePolicyManager.isAdminActive(compName);
-            Intent intent = new Intent(getApplicationContext(), HideService.class);
-            getApplicationContext().startService(intent);
-                /*if (active) {
-                    KeyguardManager myKM = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
-                    if( myKM.inKeyguardRestrictedInputMode()) {
-                        //it is locked
-                    } else {
-                         //devicePolicyManager.setKeyguardDisabled(compName,false);
-                        //devicePolicyManager.lockNow();
-
-                        //Intent ShowIntent=new Intent(this, ShowActivity.class);
-                        //startActivity(ShowIntent);
-
-                    }
-
-                } else {
-
-                    Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
-                    intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, compName);
-                    intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, "Additional text explaining why we need this permission");
-                    startActivity(intent);
-                }*/
+            if (boolHideServ==false) {
+                Intent intent = new Intent(getApplicationContext(), HideService.class);
+                getApplicationContext().startService(intent);
+                boolHideServ=true;
+                wait_int=1000;
+            }
         } else{
             Intent intent = new Intent(getApplicationContext(), HideService.class);
             getApplicationContext().stopService(intent);
+            wait_int=2000;
         }
-        /*AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Log.v("Hi!!","Hi");
-        Intent alarmIntent = new Intent(this, MyReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, 5000, pendingIntent);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, 5000, pendingIntent);
-        } else {
-            alarmManager.set(AlarmManager.RTC_WAKEUP, 5000, pendingIntent);
-        }
-        //Log.v("Hi",Integer.toString(faceRecognizer.predict_label(image)));
-        //Log.v("Hi",Integer.toString(predicted));*/
-
     }
 
     @Override
     public void onCameraError(int errorCode) {
-        if (errorCode==CameraError.ERROR_CAMERA_OPEN_FAILED){
+        if (errorCode== CameraError.ERROR_CAMERA_OPEN_FAILED){
             Log.v("Hi","ERROR_CAMERA_OPEN_FAILED");
         }
         if (errorCode==CameraError.ERROR_IMAGE_WRITE_FAILED) Log.v("Hi","ERROR_IMAGE_WRITE_FAILED");
