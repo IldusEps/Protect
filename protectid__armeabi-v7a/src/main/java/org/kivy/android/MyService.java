@@ -46,7 +46,6 @@ import org.bytedeco.javacpp.IntPointer;
 import org.bytedeco.javacpp.opencv_core;
 import org.bytedeco.javacpp.opencv_face;
 import org.bytedeco.javacpp.opencv_objdetect;
-import org.kivy.protectid.HideReceiver;
 import org.kivy.protectid.R;
 import org.renpy.android.ResourceManager;
 
@@ -131,7 +130,6 @@ public class MyService extends HiddenCameraService {
                                 SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
                                 if (prefs.contains("state")){
                                     if (prefs.getString("state","off")=="off"){
-                                        //run.stop();
                                         stopSelf();
                                     }
                                 }

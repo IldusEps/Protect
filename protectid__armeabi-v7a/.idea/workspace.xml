@@ -12,7 +12,6 @@
     <list default="true" id="96fbffca-2fa7-4f95-9522-1e1ba84ed714" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/androidhiddencamera/HiddenCameraService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/androidhiddencamera/HiddenCameraService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/HideService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/HideService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,6 +19,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="FFY5T18111017536" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -195,7 +195,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602229225757</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="gg">
+      <created>1602232642278</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1602232642278</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -225,10 +232,10 @@
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="407" y="44" width="537" height="700" key="#protectid__armeabi-v7a/0.26.1360.742@0.26.1360.742" timestamp="1600361205500" />
-    <state x="196" y="26" width="960" height="737" key="CommitChangelistDialog2" timestamp="1602229224082">
+    <state x="196" y="26" width="960" height="737" key="CommitChangelistDialog2" timestamp="1602232641544">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="196" y="26" width="960" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1602229224082" />
+    <state x="196" y="26" width="960" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1602232641544" />
     <state x="100" y="126" width="1160" height="542" key="DiffContextDialog" timestamp="1602232529527">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
@@ -237,26 +244,26 @@
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl/0.26.1360.742@0.26.1360.742" timestamp="1600675178757" />
-    <state width="1312" height="559" key="GridCell.Tab.0.bottom" timestamp="1602231534841">
+    <state width="1312" height="559" key="GridCell.Tab.0.bottom" timestamp="1602235508855">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="559" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1602231534841" />
-    <state width="1312" height="559" key="GridCell.Tab.0.center" timestamp="1602231534838">
+    <state width="1312" height="559" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1602235508855" />
+    <state width="1312" height="559" key="GridCell.Tab.0.center" timestamp="1602235508852">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="559" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1602231534838" />
-    <state width="1312" height="559" key="GridCell.Tab.0.left" timestamp="1602231534837">
+    <state width="1312" height="559" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1602235508852" />
+    <state width="1312" height="559" key="GridCell.Tab.0.left" timestamp="1602235508850">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="559" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1602231534837" />
-    <state width="1312" height="559" key="GridCell.Tab.0.right" timestamp="1602231534839">
+    <state width="1312" height="559" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1602235508850" />
+    <state width="1312" height="559" key="GridCell.Tab.0.right" timestamp="1602235508854">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="559" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1602231534839" />
-    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1602216957703">
+    <state width="1312" height="559" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1602235508854" />
+    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1602232649306">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2/0.26.1360.742@0.26.1360.742" timestamp="1602216957703" />
+    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2/0.26.1360.742@0.26.1360.742" timestamp="1602232649306" />
     <state x="373" y="224" key="com.intellij.ide.util.TipDialog" timestamp="1602223437673">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
