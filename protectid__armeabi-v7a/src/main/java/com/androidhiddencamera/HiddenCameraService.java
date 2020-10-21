@@ -25,7 +25,6 @@ import android.graphics.PixelFormat;
 import android.os.Build;
 import android.support.annotation.RequiresPermission;
 import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
@@ -93,16 +92,12 @@ public abstract class HiddenCameraService extends Service implements CameraCallb
      * initialize the camera using {@link #startCamera(CameraConfig)} before using this function.
      */
     protected void takePicture() {
-        Log.v("Hi","takePicture");
         if (mCameraPreview != null) {
-            Log.v("Hi", "CameraPreview");
             if (mCameraPreview.isSafeToTakePictureInternal()) {
-            Log.v("Hi", "CameraPictureInternal");
-            mCameraPreview.takePictureInternal();
-        }
+                mCameraPreview.takePictureInternal();
+            }
         } else {
             throw new RuntimeException("Background camera not initialized. Call startCamera() to initialize the camera.");
-            //Log.v("Hi","Background camera not initialized. Call startCamera() to initialize the camera.");
         }
     }
 

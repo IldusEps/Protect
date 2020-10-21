@@ -190,7 +190,10 @@ public class MyService extends HiddenCameraService {
         } else{
             Intent intent = new Intent(getApplicationContext(), HideService.class);
             getApplicationContext().stopService(intent);
-            wait_int=2000;
+            SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
+            if (prefs.contains("wait")){
+                wait_int=prefs.getInt("wait",2)*1000;
+            } else wait_int=2000;
         }
     }
 
