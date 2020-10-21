@@ -15,6 +15,8 @@ import android.view.SurfaceView;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
+import org.myapp.LockView;
+
 public class HideService extends Service  {
     public HideService() {
     }
@@ -24,14 +26,14 @@ public class HideService extends Service  {
         // TODO: Return the communication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
     }
-    SurfaceView cameraSourceCameraPreview;
+    LockView cameraSourceCameraPreview;
     WindowManager mWindowManager;
     @Override
     public void onCreate() {
         super.onCreate();
             //create fake camera view
         Log.v("Hi","SHOW");
-            cameraSourceCameraPreview = new SurfaceView(this);
+            cameraSourceCameraPreview = new LockView(this);
             //cameraSourceCameraPreview.set;
 
             mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
@@ -55,7 +57,6 @@ public class HideService extends Service  {
             canvas.drawPaint(mPaint);
             canvas.drawText("Device locked",0,0,tPaint);
             cameraSourceCameraPreview.draw(canvas);
-            cameraSourceCameraPreview.onDrawForeground(canvas);
             cameraSourceCameraPreview.setZOrderOnTop(true);
     }
 

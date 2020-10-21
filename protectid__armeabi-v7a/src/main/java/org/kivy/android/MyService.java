@@ -176,8 +176,7 @@ public class MyService extends HiddenCameraService {
         }
         Log.v("Hie", Integer.toString(label.get(0)));
         Log.v("Hie", Double.toString(confidence.get(0)));
-        Toast.makeText(MyService.this,
-                "Capturing image."+Double.toString(confidence.get(0)), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MyService.this,"Capturing image."+Double.toString(confidence.get(0)), Toast.LENGTH_SHORT).show();
         i=i+1;
         if (bool==false){
             Log.v("Hi", "Lock");
