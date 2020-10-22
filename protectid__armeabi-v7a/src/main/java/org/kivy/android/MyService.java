@@ -55,6 +55,7 @@ import static android.app.admin.DevicePolicyManager.FLAG_EVICT_CREDENTIAL_ENCRYP
 import static android.content.Context.DEVICE_POLICY_SERVICE;
 import static android.support.v4.content.ContextCompat.getSystemService;
 import static android.support.v4.content.ContextCompat.startActivity;
+import static org.bytedeco.javacpp.opencv_face.createFisherFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_face.createLBPHFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_imgcodecs.CV_LOAD_IMAGE_GRAYSCALE;
 import static org.bytedeco.javacpp.opencv_imgcodecs.imread;
@@ -72,7 +73,8 @@ public class MyService extends HiddenCameraService {
     boolean boolHideServ;
     public void onCreate() {
         i = 0;
-        faceRecognizer = createLBPHFaceRecognizer();
+       // faceRecognizer = createLBPHFaceRecognizer();
+        faceRecognizer = createFisherFaceRecognizer();
         faceRecognizer.load(getFilesDir().getAbsolutePath() + "/mymodel.xml");
         label = new IntPointer(1);
         confidence = new DoublePointer(1);
