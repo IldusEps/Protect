@@ -121,7 +121,7 @@ public class MyService extends HiddenCameraService {
 
                 startCamera(cameraConfig);
 
-                run=new Thread(new Runnable() {
+                run = new Thread(new Runnable() {
                     @Override
                     public void run() {
                         while(true) {
@@ -134,6 +134,7 @@ public class MyService extends HiddenCameraService {
                                     }
                                 }
                                 takePicture();
+
                             } catch(InterruptedException ex){
 
                             }
@@ -178,13 +179,15 @@ public class MyService extends HiddenCameraService {
         Log.v("Hie", Double.toString(confidence.get(0)));
         //Toast.makeText(MyService.this,"Capturing image."+Double.toString(confidence.get(0)), Toast.LENGTH_SHORT).show();
         i=i+1;
+        Toast.makeText(MyService.this,
+                "Time-end", Toast.LENGTH_SHORT).show();
         if (bool==false){
             Log.v("Hi", "Lock");
             if (boolHideServ==false) {
                 Intent intent = new Intent(getApplicationContext(), HideService.class);
                 getApplicationContext().startService(intent);
                 boolHideServ=true;
-                wait_int=1000;
+                wait_int=500;
             }
         } else{
             Intent intent = new Intent(getApplicationContext(), HideService.class);
@@ -193,6 +196,20 @@ public class MyService extends HiddenCameraService {
             if (prefs.contains("wait")){
                 wait_int=prefs.getInt("wait",2)*1000;
             } else wait_int=2000;
+            if (boolHideServ==false) {
+                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                Log.v("Hi!!", "Hi");
+                Intent alarmIntent = new Intent(this, MyReceiver.class);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, wait_int - 1000, pendingIntent);
+                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    alarmManager.setExact(AlarmManager.RTC_WAKEUP, wait_int - 1000, pendingIntent);
+                } else {
+                    alarmManager.set(AlarmManager.RTC_WAKEUP, wait_int - 1000, pendingIntent);
+                }
+                stopSelf();
+            }
         }
     }
 

@@ -5,21 +5,16 @@
       <config />
     </shared>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7eff90e-b70a-432c-9d09-166517526253" name="Default Changelist" comment="gg">
+    <list default="true" id="d7eff90e-b70a-432c-9d09-166517526253" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_python_bundle/_python_bundle/stdlib.zip" beforeDir="false" afterPath="$PROJECT_DIR$/_python_bundle/_python_bundle/stdlib.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist_info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/assets/private.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/assets/private.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/HideService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/HideService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/myapp/LockView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myapp/LockView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/layout/sample_lock_view.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values/attrs_lock_view.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,33 +130,55 @@
       <option name="presentableId" value="Default" />
       <updated>1603287628187</updated>
     </task>
+    <task id="LOCAL-00001" summary="gg">
+      <created>1603290233840</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603290233840</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gg" />
     <option name="LAST_COMMIT_MESSAGE" value="gg" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2" timestamp="1603289048194">
+    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2" timestamp="1603290133639">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1603289048194" />
-    <state width="1312" height="566" key="GridCell.Tab.0.bottom" timestamp="1603290116576">
+    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1603290133639" />
+    <state x="100" y="126" width="1160" height="542" key="DiffContextDialog" timestamp="1603386270243">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="566" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1603290116576" />
-    <state width="1312" height="566" key="GridCell.Tab.0.center" timestamp="1603290116574">
+    <state x="100" y="126" width="1160" height="542" key="DiffContextDialog/0.26.1360.742@0.26.1360.742" timestamp="1603386270243" />
+    <state width="1312" height="566" key="GridCell.Tab.0.bottom" timestamp="1603386526867">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="566" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1603290116574" />
-    <state width="1312" height="566" key="GridCell.Tab.0.left" timestamp="1603290116566">
+    <state width="1312" height="566" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1603386526867" />
+    <state width="1312" height="566" key="GridCell.Tab.0.center" timestamp="1603386526859">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="566" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1603290116566" />
-    <state width="1312" height="566" key="GridCell.Tab.0.right" timestamp="1603290116575">
+    <state width="1312" height="566" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1603386526859" />
+    <state width="1312" height="566" key="GridCell.Tab.0.left" timestamp="1603386526857">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="566" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1603290116575" />
+    <state width="1312" height="566" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1603386526857" />
+    <state width="1312" height="566" key="GridCell.Tab.0.right" timestamp="1603386526860">
+      <screen x="0" y="26" width="1360" height="742" />
+    </state>
+    <state width="1312" height="566" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1603386526860" />
     <state x="306" y="92" width="739" height="605" key="RollbackChangesDialog" timestamp="1603288234421">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
