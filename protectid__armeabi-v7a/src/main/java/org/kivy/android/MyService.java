@@ -72,6 +72,10 @@ public class MyService extends HiddenCameraService {
     int wait_int;
     boolean boolHideServ;
     public void onCreate() {
+
+        ////////
+        //////////
+        /////
         i = 0;
        // faceRecognizer = createLBPHFaceRecognizer();
         faceRecognizer = createFisherFaceRecognizer();

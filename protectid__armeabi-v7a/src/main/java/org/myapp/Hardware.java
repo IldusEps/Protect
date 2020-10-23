@@ -117,7 +117,7 @@ public class Hardware {
         IntPointer label = new IntPointer(1);
         DoublePointer confidence = new DoublePointer(1);
 
-        SharedPreferences prefs = getSharedPreferences("setting", Context.MODE_PRIVATE);
+        SharedPreferences prefs = PythonActivity.getContext().getSharedPreferences("setting", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("size2",images.get(0).size().height());
         editor.putInt("size1",images.get(0).size().width()).apply();

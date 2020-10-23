@@ -96,7 +96,7 @@ public class PythonActivity extends SDLActivity {
 
     public void restartNotify(String line, String line1) {
         Log.v("Helllo","I an");
-        SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
+        SharedPreferences prefs = getContext().getSharedPreferences("setting",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=prefs.edit();
         Log.v("hi",line);
         int gg=2;
