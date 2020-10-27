@@ -4,6 +4,8 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.KeyguardManager;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
@@ -45,6 +47,7 @@ import org.bytedeco.javacpp.DoublePointer;
 import org.bytedeco.javacpp.IntPointer;
 import org.bytedeco.javacpp.opencv_core;
 import org.bytedeco.javacpp.opencv_face;
+import org.bytedeco.javacpp.opencv_imgproc;
 import org.bytedeco.javacpp.opencv_objdetect;
 import org.kivy.protectid.R;
 import org.renpy.android.ResourceManager;
@@ -55,6 +58,7 @@ import static android.app.admin.DevicePolicyManager.FLAG_EVICT_CREDENTIAL_ENCRYP
 import static android.content.Context.DEVICE_POLICY_SERVICE;
 import static android.support.v4.content.ContextCompat.getSystemService;
 import static android.support.v4.content.ContextCompat.startActivity;
+import static org.bytedeco.javacpp.opencv_face.createEigenFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_face.createFisherFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_face.createLBPHFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_imgcodecs.CV_LOAD_IMAGE_GRAYSCALE;
@@ -71,13 +75,33 @@ public class MyService extends HiddenCameraService {
     Thread run;
     int wait_int;
     boolean boolHideServ;
+    int intShoting;
+    opencv_core.Size sizeImg;
+    Notification notification;
+
     public void onCreate() {
 
-        ////////
-        //////////
-        /////
+        Intent notificationIntent = new Intent(MyService.this, MyService.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(MyService.this,
+                0, notificationIntent,
+                PendingIntent.FLAG_CANCEL_CURRENT);
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(getApplicationContext(),"ProtectID")
+                        .setSmallIcon(R.drawable.icon)
+                        .setContentTitle("ProtectID")
+                        .setContentText("Нажмите, что бы остановить приложение")
+                        .setContentIntent(contentIntent)
+                        .setAutoCancel(true)
+                        .setDefaults(Notification.COLOR_DEFAULT)
+                        .setPriority(NotificationManager.IMPORTANCE_LOW)
+                ;
+
+        notification = builder.build();
+        notification.flags = notification.flags|Notification.FLAG_NO_CLEAR;
+        startForeground(1,notification);
+        intShoting = 0;
         i = 0;
-       // faceRecognizer = createLBPHFaceRecognizer();
+        //faceRecognizer = createLBPHFaceRecognizer();
         faceRecognizer = createFisherFaceRecognizer();
         faceRecognizer.load(getFilesDir().getAbsolutePath() + "/mymodel.xml");
         label = new IntPointer(1);
@@ -86,11 +110,21 @@ public class MyService extends HiddenCameraService {
                 getFilesDir().getAbsolutePath() + "/app/lbpcascade_frontalface.xml");
         faces = new opencv_core.RectVector();
         boolHideServ = false;
-        SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
-        if (prefs.contains("wait")){
-            wait_int=prefs.getInt("wait",2)*1000;
-        } else wait_int=2000;
+        SharedPreferences prefs = getSharedPreferences("setting", Context.MODE_PRIVATE);
+        if (prefs.contains("wait")) {
+            wait_int = prefs.getInt("wait", 2) * 1000;
+        } else wait_int = 2000;
 
+        //read size FisherImage
+        int sizeImg1 = 0;
+        int sizeImg2 = 0;
+        if (prefs.contains("size1")) {
+            sizeImg1 = prefs.getInt("size1", 800);
+        }
+        if (prefs.contains("size2")) {
+            sizeImg2 = prefs.getInt("size2", 800);
+        }
+        sizeImg = new opencv_core.Size(sizeImg1,sizeImg2);
     }
     protected void onHandleIntent(@Nullable Intent intent) {
 
@@ -99,8 +133,8 @@ public class MyService extends HiddenCameraService {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         run.stop();
+        super.onDestroy();
     }
 
     @Nullable
@@ -161,49 +195,65 @@ public class MyService extends HiddenCameraService {
         return START_NOT_STICKY;
     }
     public static final int RESULT_ENABLE = 11;
+
     @Override
     public void onImageCapture(@NonNull File imageFile) {
 
         Log.v("Hi",imageFile.getAbsolutePath());
         opencv_core.Mat image = imread(imageFile.getAbsolutePath(), CV_LOAD_IMAGE_GRAYSCALE);
+        imwrite(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/fff.png",image);
         int predicted_label = -1;
         double predicted_confidence = 0.0;
         // Get the prediction and associated confidence from the model
         face_cascade.detectMultiScale(image,faces);
         Boolean bool=false;
-        for (int i = 0; i < faces.size(); i++) {
-            opencv_core.Rect face_i = faces.get(i);
-            faceRecognizer.predict(new opencv_core.Mat(image, face_i), label, confidence);
-            Log.v("My","1");
-            //for (int j = 0; j < label.sizeof(); j++) {
-            Log.v("Hie", Integer.toString(label.get(0)));
-            Log.v("Hie", Double.toString(confidence.get(0)));
-            if (confidence.get(0) > 1) bool = true;
-            //}
+        if (faces.size() > 0) {
+            for (int i = 0; i < faces.size(); i++) {
+                opencv_core.Rect face_i = faces.get(i);
+                //resize Image
+                opencv_core.Mat mat = new opencv_core.Mat(image, face_i);
+                opencv_imgproc.resize(mat, mat, sizeImg);
+                //predict Image
+                faceRecognizer.predict(mat, label, confidence);
+                Log.v("My", "1");
+                //for (int j = 0; j < label.sizeof(); j++) {
+                Log.v("Hie", Integer.toString(label.get(0)));
+                Log.v("Hie", Double.toString(confidence.get(0)));
+                imwrite(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/fff"+Integer.toString(i)+".png",mat);
+                if (confidence.get(0) > 1) bool = true;
+                //}
+            }
+        } else{
+            bool=false;
+            label.put(0);
+            confidence.put(0.0);
         }
         Log.v("Hie", Integer.toString(label.get(0)));
         Log.v("Hie", Double.toString(confidence.get(0)));
-        //Toast.makeText(MyService.this,"Capturing image."+Double.toString(confidence.get(0)), Toast.LENGTH_SHORT).show();
+        Toast.makeText  (MyService.this,"Capturing image."+Double.toString(confidence.get(0)), Toast.LENGTH_SHORT).show();
         i=i+1;
         Toast.makeText(MyService.this,
                 "Time-end", Toast.LENGTH_SHORT).show();
         if (bool==false){
-            Log.v("Hi", "Lock");
             if (boolHideServ==false) {
                 Intent intent = new Intent(getApplicationContext(), HideService.class);
                 getApplicationContext().startService(intent);
                 boolHideServ=true;
                 wait_int=500;
+
+                Log.v("Hi", "Lock");
             }
         } else{
-            Intent intent = new Intent(getApplicationContext(), HideService.class);
-            getApplicationContext().stopService(intent);
-            SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
-            if (prefs.contains("wait")){
-                wait_int=prefs.getInt("wait",2)*1000;
-            } else wait_int=2000;
-            if (boolHideServ==false) {
-                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            if (boolHideServ==true) {
+                Intent intent = new Intent(getApplicationContext(), HideService.class);
+                getApplicationContext().stopService(intent);
+                SharedPreferences prefs = getSharedPreferences("setting", Context.MODE_PRIVATE);
+                if (prefs.contains("wait")) {
+                    wait_int = prefs.getInt("wait", 2) * 1000;
+                } else wait_int = 2000;
+            }
+            //Set next stap Service
+            /*   AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 Log.v("Hi!!", "Hi");
                 Intent alarmIntent = new Intent(this, MyReceiver.class);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
@@ -214,8 +264,8 @@ public class MyService extends HiddenCameraService {
                 } else {
                     alarmManager.set(AlarmManager.RTC_WAKEUP, wait_int - 1000, pendingIntent);
                 }
-                stopSelf();
-            }
+                stopSelf();*/
+                boolHideServ=false;
         }
     }
 

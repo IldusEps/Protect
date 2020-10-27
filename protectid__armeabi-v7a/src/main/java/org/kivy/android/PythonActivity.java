@@ -39,6 +39,7 @@ import org.bytedeco.javacpp.DoublePointer;
 import org.bytedeco.javacpp.IntPointer;
 import org.bytedeco.javacpp.opencv_core;
 import org.bytedeco.javacpp.opencv_face;
+import org.bytedeco.javacpp.opencv_imgproc;
 import org.bytedeco.javacpp.opencv_objdetect;
 import org.kivy.android.launcher.Project;
 import org.kivy.protectid.R;
@@ -66,6 +67,7 @@ import java.util.TimerTask;
 import static android.app.PendingIntent.getActivity;
 import static android.content.Context.DEVICE_POLICY_SERVICE;
 import static android.support.v4.content.ContextCompat.startActivity;
+import static org.bytedeco.javacpp.opencv_face.createFisherFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_face.createLBPHFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_imgcodecs.CV_LOAD_IMAGE_GRAYSCALE;
 import static org.bytedeco.javacpp.opencv_imgcodecs.imread;
@@ -120,14 +122,14 @@ public class PythonActivity extends SDLActivity {
                 0, notificationIntent,
                 PendingIntent.FLAG_CANCEL_CURRENT);
         NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(getContext(),"ProtectID")
+                new NotificationCompat.Builder(getApplicationContext(),"ProtectID")
                         .setSmallIcon(R.drawable.icon)
                         .setContentTitle("ProtectID")
                         .setContentText("Нажмите, что бы остановить приложение")
-                .setContentIntent(contentIntent)
-                .setAutoCancel(true)
-                .setDefaults(Notification.COLOR_DEFAULT)
-                .setPriority(NotificationManager.IMPORTANCE_LOW)
+                        .setContentIntent(contentIntent)
+                        .setAutoCancel(true)
+                        .setDefaults(Notification.COLOR_DEFAULT)
+                        .setPriority(NotificationManager.IMPORTANCE_LOW)
                 ;
 
         notification = builder.build();
@@ -208,6 +210,17 @@ public boolean Predict (String line) {
     if (prefs.contains("state")){
         if (prefs.getString("state","off")=="on") stopNotify();
     }
+    int sizeImg1 = 0;
+    int sizeImg2 = 0;
+    if (prefs.contains("size1")) {
+        sizeImg1 = prefs.getInt("size1", 800);
+        Log.v("Size", Integer.toString(sizeImg1));
+    }
+    if (prefs.contains("size2")) {
+        sizeImg2 = prefs.getInt("size2", 800);
+        Log.v("Size", Integer.toString(sizeImg2));
+    }
+    opencv_core.Size sizeImg = new opencv_core.Size(sizeImg1, sizeImg2);
     faceRecognizer.load(getFilesDir().getAbsolutePath()+"/mymodel.xml");
     opencv_core.RectVector faces;
     IntPointer label;
@@ -228,8 +241,10 @@ public boolean Predict (String line) {
     Boolean bool=false;
     for (i = 0; i < faces.size(); i++) {
         opencv_core.Rect face_i = faces.get(i);
-        imwrite(getFilesDir()+"/app/predict.png",new opencv_core.Mat(face_i));
-        faceRecognizer.predict(new opencv_core.Mat(image, face_i), label, confidence);
+        opencv_core.Mat mat = new opencv_core.Mat(image, face_i);
+        opencv_imgproc.resize(mat, mat, sizeImg);
+        imwrite(getFilesDir()+"/app/predict.png", mat);
+        faceRecognizer.predict(mat, label, confidence);
         Log.v("My","1");
         //for (int j = 0; j < label.sizeof(); j++) {
         Log.v("Hie", Integer.toString(label.get(0)));
@@ -300,7 +315,7 @@ public boolean Predict (String line) {
 
 
 
-        faceRecognizer = createLBPHFaceRecognizer();
+        faceRecognizer = createFisherFaceRecognizer();
         Log.v("Hie","My");
 
         face_cascade = new opencv_objdetect.CascadeClassifier(

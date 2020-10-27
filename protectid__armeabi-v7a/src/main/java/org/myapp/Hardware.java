@@ -28,6 +28,7 @@ import android.content.SharedPreferences;
 
 import static org.bytedeco.javacpp.opencv_core.CV_32SC1;
 import static org.bytedeco.javacpp.opencv_core.resetTrace;
+import static org.bytedeco.javacpp.opencv_face.createEigenFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_face.createFisherFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_face.createLBPHFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_imgcodecs.CV_LOAD_IMAGE_GRAYSCALE;
@@ -109,8 +110,8 @@ public class Hardware {
             }
         }
         FaceRecognizer faceRecognizer = createFisherFaceRecognizer();
-        // FaceRecognizer faceRecognizer = EigenFaceRecognizer.create();
-         //FaceRecognizer faceRecognizer = createLBPHFaceRecognizer();
+         //FaceRecognizer faceRecognizer = createEigenFaceRecognizer();
+       // FaceRecognizer faceRecognizer = createLBPHFaceRecognizer();
         Log.v("My","Hi");
         faceRecognizer.train(images, labels);
         Log.v("My","Hi");
