@@ -101,8 +101,8 @@ public class MyService extends HiddenCameraService {
         startForeground(1,notification);
         intShoting = 0;
         i = 0;
-        //faceRecognizer = createLBPHFaceRecognizer();
-        faceRecognizer = createFisherFaceRecognizer();
+        faceRecognizer = createLBPHFaceRecognizer(3,16,16,16,20.0);
+       // faceRecognizer = createFisherFaceRecognizer();
         faceRecognizer.load(getFilesDir().getAbsolutePath() + "/mymodel.xml");
         label = new IntPointer(1);
         confidence = new DoublePointer(1);

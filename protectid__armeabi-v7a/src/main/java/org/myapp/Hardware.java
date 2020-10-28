@@ -109,9 +109,9 @@ public class Hardware {
                 counter++;
             }
         }
-        FaceRecognizer faceRecognizer = createFisherFaceRecognizer();
+       // FaceRecognizer faceRecognizer = createFisherFaceRecognizer();
          //FaceRecognizer faceRecognizer = createEigenFaceRecognizer();
-       // FaceRecognizer faceRecognizer = createLBPHFaceRecognizer();
+        FaceRecognizer faceRecognizer = createLBPHFaceRecognizer(3,16,16,16,20.0);
         Log.v("My","Hi");
         faceRecognizer.train(images, labels);
         Log.v("My","Hi");

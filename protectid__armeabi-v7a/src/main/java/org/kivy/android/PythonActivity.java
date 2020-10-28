@@ -221,6 +221,7 @@ public boolean Predict (String line) {
         Log.v("Size", Integer.toString(sizeImg2));
     }
     opencv_core.Size sizeImg = new opencv_core.Size(sizeImg1, sizeImg2);
+    faceRecognizer = createLBPHFaceRecognizer(3,16,16,16,20.0);
     faceRecognizer.load(getFilesDir().getAbsolutePath()+"/mymodel.xml");
     opencv_core.RectVector faces;
     IntPointer label;
