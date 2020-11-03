@@ -111,26 +111,31 @@ public class Hardware {
         }
        // FaceRecognizer faceRecognizer = createFisherFaceRecognizer();
          //FaceRecognizer faceRecognizer = createEigenFaceRecognizer();
-        FaceRecognizer faceRecognizer = createLBPHFaceRecognizer(3,16,16,16,20.0);
+        FaceRecognizer faceRecognizer = createLBPHFaceRecognizer(2,10,10,10,20.0);
         Log.v("My","Hi");
         faceRecognizer.train(images, labels);
         Log.v("My","Hi");
-        IntPointer label = new IntPointer(1);
-        DoublePointer confidence = new DoublePointer(1);
+        //IntPointer label = new IntPointer(1);
+        Log.v("My","Hi");
+        //DoublePointer confidence = new DoublePointer(1);
+        Log.v("My","Hi");
 
-        SharedPreferences prefs = PythonActivity.getContext().getSharedPreferences("setting", Context.MODE_PRIVATE);
+        /*SharedPreferences prefs = PythonActivity.getContext().getSharedPreferences("setting", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("size2",images.get(0).size().height());
-        editor.putInt("size1",images.get(0).size().width()).apply();
+        editor.putInt("size1",images.get(0).size().width()).apply();*/
 
-        face_cascade.detectMultiScale(testImage, faces);
-        Mat mat = new Mat(testImage,faces.get(0));
-        opencv_imgproc.resize(mat, mat, images.get(0).size());
-        faceRecognizer.predict(mat, label, confidence);
-        int predictedLabel = label.get(0);
+        Log.v("My","Hi");
+        //face_cascade.detectMultiScale(testImage, faces);
+        //Mat mat = new Mat(testImage,faces.get(0));
+        //opencv_imgproc.resize(mat, mat, images.get(0).size());
+        //faceRecognizer.predict(mat, label, confidence);
+        Log.v("My","Hi");
+        //int predictedLabel = label.get(0);
+        Log.v("My","Hi");
         faceRecognizer.save(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/mymodel.xml");
-        System.out.println("Predicted label: " + predictedLabel);
-        System.out.println("Predicted: " + confidence.get(0));
+        //System.out.println("Predicted label: " + predictedLabel);
+        //System.out.println("Predicted: " + confidence.get(0));
         state=1;
     }
 }

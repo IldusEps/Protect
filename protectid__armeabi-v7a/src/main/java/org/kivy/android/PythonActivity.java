@@ -210,7 +210,7 @@ public boolean Predict (String line) {
     if (prefs.contains("state")){
         if (prefs.getString("state","off")=="on") stopNotify();
     }
-    int sizeImg1 = 0;
+    /*int sizeImg1 = 0;
     int sizeImg2 = 0;
     if (prefs.contains("size1")) {
         sizeImg1 = prefs.getInt("size1", 800);
@@ -220,8 +220,8 @@ public boolean Predict (String line) {
         sizeImg2 = prefs.getInt("size2", 800);
         Log.v("Size", Integer.toString(sizeImg2));
     }
-    opencv_core.Size sizeImg = new opencv_core.Size(sizeImg1, sizeImg2);
-    faceRecognizer = createLBPHFaceRecognizer(3,16,16,16,20.0);
+    opencv_core.Size sizeImg = new opencv_core.Size(sizeImg1, sizeImg2);*/
+    faceRecognizer = createLBPHFaceRecognizer(2,10,10,10,20.0);
     faceRecognizer.load(getFilesDir().getAbsolutePath()+"/mymodel.xml");
     opencv_core.RectVector faces;
     IntPointer label;
@@ -243,7 +243,7 @@ public boolean Predict (String line) {
     for (i = 0; i < faces.size(); i++) {
         opencv_core.Rect face_i = faces.get(i);
         opencv_core.Mat mat = new opencv_core.Mat(image, face_i);
-        opencv_imgproc.resize(mat, mat, sizeImg);
+       // opencv_imgproc.resize(mat, mat, sizeImg);
         imwrite(getFilesDir()+"/app/predict.png", mat);
         faceRecognizer.predict(mat, label, confidence);
         Log.v("My","1");

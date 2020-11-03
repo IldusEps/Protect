@@ -101,7 +101,7 @@ public class MyService extends HiddenCameraService {
         startForeground(1,notification);
         intShoting = 0;
         i = 0;
-        faceRecognizer = createLBPHFaceRecognizer(3,16,16,16,20.0);
+        faceRecognizer = createLBPHFaceRecognizer(2,10,10,10,20.0);
        // faceRecognizer = createFisherFaceRecognizer();
         faceRecognizer.load(getFilesDir().getAbsolutePath() + "/mymodel.xml");
         label = new IntPointer(1);
@@ -116,7 +116,7 @@ public class MyService extends HiddenCameraService {
         } else wait_int = 2000;
 
         //read size FisherImage
-        int sizeImg1 = 0;
+        /*int sizeImg1 = 0;
         int sizeImg2 = 0;
         if (prefs.contains("size1")) {
             sizeImg1 = prefs.getInt("size1", 800);
@@ -124,7 +124,7 @@ public class MyService extends HiddenCameraService {
         if (prefs.contains("size2")) {
             sizeImg2 = prefs.getInt("size2", 800);
         }
-        sizeImg = new opencv_core.Size(sizeImg1,sizeImg2);
+        sizeImg = new opencv_core.Size(sizeImg1,sizeImg2);*/
     }
     protected void onHandleIntent(@Nullable Intent intent) {
 
@@ -212,7 +212,7 @@ public class MyService extends HiddenCameraService {
                 opencv_core.Rect face_i = faces.get(i);
                 //resize Image
                 opencv_core.Mat mat = new opencv_core.Mat(image, face_i);
-                opencv_imgproc.resize(mat, mat, sizeImg);
+               // opencv_imgproc.resize(mat, mat, sizeImg);
                 //predict Image
                 faceRecognizer.predict(mat, label, confidence);
                 Log.v("My", "1");
@@ -220,7 +220,7 @@ public class MyService extends HiddenCameraService {
                 Log.v("Hie", Integer.toString(label.get(0)));
                 Log.v("Hie", Double.toString(confidence.get(0)));
                 imwrite(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/fff"+Integer.toString(i)+".png",mat);
-                if (confidence.get(0) > 1) bool = true;
+                if ((confidence.get(0) > 1) | (label.get(0) == -1)) bool = true;
                 //}
             }
         } else{

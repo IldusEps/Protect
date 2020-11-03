@@ -14,7 +14,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7eff90e-b70a-432c-9d09-166517526253" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/res/log4j2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/PythonActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/PythonActivity.java" afterDir="false" />
@@ -25,7 +24,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[FFY5T18111017536]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -54,7 +53,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android-custom-view/home/amara/.buildozer/android/platform/build-armeabi-v7a/dists/protectid__armeabi-v7a/src/main/java/org/myapp/LockView.java_SELECTED" value="LockView" />
     <property name="android.sdk.path" value="$PROJECT_DIR$/../../../android-sdk" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Загрузки/FaceRecognitionApp-master" />
+    <property name="last_opened_file_path" value="$USER_HOME$/facepp-java-sdk" />
     <property name="multi-representation-preview/home/amara/.buildozer/android/platform/build-armeabi-v7a/dists/protectid__armeabi-v7a/src/main/java/org/myapp/LockView.java_selected" value="" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
@@ -169,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603806987682</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="LBMP">
+      <created>1603900132542</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1603900132542</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -187,44 +193,45 @@
     <MESSAGE value="Good Version" />
     <MESSAGE value="FisherFaces" />
     <MESSAGE value="ForegroundService" />
-    <option name="LAST_COMMIT_MESSAGE" value="ForegroundService" />
+    <MESSAGE value="LBMP" />
+    <option name="LAST_COMMIT_MESSAGE" value="LBMP" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2" timestamp="1603806984371">
+    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2" timestamp="1603900130891">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1603806984371" />
-    <state x="100" y="126" width="1160" height="542" key="DiffContextDialog" timestamp="1603386270243">
+    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1603900130891" />
+    <state x="100" y="126" width="1160" height="542" key="DiffContextDialog" timestamp="1603901411471">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="100" y="126" width="1160" height="542" key="DiffContextDialog/0.26.1360.742@0.26.1360.742" timestamp="1603386270243" />
-    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl" timestamp="1603811243270">
+    <state x="100" y="126" width="1160" height="542" key="DiffContextDialog/0.26.1360.742@0.26.1360.742" timestamp="1603901411471" />
+    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl" timestamp="1603903273341">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl/0.26.1360.742@0.26.1360.742" timestamp="1603811243270" />
-    <state width="1312" height="566" key="GridCell.Tab.0.bottom" timestamp="1603807463125">
+    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl/0.26.1360.742@0.26.1360.742" timestamp="1603903273341" />
+    <state width="1312" height="566" key="GridCell.Tab.0.bottom" timestamp="1603903222939">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="566" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1603807463125" />
-    <state width="1312" height="566" key="GridCell.Tab.0.center" timestamp="1603807463122">
+    <state width="1312" height="566" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1603903222939" />
+    <state width="1312" height="566" key="GridCell.Tab.0.center" timestamp="1603903222937">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="566" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1603807463122" />
-    <state width="1312" height="566" key="GridCell.Tab.0.left" timestamp="1603807463119">
+    <state width="1312" height="566" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1603903222937" />
+    <state width="1312" height="566" key="GridCell.Tab.0.left" timestamp="1603903222936">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="566" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1603807463119" />
-    <state width="1312" height="566" key="GridCell.Tab.0.right" timestamp="1603807463124">
+    <state width="1312" height="566" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1603903222936" />
+    <state width="1312" height="566" key="GridCell.Tab.0.right" timestamp="1603903222938">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="566" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1603807463124" />
+    <state width="1312" height="566" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1603903222938" />
     <state x="306" y="92" width="739" height="605" key="RollbackChangesDialog" timestamp="1603288234421">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="306" y="92" width="739" height="605" key="RollbackChangesDialog/0.26.1360.742@0.26.1360.742" timestamp="1603288234421" />
-    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1603806994932">
+    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1603900159433">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2/0.26.1360.742@0.26.1360.742" timestamp="1603806994932" />
+    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2/0.26.1360.742@0.26.1360.742" timestamp="1603900159433" />
   </component>
 </project>
