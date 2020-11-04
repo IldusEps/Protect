@@ -15,8 +15,6 @@ import android.view.SurfaceView;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
-import org.myapp.LockView;
-
 public class HideService extends Service  {
     public HideService() {
     }
@@ -26,38 +24,39 @@ public class HideService extends Service  {
         // TODO: Return the communication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
     }
-    LockView cameraSourceCameraPreview;
+    SurfaceView cameraSourceCameraPreview;
     WindowManager mWindowManager;
     @Override
     public void onCreate() {
         super.onCreate();
-            //create fake camera view
+        //create fake camera view
         Log.v("Hi","SHOW");
-            cameraSourceCameraPreview = new LockView(this);
-            //cameraSourceCameraPreview.set;
+        cameraSourceCameraPreview = new SurfaceView(this);
+        //cameraSourceCameraPreview.set;
 
-            mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-            WindowManager.LayoutParams params = new WindowManager.LayoutParams(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    Build.VERSION.SDK_INT < Build.VERSION_CODES.O ?
-                            WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY :
-                            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
-                    WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
-                    PixelFormat.TRANSLUCENT);
-            mWindowManager.addView(cameraSourceCameraPreview, params);
-            Canvas canvas=new Canvas();
-            Paint mPaint=new Paint();
-            mPaint.setColor(Color.rgb(61,183,1));
-            mPaint.setStyle(Paint.Style.FILL);
-            Paint tPaint=new Paint();
-            tPaint.setColor(Color.RED);
-            tPaint.setStyle(Paint.Style.STROKE);
-            tPaint.setTextAlign(Paint.Align.CENTER);
-            tPaint.setTextSize(35f);
-            canvas.drawPaint(mPaint);
-            canvas.drawText("Device locked",0,0,tPaint);
-            cameraSourceCameraPreview.draw(canvas);
-            cameraSourceCameraPreview.setZOrderOnTop(true);
+        mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+        WindowManager.LayoutParams params = new WindowManager.LayoutParams(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                Build.VERSION.SDK_INT < Build.VERSION_CODES.O ?
+                        WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY :
+                        WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
+                WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
+                PixelFormat.TRANSLUCENT);
+        mWindowManager.addView(cameraSourceCameraPreview, params);
+        Canvas canvas=new Canvas();
+        Paint mPaint=new Paint();
+        mPaint.setColor(Color.rgb(61,183,1));
+        mPaint.setStyle(Paint.Style.FILL);
+        Paint tPaint=new Paint();
+        tPaint.setColor(Color.RED);
+        tPaint.setStyle(Paint.Style.STROKE);
+        tPaint.setTextAlign(Paint.Align.CENTER);
+        tPaint.setTextSize(35f);
+        canvas.drawPaint(mPaint);
+        canvas.drawText("Device locked",0,0,tPaint);
+        cameraSourceCameraPreview.draw(canvas);
+        cameraSourceCameraPreview.onDrawForeground(canvas);
+        cameraSourceCameraPreview.setZOrderOnTop(true);
     }
 
     @Override

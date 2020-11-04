@@ -91,7 +91,7 @@
 
         <service android:name="org.kivy.android.MyService"/>
         <receiver android:name="org.kivy.android.MyReceiver"/>
-    <service android:name="org.kivy.android.HideService" />
+
         <receiver android:name="org.kivy.android.MyAdmin" android:permission="android.permission.BIND_DEVICE_ADMIN">
             <meta-data android:name="android.app.device_admin"
                 android:resource="@xml/policies" />

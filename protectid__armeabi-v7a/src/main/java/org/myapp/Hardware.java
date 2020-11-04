@@ -77,7 +77,7 @@ public class Hardware {
         IntBuffer labelsBuf = labels.createBuffer();
         Log.v("My","Hi");
         opencv_objdetect.CascadeClassifier face_cascade = new opencv_objdetect.CascadeClassifier(
-                Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/lbpcascade_frontalface.xml");
+                Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/lbpcascade_frontalface_improved.xml");
         Log.v("My","Hero");
         opencv_core.RectVector faces = new opencv_core.RectVector();
 

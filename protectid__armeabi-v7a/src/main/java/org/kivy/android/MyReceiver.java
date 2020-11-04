@@ -11,6 +11,7 @@ public class MyReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.v("Hi!!","Hi");
             Intent serviceIntent = new Intent(context, MyService.class);
+            //context.startForegroundService(serviceIntent);
             context.startService(serviceIntent);
     }
 }

@@ -320,7 +320,7 @@ public boolean Predict (String line) {
         Log.v("Hie","My");
 
         face_cascade = new opencv_objdetect.CascadeClassifier(
-                getFilesDir().getAbsolutePath()+"/app/lbpcascade_frontalface.xml");
+                getFilesDir().getAbsolutePath()+"/app/lbpcascade_frontalface_improved.xml");
     }
 
     public void loadLibraries() {
