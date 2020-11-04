@@ -216,7 +216,7 @@ public class MyService extends HiddenCameraService {
 
         Log.v("Hi",imageFile.getAbsolutePath());
         opencv_core.Mat image = imread(imageFile.getAbsolutePath(), CV_LOAD_IMAGE_GRAYSCALE);
-        imwrite(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/fff.png",image);
+        //imwrite(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/fff.png",image);
         int predicted_label = -1;
         double predicted_confidence = 0.0;
         // Get the prediction and associated confidence from the model
@@ -234,12 +234,12 @@ public class MyService extends HiddenCameraService {
                 //for (int j = 0; j < label.sizeof(); j++) {
                 Log.v("Hie", Integer.toString(label.get(0)));
                 Log.v("Hie", Double.toString(confidence.get(0)));
-                imwrite(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/fff"+Integer.toString(i)+".png",mat);
+                //imwrite(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/fff"+Integer.toString(i)+".png",mat);
                 if (confidence.get(0) > 1) bool = true;
                 //}
             }
         } else{
-            bool=false;
+            bool = false;
             label.put(0);
             confidence.put(0.0);
         }
@@ -249,12 +249,12 @@ public class MyService extends HiddenCameraService {
         i=i+1;
         Toast.makeText(MyService.this,
                 "Time-end", Toast.LENGTH_SHORT).show();
-        if (bool==false){
+        if ((bool==false)|(confidence.get(0)==0)){
             if (boolHideServ==false) {
                 Intent intent = new Intent(getApplicationContext(), HideService.class);
-                getApplicationContext().startService(intent);
+                MyService.this.startService(intent);
                 boolHideServ=true;
-                wait_int=500;
+                wait_int=100;
 
                 Log.v("Hi", "Lock");
             }
