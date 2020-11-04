@@ -45,6 +45,7 @@ import com.androidhiddencamera.config.CameraRotation;
 
 import org.bytedeco.javacpp.DoublePointer;
 import org.bytedeco.javacpp.IntPointer;
+import org.bytedeco.javacpp.Loader;
 import org.bytedeco.javacpp.opencv_core;
 import org.bytedeco.javacpp.opencv_face;
 import org.bytedeco.javacpp.opencv_imgproc;
@@ -53,22 +54,31 @@ import org.kivy.protectid.R;
 import org.renpy.android.ResourceManager;
 
 import java.io.File;
+import java.io.IOException;
 
 import static android.app.admin.DevicePolicyManager.FLAG_EVICT_CREDENTIAL_ENCRYPTION_KEY;
 import static android.content.Context.DEVICE_POLICY_SERVICE;
 import static android.support.v4.content.ContextCompat.getSystemService;
 import static android.support.v4.content.ContextCompat.startActivity;
+import static org.bytedeco.javacpp.opencv_core.cvLoad;
 import static org.bytedeco.javacpp.opencv_face.createEigenFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_face.createFisherFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_face.createLBPHFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_imgcodecs.CV_LOAD_IMAGE_GRAYSCALE;
 import static org.bytedeco.javacpp.opencv_imgcodecs.imread;
 import static org.bytedeco.javacpp.opencv_imgcodecs.imwrite;
+import static org.bytedeco.javacpp.opencv_objdetect.CV_HAAR_DO_ROUGH_SEARCH;
+import static org.bytedeco.javacpp.opencv_objdetect.CV_HAAR_FIND_BIGGEST_OBJECT;
+import static org.bytedeco.javacpp.opencv_objdetect.cvHaarDetectObjects;
+
+import org.bytedeco.javacpp.opencv_core.*;
+import org.bytedeco.javacpp.opencv_imgproc.*;
+import org.bytedeco.javacpp.opencv_objdetect.*;
 
 public class MyService extends HiddenCameraService {
     opencv_face.FaceRecognizer faceRecognizer;
     opencv_objdetect.CascadeClassifier face_cascade;
-    opencv_core.RectVector faces;
+    RectVector faces;
     IntPointer label;
     DoublePointer confidence;
     Integer i;
@@ -78,6 +88,7 @@ public class MyService extends HiddenCameraService {
     int intShoting;
     opencv_core.Size sizeImg;
     Notification notification;
+    CvMemStorage storage = null;
 
     public void onCreate() {
 
@@ -106,9 +117,13 @@ public class MyService extends HiddenCameraService {
         faceRecognizer.load(getFilesDir().getAbsolutePath() + "/mymodel.xml");
         label = new IntPointer(1);
         confidence = new DoublePointer(1);
-        face_cascade = new opencv_objdetect.CascadeClassifier(
-                getFilesDir().getAbsolutePath() + "/app/lbpcascade_frontalface.xml");
-        faces = new opencv_core.RectVector();
+        faces = new RectVector(1);
+
+
+        face_cascade = new CascadeClassifier(getFilesDir().getAbsolutePath() + "/app/haarcascade_frontalface_alt2.xml");
+        if (face_cascade.isNull()) {
+            Log.v("Hi","Could not load the classifier file.");
+        }
         boolHideServ = false;
         SharedPreferences prefs = getSharedPreferences("setting", Context.MODE_PRIVATE);
         if (prefs.contains("wait")) {
