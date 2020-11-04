@@ -45,7 +45,6 @@ import com.androidhiddencamera.config.CameraRotation;
 
 import org.bytedeco.javacpp.DoublePointer;
 import org.bytedeco.javacpp.IntPointer;
-import org.bytedeco.javacpp.Loader;
 import org.bytedeco.javacpp.opencv_core;
 import org.bytedeco.javacpp.opencv_face;
 import org.bytedeco.javacpp.opencv_imgproc;
@@ -54,31 +53,22 @@ import org.kivy.protectid.R;
 import org.renpy.android.ResourceManager;
 
 import java.io.File;
-import java.io.IOException;
 
 import static android.app.admin.DevicePolicyManager.FLAG_EVICT_CREDENTIAL_ENCRYPTION_KEY;
 import static android.content.Context.DEVICE_POLICY_SERVICE;
 import static android.support.v4.content.ContextCompat.getSystemService;
 import static android.support.v4.content.ContextCompat.startActivity;
-import static org.bytedeco.javacpp.opencv_core.cvLoad;
 import static org.bytedeco.javacpp.opencv_face.createEigenFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_face.createFisherFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_face.createLBPHFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_imgcodecs.CV_LOAD_IMAGE_GRAYSCALE;
 import static org.bytedeco.javacpp.opencv_imgcodecs.imread;
 import static org.bytedeco.javacpp.opencv_imgcodecs.imwrite;
-import static org.bytedeco.javacpp.opencv_objdetect.CV_HAAR_DO_ROUGH_SEARCH;
-import static org.bytedeco.javacpp.opencv_objdetect.CV_HAAR_FIND_BIGGEST_OBJECT;
-import static org.bytedeco.javacpp.opencv_objdetect.cvHaarDetectObjects;
-
-import org.bytedeco.javacpp.opencv_core.*;
-import org.bytedeco.javacpp.opencv_imgproc.*;
-import org.bytedeco.javacpp.opencv_objdetect.*;
 
 public class MyService extends HiddenCameraService {
     opencv_face.FaceRecognizer faceRecognizer;
     opencv_objdetect.CascadeClassifier face_cascade;
-    RectVector faces;
+    opencv_core.RectVector faces;
     IntPointer label;
     DoublePointer confidence;
     Integer i;
@@ -88,7 +78,6 @@ public class MyService extends HiddenCameraService {
     int intShoting;
     opencv_core.Size sizeImg;
     Notification notification;
-    CvMemStorage storage = null;
 
     public void onCreate() {
 
@@ -113,17 +102,13 @@ public class MyService extends HiddenCameraService {
         intShoting = 0;
         i = 0;
         faceRecognizer = createLBPHFaceRecognizer(2,10,10,10,20.0);
-       // faceRecognizer = createFisherFaceRecognizer();
+        // faceRecognizer = createFisherFaceRecognizer();
         faceRecognizer.load(getFilesDir().getAbsolutePath() + "/mymodel.xml");
         label = new IntPointer(1);
         confidence = new DoublePointer(1);
-        faces = new RectVector(1);
-
-
-        face_cascade = new CascadeClassifier(getFilesDir().getAbsolutePath() + "/app/haarcascade_frontalface_alt2.xml");
-        if (face_cascade.isNull()) {
-            Log.v("Hi","Could not load the classifier file.");
-        }
+        face_cascade = new opencv_objdetect.CascadeClassifier(
+                getFilesDir().getAbsolutePath() + "/app/lbpcascade_frontalface_improved.xml");
+        faces = new opencv_core.RectVector();
         boolHideServ = false;
         SharedPreferences prefs = getSharedPreferences("setting", Context.MODE_PRIVATE);
         if (prefs.contains("wait")) {
@@ -180,8 +165,8 @@ public class MyService extends HiddenCameraService {
                     @Override
                     public void run() {
                         while(true) {
-                            try {
-                                Thread.sleep(wait_int);
+                          //  try {
+                                //Thread.sleep(wait_int);
                                 SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
                                 if (prefs.contains("state")){
                                     if (prefs.getString("state","off")=="off"){
@@ -190,9 +175,7 @@ public class MyService extends HiddenCameraService {
                                 }
                                 takePicture();
 
-                            } catch(InterruptedException ex){
-
-                            }
+                            //} catch(InterruptedException ex){ }
                         }
                     }
                 });
@@ -227,7 +210,7 @@ public class MyService extends HiddenCameraService {
                 opencv_core.Rect face_i = faces.get(i);
                 //resize Image
                 opencv_core.Mat mat = new opencv_core.Mat(image, face_i);
-               // opencv_imgproc.resize(mat, mat, sizeImg);
+                //opencv_imgproc.resize(mat, mat, sizeImg);
                 //predict Image
                 faceRecognizer.predict(mat, label, confidence);
                 Log.v("My", "1");
@@ -235,7 +218,7 @@ public class MyService extends HiddenCameraService {
                 Log.v("Hie", Integer.toString(label.get(0)));
                 Log.v("Hie", Double.toString(confidence.get(0)));
                 imwrite(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/fff"+Integer.toString(i)+".png",mat);
-                if ((confidence.get(0) > 1) | (label.get(0) == -1)) bool = true;
+                if (confidence.get(0) > 1) bool = true;
                 //}
             }
         } else{
@@ -280,7 +263,7 @@ public class MyService extends HiddenCameraService {
                     alarmManager.set(AlarmManager.RTC_WAKEUP, wait_int - 1000, pendingIntent);
                 }
                 stopSelf();*/
-                boolHideServ=false;
+            boolHideServ=false;
         }
     }
 
