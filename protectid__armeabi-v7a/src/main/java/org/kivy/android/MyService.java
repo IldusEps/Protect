@@ -53,6 +53,8 @@ import org.kivy.protectid.R;
 import org.renpy.android.ResourceManager;
 
 import java.io.File;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static android.app.admin.DevicePolicyManager.FLAG_EVICT_CREDENTIAL_ENCRYPTION_KEY;
 import static android.content.Context.DEVICE_POLICY_SERVICE;
@@ -143,6 +145,22 @@ public class MyService extends HiddenCameraService {
         return null;
     }
 
+    public class TimerTask_ extends TimerTask {
+        @Override
+        public void run() {
+                try {
+                    Thread.sleep(wait_int);
+                    SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
+                    if (prefs.contains("state")){
+                        if (prefs.getString("state","off")=="off"){
+                            stopSelf();
+                        }
+                    }
+                    takePicture();
+
+                } catch(InterruptedException ex){ }
+        }
+    }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.v("Hi!!","Hi");
@@ -179,7 +197,10 @@ public class MyService extends HiddenCameraService {
                         }
                     }
                 });
-                run.start();
+                TimerTask_ timerTask = new TimerTask_();
+                Timer timer = new Timer(true);
+                timer.scheduleAtFixedRate(timerTask, 0, wait_int);
+                //run.start();
             } else {
 
                 //Open settings to grant permission for "Draw other apps".
