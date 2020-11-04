@@ -148,8 +148,6 @@ public class MyService extends HiddenCameraService {
     public class TimerTask_ extends TimerTask {
         @Override
         public void run() {
-                try {
-                    Thread.sleep(wait_int);
                     SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
                     if (prefs.contains("state")){
                         if (prefs.getString("state","off")=="off"){
@@ -157,8 +155,6 @@ public class MyService extends HiddenCameraService {
                         }
                     }
                     takePicture();
-
-                } catch(InterruptedException ex){ }
         }
     }
     @Override
