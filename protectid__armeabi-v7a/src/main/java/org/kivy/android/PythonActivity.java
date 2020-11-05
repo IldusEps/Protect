@@ -100,6 +100,11 @@ public class PythonActivity extends SDLActivity {
         Log.v("Helllo","I an");
         SharedPreferences prefs = getContext().getSharedPreferences("setting",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=prefs.edit();
+
+        if (prefs.contains("state"))
+            if (prefs.getString("state","on")=="on"){
+                editor.putString("state","off").apply();
+            }
         Log.v("hi",line);
         int gg=2;
         if (line != "") {

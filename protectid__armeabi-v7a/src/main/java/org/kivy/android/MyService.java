@@ -14,6 +14,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.nfc.Tag;
 import android.os.Build;
@@ -80,10 +83,12 @@ public class MyService extends HiddenCameraService {
     int intShoting;
     opencv_core.Size sizeImg;
     Notification notification;
+    SurfaceView cameraSourceCameraPreview;
+    WindowManager mWindowManager;
 
     public void onCreate() {
 
-        Intent notificationIntent = new Intent(MyService.this, MyService.class);
+        Intent notificationIntent = new Intent(MyService.this, PythonActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(MyService.this,
                 0, notificationIntent,
                 PendingIntent.FLAG_CANCEL_CURRENT);
@@ -157,6 +162,19 @@ public class MyService extends HiddenCameraService {
                     takePicture();
         }
     }
+
+    public class TimerTask1_ extends TimerTask {
+        @Override
+        public void run() {
+            SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
+            if (prefs.contains("state")){
+                if (prefs.getString("state","off")=="off"){
+                    stopSelf();
+                }
+            }
+        }
+    }
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.v("Hi!!","Hi");
@@ -196,6 +214,10 @@ public class MyService extends HiddenCameraService {
                 TimerTask_ timerTask = new TimerTask_();
                 Timer timer = new Timer(true);
                 timer.scheduleAtFixedRate(timerTask, 0, wait_int);
+
+                TimerTask1_ timerTask1 = new TimerTask1_();
+                Timer timer1 = new Timer(true);
+                timer1.scheduleAtFixedRate(timerTask1, 0, 500);
                 //run.start();
             } else {
 
@@ -242,6 +264,7 @@ public class MyService extends HiddenCameraService {
             bool = false;
             label.put(0);
             confidence.put(0.0);
+            Log.v("Hie","Null");
         }
         Log.v("Hie", Integer.toString(label.get(0)));
         Log.v("Hie", Double.toString(confidence.get(0)));
@@ -249,10 +272,34 @@ public class MyService extends HiddenCameraService {
         i=i+1;
         Toast.makeText(MyService.this,
                 "Time-end", Toast.LENGTH_SHORT).show();
-        if ((bool==false)|(confidence.get(0)==0)){
+        if ((bool==false)|(confidence.get(0)<1)){
             if (boolHideServ==false) {
-                Intent intent = new Intent(getApplicationContext(), HideService.class);
-                MyService.this.startService(intent);
+                cameraSourceCameraPreview = new SurfaceView(this);
+                //cameraSourceCameraPreview.set;
+
+                mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+                WindowManager.LayoutParams params = new WindowManager.LayoutParams(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                        WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                        Build.VERSION.SDK_INT < Build.VERSION_CODES.O ?
+                                WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY :
+                                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
+                        WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
+                        PixelFormat.TRANSLUCENT);
+                mWindowManager.addView(cameraSourceCameraPreview, params);
+                Canvas canvas=new Canvas();
+                Paint mPaint=new Paint();
+                mPaint.setColor(Color.rgb(61,183,1));
+                mPaint.setStyle(Paint.Style.FILL);
+                Paint tPaint=new Paint();
+                tPaint.setColor(Color.RED);
+                tPaint.setStyle(Paint.Style.STROKE);
+                tPaint.setTextAlign(Paint.Align.CENTER);
+                tPaint.setTextSize(35f);
+                canvas.drawPaint(mPaint);
+                canvas.drawText("Device locked",0,0,tPaint);
+                cameraSourceCameraPreview.draw(canvas);
+                cameraSourceCameraPreview.onDrawForeground(canvas);
+                cameraSourceCameraPreview.setZOrderOnTop(true);
                 boolHideServ=true;
                 wait_int=100;
 
@@ -260,8 +307,7 @@ public class MyService extends HiddenCameraService {
             }
         } else{
             if (boolHideServ==true) {
-                Intent intent = new Intent(getApplicationContext(), HideService.class);
-                getApplicationContext().stopService(intent);
+                mWindowManager.removeView(cameraSourceCameraPreview);
                 SharedPreferences prefs = getSharedPreferences("setting", Context.MODE_PRIVATE);
                 if (prefs.contains("wait")) {
                     wait_int = prefs.getInt("wait", 2) * 1000;

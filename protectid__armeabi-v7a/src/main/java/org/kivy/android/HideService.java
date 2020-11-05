@@ -35,7 +35,7 @@ public class HideService extends Service  {
     @Override
     public void onCreate() {
         super.onCreate();
-        Intent notificationIntent = new Intent(HideService.this, HideService.class);
+        Intent notificationIntent = new Intent(HideService.this, PythonActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(HideService.this,
                 0, notificationIntent,
                 PendingIntent.FLAG_CANCEL_CURRENT);
@@ -55,32 +55,7 @@ public class HideService extends Service  {
         startForeground(2,notification);
         //create fake camera view
         Log.v("Hi","SHOW");
-        cameraSourceCameraPreview = new SurfaceView(this);
-        //cameraSourceCameraPreview.set;
 
-        mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-        WindowManager.LayoutParams params = new WindowManager.LayoutParams(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                Build.VERSION.SDK_INT < Build.VERSION_CODES.O ?
-                        WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY :
-                        WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
-                WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
-                PixelFormat.TRANSLUCENT);
-        mWindowManager.addView(cameraSourceCameraPreview, params);
-        Canvas canvas=new Canvas();
-        Paint mPaint=new Paint();
-        mPaint.setColor(Color.rgb(61,183,1));
-        mPaint.setStyle(Paint.Style.FILL);
-        Paint tPaint=new Paint();
-        tPaint.setColor(Color.RED);
-        tPaint.setStyle(Paint.Style.STROKE);
-        tPaint.setTextAlign(Paint.Align.CENTER);
-        tPaint.setTextSize(35f);
-        canvas.drawPaint(mPaint);
-        canvas.drawText("Device locked",0,0,tPaint);
-        cameraSourceCameraPreview.draw(canvas);
-        cameraSourceCameraPreview.onDrawForeground(canvas);
-        cameraSourceCameraPreview.setZOrderOnTop(true);
     }
 
     @Override

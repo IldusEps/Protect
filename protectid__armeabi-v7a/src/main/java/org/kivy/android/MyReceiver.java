@@ -6,12 +6,15 @@ import android.content.Intent;
 import android.util.Log;
 
 public class MyReceiver extends BroadcastReceiver {
+    Intent serviceIntent;
 
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.v("Hi!!","Hi");
-            Intent serviceIntent = new Intent(context, MyService.class);
+
+        serviceIntent = new Intent(context, MyService.class);
             //context.startForegroundService(serviceIntent);
-            context.startService(serviceIntent);
+        context.startService(serviceIntent);
     }
+
 }
