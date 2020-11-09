@@ -15,17 +15,16 @@
   <component name="ChangeListManager">
     <list default="true" id="d7eff90e-b70a-432c-9d09-166517526253" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/HideService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/HideService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/PythonActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/PythonActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[FFY5T18111017536]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -232,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604470406190</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="face_cascade &quot;_improved&quot;">
+      <created>1604594378732</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1604594378732</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -261,18 +267,18 @@
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="138" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.26.1360.742@0.26.1360.742" timestamp="1604421116876" />
-    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2" timestamp="1604470317736">
+    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2" timestamp="1604594371950">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1604470317736" />
+    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1604594371950" />
     <state x="284" y="135" width="1362" height="743" maximized="true" key="DiffContextDialog" timestamp="1604474480334">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="284" y="135" width="1362" height="743" maximized="true" key="DiffContextDialog/0.26.1360.742@0.26.1360.742" timestamp="1604474480334" />
-    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl" timestamp="1604462572971">
+    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl" timestamp="1604910081649">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl/0.26.1360.742@0.26.1360.742" timestamp="1604462572971" />
+    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl/0.26.1360.742@0.26.1360.742" timestamp="1604910081649" />
     <state width="1312" height="565" key="GridCell.Tab.0.bottom" timestamp="1604592931221">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
@@ -297,9 +303,9 @@
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="306" y="92" width="739" height="605" key="RollbackChangesDialog/0.26.1360.742@0.26.1360.742" timestamp="1603288234421" />
-    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1604470499457">
+    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1604594388611">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2/0.26.1360.742@0.26.1360.742" timestamp="1604470499457" />
+    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2/0.26.1360.742@0.26.1360.742" timestamp="1604594388611" />
   </component>
 </project>
