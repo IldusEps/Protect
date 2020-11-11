@@ -165,7 +165,18 @@ public class MyService extends HiddenCameraService {
                             stopSelf();
                         }
                     }
-                    takePicture(mWindowManager.getDefaultDisplay().getRotation());
+                    Log.v("HiRR",Integer.toString(mWindowManager.getDefaultDisplay().getRotation()));
+                    int rot=270;
+                    if (mWindowManager.getDefaultDisplay().getRotation() == 1) {
+                        rot=0;
+                    }
+                    else if (mWindowManager.getDefaultDisplay().getRotation() == 2) {
+                        rot=90;
+                    }
+                    else if (mWindowManager.getDefaultDisplay().getRotation() == 3) {
+                            rot=180;
+                    }
+                    takePicture(rot);
 
 
         }
@@ -188,6 +199,7 @@ public class MyService extends HiddenCameraService {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.v("Hi!!","Hi");
+        mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_GRANTED) {
 
@@ -269,7 +281,7 @@ public class MyService extends HiddenCameraService {
         i = i + 1;
 
 
-        mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+
         KeyguardManager myKM = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
 
         if (myKM.isDeviceLocked()) {
