@@ -92,9 +92,12 @@ public class MyService extends HiddenCameraService {
     SurfaceView cameraSourceCameraPreview;
     WindowManager mWindowManager;
     View view;
+    KeyguardManager myKM;
 
     public void onCreate() {
-
+        super.onCreate();
+        mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+         myKM = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
         Intent notificationIntent = new Intent(MyService.this, PythonActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(MyService.this,
                 0, notificationIntent,
@@ -147,7 +150,11 @@ public class MyService extends HiddenCameraService {
 
     @Override
     public void onDestroy() {
+        if (boolHideServ == true) {
+            mWindowManager.removeView(view);
+        }
         super.onDestroy();
+
     }
 
     @Nullable
@@ -177,122 +184,130 @@ public class MyService extends HiddenCameraService {
                             rot=180;
                     }
                     takePicture(rot);
-
-
         }
     }
 
     public class TimerTask1_ extends TimerTask {
         @Override
         public void run() {
-            SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
-            if (prefs.contains("state")){
-                if (prefs.getString("state","off")=="off"){
+            SharedPreferences prefs = getSharedPreferences("setting", Context.MODE_PRIVATE);
+            if (prefs.contains("state")) {
+                if (prefs.getString("state", "off") == "off") {
                     stopSelf();
+                }
+            }
+            if (myKM.isDeviceLocked()) {
+                if (boolHideServ == true) {
+                    Log.v("Hi", "Locked");
+                    mWindowManager.removeView(view);
+                    boolHideServ = false;
+                    prefs = getSharedPreferences("setting", Context.MODE_PRIVATE);
+                    if (prefs.contains("wait")) {
+                        wait_int = prefs.getInt("wait", 2) * 1000;
+                    } else wait_int = 2000;
                 }
             }
         }
     }
 
-    TimerTask_ timerTask;
-    Timer timer;
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.v("Hi!!","Hi");
-        mWindowManager = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-                == PackageManager.PERMISSION_GRANTED) {
+        TimerTask_ timerTask;
+        Timer timer;
 
-            if (HiddenCameraUtils.canOverDrawOtherApps(this)) {
-                CameraConfig cameraConfig = new CameraConfig()
-                        .getBuilder(this)
-                        .setImageRotation(CameraRotation.ROTATION_270)
-                        .setCameraFacing(CameraFacing.FRONT_FACING_CAMERA)
-                        .setCameraResolution(CameraResolution.MEDIUM_RESOLUTION)
-                        .setImageFormat(CameraImageFormat.FORMAT_PNG)
-                        .setCameraFocus(CameraFocus.AUTO)
-                        .build();
+        @Override
+        public int onStartCommand(Intent intent, int flags, int startId) {
+            Log.v("Hi!!", "Hi");
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                    == PackageManager.PERMISSION_GRANTED) {
 
-                startCamera(cameraConfig);
+                if (HiddenCameraUtils.canOverDrawOtherApps(this)) {
+                    CameraConfig cameraConfig = new CameraConfig()
+                            .getBuilder(this)
+                            .setImageRotation(CameraRotation.ROTATION_270)
+                            .setCameraFacing(CameraFacing.FRONT_FACING_CAMERA)
+                            .setCameraResolution(CameraResolution.MEDIUM_RESOLUTION)
+                            .setImageFormat(CameraImageFormat.FORMAT_PNG)
+                            .setCameraFocus(CameraFocus.AUTO)
+                            .build();
 
-                boolHideServ = false;
-                LayoutInflater layoutManager = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                view = layoutManager.inflate(R.layout.locklayout, null);
+                    startCamera(cameraConfig);
+
+                    boolHideServ = false;
+                    LayoutInflater layoutManager = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    view = layoutManager.inflate(R.layout.locklayout, null);
 
 
-                timerTask = new TimerTask_();
-                timer = new Timer(true);
-                timer.scheduleAtFixedRate(timerTask,0, wait_int);
+                    timerTask = new TimerTask_();
+                    timer = new Timer(true);
+                    timer.scheduleAtFixedRate(timerTask, 0, wait_int);
 
-                Log.v("Me","This is me!");
-                TimerTask1_ timerTask1 = new TimerTask1_();
-                Timer timer1 = new Timer(true);
-                timer1.scheduleAtFixedRate(timerTask1, 0, 500);
-                //run.start();
+                    Log.v("Me", "This is me!");
+                    TimerTask1_ timerTask1 = new TimerTask1_();
+                    Timer timer1 = new Timer(true);
+                    timer1.scheduleAtFixedRate(timerTask1, 0, 500);
+                    //run.start();
+                } else {
+
+                    //Open settings to grant permission for "Draw other apps".
+                    HiddenCameraUtils.openDrawOverPermissionSetting(this);
+                }
             } else {
 
-                //Open settings to grant permission for "Draw other apps".
-                HiddenCameraUtils.openDrawOverPermissionSetting(this);
+                //TODO Ask your parent activity for providing runtime permission
+                Toast.makeText(this, "Camera permission not available", Toast.LENGTH_SHORT).show();
             }
-        } else {
-
-            //TODO Ask your parent activity for providing runtime permission
-            Toast.makeText(this, "Camera permission not available", Toast.LENGTH_SHORT).show();
+            return START_NOT_STICKY;
         }
-        return START_NOT_STICKY;
-    }
-    public static final int RESULT_ENABLE = 11;
 
-    @Override
-    public void onImageCapture(@NonNull File imageFile) {
+        public static final int RESULT_ENABLE = 11;
 
-        Log.v("Hi", imageFile.getAbsolutePath());
-        opencv_core.Mat image = imread(imageFile.getAbsolutePath(), CV_LOAD_IMAGE_GRAYSCALE);
-        //imwrite(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/fff.png",image);
-        int predicted_label = -1;
-        double predicted_confidence = 0.0;
-        // Get the prediction and associated confidence from the model
-        face_cascade.detectMultiScale(image, faces);
-        Boolean bool = false;
-        if (faces.size() > 0) {
-            for (int i = 0; i < faces.size(); i++) {
-                opencv_core.Rect face_i = faces.get(i);
-                //resize Image
-                opencv_core.Mat mat = new opencv_core.Mat(image, face_i);
-                //opencv_imgproc.resize(mat, mat, sizeImg);
-                //predict Image
-                faceRecognizer.predict(mat, label, confidence);
-                Log.v("My", "1");
-                //for (int j = 0; j < label.sizeof(); j++) {
-                Log.v("Hie", Integer.toString(label.get(0)));
-                Log.v("Hie", Double.toString(confidence.get(0)));
-                //imwrite(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/fff"+Integer.toString(i)+".png",mat);
-                if (confidence.get(0) > 1) bool = true;
-                //}
+        @Override
+        public void onImageCapture(@NonNull File imageFile) {
+
+            Log.v("Hi", imageFile.getAbsolutePath());
+            opencv_core.Mat image = imread(imageFile.getAbsolutePath(), CV_LOAD_IMAGE_GRAYSCALE);
+            //imwrite(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/fff.png",image);
+            int predicted_label = -1;
+            double predicted_confidence = 0.0;
+            // Get the prediction and associated confidence from the model
+            face_cascade.detectMultiScale(image, faces);
+            Boolean bool = false;
+            if (faces.size() > 0) {
+                for (int i = 0; i < faces.size(); i++) {
+                    opencv_core.Rect face_i = faces.get(i);
+                    //resize Image
+                    opencv_core.Mat mat = new opencv_core.Mat(image, face_i);
+                    //opencv_imgproc.resize(mat, mat, sizeImg);
+                    //predict Image
+                    faceRecognizer.predict(mat, label, confidence);
+                    Log.v("My", "1");
+                    //for (int j = 0; j < label.sizeof(); j++) {
+                    Log.v("Hie", Integer.toString(label.get(0)));
+                    Log.v("Hie", Double.toString(confidence.get(0)));
+                    //imwrite(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/fff"+Integer.toString(i)+".png",mat);
+                    if (confidence.get(0) > 1) bool = true;
+                    //}
+                }
+            } else {
+                bool = false;
+                label.put(0);
+                confidence.put(0.0);
+                Log.v("Hie", "Null");
             }
-        } else {
-            bool = false;
-            label.put(0);
-            confidence.put(0.0);
-            Log.v("Hie", "Null");
-        }
-        Log.v("Hie", Integer.toString(label.get(0)));
-        Log.v("Hie", Double.toString(confidence.get(0)));
-        i = i + 1;
+            Log.v("Hie", Integer.toString(label.get(0)));
+            Log.v("Hie", Double.toString(confidence.get(0)));
+            i = i + 1;
 
 
-
-        KeyguardManager myKM = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
-
-        if (myKM.isDeviceLocked()) {
-            if (boolHideServ == true) {
-                Log.v("Hi", "Locked");
-                mWindowManager.removeView(view);
-                SharedPreferences prefs = getSharedPreferences("setting", Context.MODE_PRIVATE);
-                if (prefs.contains("wait")) {
-                    wait_int = prefs.getInt("wait", 2) * 1000;
-                } else wait_int = 2000;
-            }
+            if (myKM.isDeviceLocked()) {
+                if (boolHideServ == true) {
+                    Log.v("Hi", "Locked");
+                    mWindowManager.removeView(view);
+                    boolHideServ = false;
+                    SharedPreferences prefs = getSharedPreferences("setting", Context.MODE_PRIVATE);
+                    if (prefs.contains("wait")) {
+                        wait_int = prefs.getInt("wait", 2) * 1000;
+                    } else wait_int = 2000;
+                }
             } else if ((bool == false) | (confidence.get(0) < 1)) {
                 if (boolHideServ == false) {
 
@@ -324,20 +339,23 @@ public class MyService extends HiddenCameraService {
                 boolHideServ = false;
             }
 
-        image.close();
-    }
-
-    @Override
-    public void onCameraError(int errorCode) {
-        if (errorCode== CameraError.ERROR_CAMERA_OPEN_FAILED){
-            Log.v("Hi","ERROR_CAMERA_OPEN_FAILED");
+            image.close();
         }
-        if (errorCode==CameraError.ERROR_IMAGE_WRITE_FAILED) Log.v("Hi","ERROR_IMAGE_WRITE_FAILED");
-        if (errorCode==CameraError.ERROR_CAMERA_PERMISSION_NOT_AVAILABLE) Log.v("Hi","ERROR_CAMERA_PERMISSION_NOT_AVAILABLE");
-        if (errorCode==CameraError.ERROR_DOES_NOT_HAVE_FRONT_CAMERA) Log.v("Hi","ERROR_DOES_NOT_HAVE_FRONT_CAMERA");
-        if (errorCode==CameraError.ERROR_DOES_NOT_HAVE_FRONT_CAMERA) Log.v("Hi","ERROR_DOES_NOT_HAVE_FRONT_CAMERA");
+
+        @Override
+        public void onCameraError(int errorCode) {
+            if (errorCode == CameraError.ERROR_CAMERA_OPEN_FAILED) {
+                Log.v("Hi", "ERROR_CAMERA_OPEN_FAILED");
+            }
+            if (errorCode == CameraError.ERROR_IMAGE_WRITE_FAILED)
+                Log.v("Hi", "ERROR_IMAGE_WRITE_FAILED");
+            if (errorCode == CameraError.ERROR_CAMERA_PERMISSION_NOT_AVAILABLE)
+                Log.v("Hi", "ERROR_CAMERA_PERMISSION_NOT_AVAILABLE");
+            if (errorCode == CameraError.ERROR_DOES_NOT_HAVE_FRONT_CAMERA)
+                Log.v("Hi", "ERROR_DOES_NOT_HAVE_FRONT_CAMERA");
+            if (errorCode == CameraError.ERROR_DOES_NOT_HAVE_FRONT_CAMERA)
+                Log.v("Hi", "ERROR_DOES_NOT_HAVE_FRONT_CAMERA");
+        }
     }
 
 
-
-}

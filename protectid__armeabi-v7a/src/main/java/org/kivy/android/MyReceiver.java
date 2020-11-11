@@ -3,6 +3,7 @@ package org.kivy.android;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 public class MyReceiver extends BroadcastReceiver {
@@ -11,9 +12,8 @@ public class MyReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.v("Hi!!","Hi");
-
         serviceIntent = new Intent(context, MyService.class);
-            //context.startForegroundService(serviceIntent);
+        //context.startForegroundService(serviceIntent);
         context.startService(serviceIntent);
     }
 

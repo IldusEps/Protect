@@ -48,8 +48,9 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-feature android:name="android.hardware.camera" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
     
 
 
@@ -90,7 +91,11 @@
             </activity>
 
         <service android:name="org.kivy.android.MyService"/>
-        <receiver android:name="org.kivy.android.MyReceiver"/>
+        <receiver android:name="org.kivy.android.MyReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
 
         <receiver android:name="org.kivy.android.MyAdmin" android:permission="android.permission.BIND_DEVICE_ADMIN">
             <meta-data android:name="android.app.device_admin"
