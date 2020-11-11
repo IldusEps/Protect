@@ -86,10 +86,10 @@ public abstract class HiddenCameraActivity extends AppCompatActivity implements 
      * Call this method to capture the image using the camera you initialized. Don't forget to
      * initialize the camera using {@link #startCamera(CameraConfig)} before using this function.
      */
-    protected void takePicture() {
+    protected void takePicture(int rot) {
         if (mCameraPreview != null) {
             if (mCameraPreview.isSafeToTakePictureInternal()) {
-                mCameraPreview.takePictureInternal();
+                mCameraPreview.takePictureInternal(rot);
             }
         } else {
             throw new RuntimeException("Background camera not initialized. Call startCamera() to initialize the camera.");

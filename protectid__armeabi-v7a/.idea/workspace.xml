@@ -37,16 +37,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7eff90e-b70a-432c-9d09-166517526253" name="Default Changelist" comment="Good/ Version">
-      <change afterPath="$PROJECT_DIR$/src/main/res/layout/locklayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/values-ru/Devices.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/res/values-ru/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/androidhiddencamera/CameraPreview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/androidhiddencamera/CameraPreview.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/androidhiddencamera/HiddenCameraService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/androidhiddencamera/HiddenCameraService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyReceiver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604911767428</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Good/ Version">
+      <created>1605068565632</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1605068565632</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -358,10 +359,10 @@
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="520" y="189" width="311" height="410" key="AndroidCreateXmlResourceDialog/0.26.1360.742@0.26.1360.742" timestamp="1605066297768" />
-    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2" timestamp="1605068378534">
+    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2" timestamp="1605068584492">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1605068378534" />
+    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1605068584492" />
     <state x="284" y="135" width="1362" height="743" maximized="true" key="DiffContextDialog" timestamp="1604929375190">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
@@ -370,22 +371,22 @@
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl/0.26.1360.742@0.26.1360.742" timestamp="1604925523598" />
-    <state width="1312" height="565" key="GridCell.Tab.0.bottom" timestamp="1605068105731">
+    <state width="1312" height="565" key="GridCell.Tab.0.bottom" timestamp="1605069202070">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="565" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1605068105731" />
-    <state width="1312" height="565" key="GridCell.Tab.0.center" timestamp="1605068105727">
+    <state width="1312" height="565" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1605069202070" />
+    <state width="1312" height="565" key="GridCell.Tab.0.center" timestamp="1605069202068">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="565" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1605068105727" />
-    <state width="1312" height="565" key="GridCell.Tab.0.left" timestamp="1605068105725">
+    <state width="1312" height="565" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1605069202068" />
+    <state width="1312" height="565" key="GridCell.Tab.0.left" timestamp="1605069202066">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="565" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1605068105725" />
-    <state width="1312" height="565" key="GridCell.Tab.0.right" timestamp="1605068105729">
+    <state width="1312" height="565" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1605069202066" />
+    <state width="1312" height="565" key="GridCell.Tab.0.right" timestamp="1605069202069">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="565" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1605068105729" />
+    <state width="1312" height="565" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1605069202069" />
     <state x="263" y="143" width="826" height="503" key="IDE.errors.dialog" timestamp="1604461452440">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
@@ -398,9 +399,9 @@
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="530" y="313" width="292" height="162" key="VCS.ChangelistChooser/0.26.1360.742@0.26.1360.742" timestamp="1604914849166" />
-    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1604911778081">
+    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1605068590351">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2/0.26.1360.742@0.26.1360.742" timestamp="1604911778081" />
+    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2/0.26.1360.742@0.26.1360.742" timestamp="1605068590351" />
   </component>
 </project>

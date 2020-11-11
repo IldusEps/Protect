@@ -198,7 +198,7 @@ class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
         return safeToTakePicture;
     }
 
-    void takePictureInternal() {
+    void takePictureInternal(int rot) {
         safeToTakePicture = false;
         if (mCamera != null) {
             mCamera.takePicture(null, null, new Camera.PictureCallback() {
@@ -213,7 +213,7 @@ class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
                             //Rotate the bitmap
                             Bitmap rotatedBitmap;
                             if (mCameraConfig.getImageRotation() != CameraRotation.ROTATION_0) {
-                                rotatedBitmap = HiddenCameraUtils.rotateBitmap(bitmap, mCameraConfig.getImageRotation());
+                                rotatedBitmap = HiddenCameraUtils.rotateBitmap(bitmap, rot);
 
                                 //noinspection UnusedAssignment
                                 bitmap = null;

@@ -18,6 +18,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.nfc.Tag;
 import android.os.Build;
 import android.os.Environment;
@@ -59,6 +61,7 @@ import org.kivy.protectid.R;
 import org.renpy.android.ResourceManager;
 
 import java.io.File;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -162,7 +165,7 @@ public class MyService extends HiddenCameraService {
                             stopSelf();
                         }
                     }
-                    takePicture();
+                    takePicture(mWindowManager.getDefaultDisplay().getRotation());
 
 
         }
