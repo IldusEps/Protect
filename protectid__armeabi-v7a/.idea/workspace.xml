@@ -12,19 +12,48 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin1" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin2" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7eff90e-b70a-432c-9d09-166517526253" name="Default Changelist" comment="">
+    <list default="true" id="d7eff90e-b70a-432c-9d09-166517526253" name="Default Changelist" comment="Good/ Version">
+      <change afterPath="$PROJECT_DIR$/src/main/res/layout/locklayout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/values-ru/Devices.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/res/values-ru/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/androidhiddencamera/CameraPreview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/androidhiddencamera/CameraPreview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/androidhiddencamera/HiddenCameraService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/androidhiddencamera/HiddenCameraService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyReceiver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[FFY5T18111017536]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -41,6 +70,13 @@
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="valueResourceFile" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -61,6 +97,7 @@
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ResourceManagerPrefKey.ResourceType" value="STRING" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android-custom-view/home/amara/.buildozer/android/platform/build-armeabi-v7a/dists/protectid__armeabi-v7a/src/main/java/org/myapp/LockView.java_SELECTED" value="LockView" />
@@ -238,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604594378732</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Camera Restart">
+      <created>1604911767427</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1604911767428</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -251,6 +295,43 @@
       </list>
     </option>
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:/home/amara/.buildozer/android/platform/build-armeabi-v7a/dists/protectid__armeabi-v7a/src/main/res" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="1" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gg" />
     <MESSAGE value="Good Version" />
@@ -260,41 +341,51 @@
     <MESSAGE value="Classifier" />
     <MESSAGE value="TimerTask" />
     <MESSAGE value="face_cascade &quot;_improved&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="face_cascade &quot;_improved&quot;" />
+    <MESSAGE value="Camera Restart" />
+    <MESSAGE value="Good/ Version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Good/ Version" />
   </component>
   <component name="WindowStateProjectService">
     <state x="138" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604421116876">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="138" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.26.1360.742@0.26.1360.742" timestamp="1604421116876" />
-    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2" timestamp="1604594371950">
+    <state x="263" y="155" width="826" height="479" key="AndroidCreateResourceFileDialog" timestamp="1605066728434">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1604594371950" />
-    <state x="284" y="135" width="1362" height="743" maximized="true" key="DiffContextDialog" timestamp="1604474480334">
+    <state x="263" y="155" width="826" height="479" key="AndroidCreateResourceFileDialog/0.26.1360.742@0.26.1360.742" timestamp="1605066728434" />
+    <state x="520" y="189" width="311" height="410" key="AndroidCreateXmlResourceDialog" timestamp="1605066297768">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="284" y="135" width="1362" height="743" maximized="true" key="DiffContextDialog/0.26.1360.742@0.26.1360.742" timestamp="1604474480334" />
-    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl" timestamp="1604910081649">
+    <state x="520" y="189" width="311" height="410" key="AndroidCreateXmlResourceDialog/0.26.1360.742@0.26.1360.742" timestamp="1605066297768" />
+    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2" timestamp="1605068378534">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl/0.26.1360.742@0.26.1360.742" timestamp="1604910081649" />
-    <state width="1312" height="565" key="GridCell.Tab.0.bottom" timestamp="1604592931221">
+    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1605068378534" />
+    <state x="284" y="135" width="1362" height="743" maximized="true" key="DiffContextDialog" timestamp="1604929375190">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="565" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1604592931221" />
-    <state width="1312" height="565" key="GridCell.Tab.0.center" timestamp="1604592931218">
+    <state x="284" y="135" width="1362" height="743" maximized="true" key="DiffContextDialog/0.26.1360.742@0.26.1360.742" timestamp="1604929375190" />
+    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl" timestamp="1604925523598">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="565" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1604592931218" />
-    <state width="1312" height="565" key="GridCell.Tab.0.left" timestamp="1604592931217">
+    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl/0.26.1360.742@0.26.1360.742" timestamp="1604925523598" />
+    <state width="1312" height="565" key="GridCell.Tab.0.bottom" timestamp="1605068105731">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="565" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1604592931217" />
-    <state width="1312" height="565" key="GridCell.Tab.0.right" timestamp="1604592931220">
+    <state width="1312" height="565" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1605068105731" />
+    <state width="1312" height="565" key="GridCell.Tab.0.center" timestamp="1605068105727">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="565" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1604592931220" />
+    <state width="1312" height="565" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1605068105727" />
+    <state width="1312" height="565" key="GridCell.Tab.0.left" timestamp="1605068105725">
+      <screen x="0" y="26" width="1360" height="742" />
+    </state>
+    <state width="1312" height="565" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1605068105725" />
+    <state width="1312" height="565" key="GridCell.Tab.0.right" timestamp="1605068105729">
+      <screen x="0" y="26" width="1360" height="742" />
+    </state>
+    <state width="1312" height="565" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1605068105729" />
     <state x="263" y="143" width="826" height="503" key="IDE.errors.dialog" timestamp="1604461452440">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
@@ -303,9 +394,13 @@
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="306" y="92" width="739" height="605" key="RollbackChangesDialog/0.26.1360.742@0.26.1360.742" timestamp="1603288234421" />
-    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1604594388611">
+    <state x="530" y="313" width="292" height="162" key="VCS.ChangelistChooser" timestamp="1604914849166">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2/0.26.1360.742@0.26.1360.742" timestamp="1604594388611" />
+    <state x="530" y="313" width="292" height="162" key="VCS.ChangelistChooser/0.26.1360.742@0.26.1360.742" timestamp="1604914849166" />
+    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1604911778081">
+      <screen x="0" y="26" width="1360" height="742" />
+    </state>
+    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2/0.26.1360.742@0.26.1360.742" timestamp="1604911778081" />
   </component>
 </project>

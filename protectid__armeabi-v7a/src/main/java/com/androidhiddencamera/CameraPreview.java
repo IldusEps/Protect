@@ -241,7 +241,7 @@ class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
                                     }
                                 });
                             }
-
+                            if (mCamera != null)
                             mCamera.startPreview();
                             safeToTakePicture = true;
                         }
