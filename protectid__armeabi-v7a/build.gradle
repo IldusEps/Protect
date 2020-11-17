@@ -24,15 +24,6 @@ apply plugin: 'com.android.application'
 
 
 android {
-    signingConfigs {
-        release {
-            storeFile file('/home/amara/myKey.jks')
-            storePassword 'Gonka083002'
-            keyAlias 'key0'
-            keyPassword 'gonka083002'
-        }
-
-    }
     compileSdkVersion 28
     buildToolsVersion '30.0.1'
     defaultConfig {
@@ -54,10 +45,7 @@ android {
         debug {
         }
         release {
-            storeFile file('/home/amara/myKey.jks')
-            storePassword 'Gonka083002'
-            keyAlias 'key0'
-            keyPassword 'gonka083002'
+            
         }
     }
 
