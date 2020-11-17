@@ -93,6 +93,9 @@ public class MyService extends HiddenCameraService {
     WindowManager mWindowManager;
     View view;
     KeyguardManager myKM;
+    SharedPreferences.Editor editor;
+    SharedPreferences prefs;
+    int count;
 
     public void onCreate() {
         super.onCreate();
@@ -110,8 +113,9 @@ public class MyService extends HiddenCameraService {
                         .setContentIntent(contentIntent)
                         .setAutoCancel(true)
                         .setDefaults(Notification.COLOR_DEFAULT)
-                        .setPriority(NotificationManager.IMPORTANCE_LOW)
-                ;
+                        .setPriority(NotificationManager.IMPORTANCE_LOW);
+
+        editor = prefs.edit();
 
         notification = builder.build();
         notification.flags = notification.flags|Notification.FLAG_NO_CLEAR;
@@ -127,11 +131,14 @@ public class MyService extends HiddenCameraService {
                 getFilesDir().getAbsolutePath() + "/app/lbpcascade_frontalface_improved.xml");
         faces = new opencv_core.RectVector();
         boolHideServ = false;
-        SharedPreferences prefs = getSharedPreferences("setting", Context.MODE_PRIVATE);
+        prefs = getSharedPreferences("setting", Context.MODE_PRIVATE);
         if (prefs.contains("wait")) {
             wait_int = prefs.getInt("wait", 2) * 1000;
         } else wait_int = 2000;
-
+        SharedPreferences.Editor editor=prefs.edit();
+        count = 0;
+        if (prefs.contains("count"))
+            count = prefs.getInt("count", 0);
         //read size FisherImage
         /*int sizeImg1 = 0;
         int sizeImg2 = 0;
@@ -184,6 +191,10 @@ public class MyService extends HiddenCameraService {
                             rot=180;
                     }
                     takePicture(rot);
+
+                    count = count + 1;
+                    if (count % 5 == 0) editor.putInt("count", count).apply();
+
                     timer.cancel();
                     timer = new Timer();
                     timer.schedule(new TimerTask_(), wait_int);
@@ -208,8 +219,8 @@ public class MyService extends HiddenCameraService {
                     boolHideServ = false;
                     prefs = getSharedPreferences("setting", Context.MODE_PRIVATE);
                     if (prefs.contains("wait")) {
-                        wait_int = prefs.getInt("wait", 2) * 1000;
-                    } else wait_int = 2000;
+                        wait_int = prefs.getInt("wait", 5) * 1000;
+                    } else wait_int = 5000;
                 }
             }
         }
@@ -325,8 +336,8 @@ public class MyService extends HiddenCameraService {
                     boolHideServ = false;
                     SharedPreferences prefs = getSharedPreferences("setting", Context.MODE_PRIVATE);
                     if (prefs.contains("wait")) {
-                        wait_int = prefs.getInt("wait", 2) * 1000;
-                    } else wait_int = 2000;
+                        wait_int = prefs.getInt("wait", 5) * 1000;
+                    } else wait_int = 5000;
                 }
             } else if ((bool == false) | (confidence.get(0) < 1)) {
                 if (boolHideServ == false) {

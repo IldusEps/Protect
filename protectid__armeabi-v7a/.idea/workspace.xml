@@ -39,6 +39,7 @@
     <list default="true" id="d7eff90e-b70a-432c-9d09-166517526253" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/PythonActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/PythonActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -302,7 +303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605077218948</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Good Timer period">
+      <created>1605607593805</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1605607593806</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -365,13 +373,14 @@
     <MESSAGE value="Good/ Version" />
     <MESSAGE value="Device Rotation" />
     <MESSAGE value="BootCompleted" />
-    <option name="LAST_COMMIT_MESSAGE" value="BootCompleted" />
+    <MESSAGE value="Good Timer period" />
+    <option name="LAST_COMMIT_MESSAGE" value="Good Timer period" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="138" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604421116876">
+    <state x="138" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605609785308">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="138" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.26.1360.742@0.26.1360.742" timestamp="1604421116876" />
+    <state x="138" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.26.1360.742@0.26.1360.742" timestamp="1605609785308" />
     <state x="263" y="155" width="826" height="479" key="AndroidCreateResourceFileDialog" timestamp="1605066728434">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
@@ -380,10 +389,10 @@
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="520" y="189" width="311" height="410" key="AndroidCreateXmlResourceDialog/0.26.1360.742@0.26.1360.742" timestamp="1605066297768" />
-    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2" timestamp="1605077214801">
+    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2" timestamp="1605607586566">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1605077214801" />
+    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1605607586566" />
     <state x="284" y="135" width="1362" height="743" maximized="true" key="DiffContextDialog" timestamp="1605606821300">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
@@ -392,22 +401,22 @@
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl/0.26.1360.742@0.26.1360.742" timestamp="1604925523598" />
-    <state width="1312" height="565" key="GridCell.Tab.0.bottom" timestamp="1605607503404">
+    <state width="1312" height="565" key="GridCell.Tab.0.bottom" timestamp="1605609649675">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="565" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1605607503404" />
-    <state width="1312" height="565" key="GridCell.Tab.0.center" timestamp="1605607503403">
+    <state width="1312" height="565" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1605609649675" />
+    <state width="1312" height="565" key="GridCell.Tab.0.center" timestamp="1605609649672">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="565" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1605607503403" />
-    <state width="1312" height="565" key="GridCell.Tab.0.left" timestamp="1605607503402">
+    <state width="1312" height="565" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1605609649672" />
+    <state width="1312" height="565" key="GridCell.Tab.0.left" timestamp="1605609649670">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="565" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1605607503402" />
-    <state width="1312" height="565" key="GridCell.Tab.0.right" timestamp="1605607503403">
+    <state width="1312" height="565" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1605609649670" />
+    <state width="1312" height="565" key="GridCell.Tab.0.right" timestamp="1605609649674">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="565" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1605607503403" />
+    <state width="1312" height="565" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1605609649674" />
     <state x="263" y="143" width="826" height="503" key="IDE.errors.dialog" timestamp="1604461452440">
       <screen x="0" y="26" width="1360" height="742" />
     </state>

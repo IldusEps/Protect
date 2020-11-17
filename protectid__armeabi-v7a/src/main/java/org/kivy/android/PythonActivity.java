@@ -105,6 +105,10 @@ public class PythonActivity extends SDLActivity {
             if (prefs.getString("state","on")=="on"){
                 editor.putString("state","off").apply();
             }
+        int clicks = 0;
+        if (prefs.contains("clicks"))
+            clicks = prefs.getInt("clicks", 0);
+
         Log.v("hi",line);
         int gg=2;
         if (line != "") {
@@ -119,7 +123,9 @@ public class PythonActivity extends SDLActivity {
         }
         if (line1 != "") Log.v("Hi",line1);
         editor.putInt("wait",gg);
+        editor.putInt("clicks",clicks+1);
         editor.putString("state","on").apply();
+
         //requestPermissions(new String[] {Manifest.permission.SYSTEM_ALERT_WINDOW});
         //checkSelfPermission(Manifest.permission.SYSTEM_ALERT_WINDOW);
         Intent notificationIntent = new Intent(PythonActivity.this, PythonActivity.class);
@@ -173,8 +179,13 @@ public class PythonActivity extends SDLActivity {
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.cancel(1);
-        SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor=prefs.edit();
+
+        SharedPreferences prefs = getSharedPreferences("setting",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        int stop = 0;
+        if (prefs.contains("stop"))
+            stop = prefs.getInt("stop", 0);
+        editor.putInt("stop", stop + 1);
         editor.putString("state","off").apply();
     }
 
