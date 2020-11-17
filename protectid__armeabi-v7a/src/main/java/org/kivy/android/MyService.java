@@ -57,7 +57,7 @@ import org.bytedeco.javacpp.opencv_core;
 import org.bytedeco.javacpp.opencv_face;
 import org.bytedeco.javacpp.opencv_imgproc;
 import org.bytedeco.javacpp.opencv_objdetect;
-import org.kivy.protectid.R;
+import org.kivy.protect_id.R;
 import org.renpy.android.ResourceManager;
 
 import java.io.File;

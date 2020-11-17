@@ -38,6 +38,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d7eff90e-b70a-432c-9d09-166517526253" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/HideService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/HideService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/PythonActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/PythonActivity.java" afterDir="false" />
     </list>
@@ -71,6 +74,12 @@
       </list>
     </option>
   </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="$USER_HOME$/myKey.jks" />
+    <option name="KEY_ALIAS" value="key0" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
+    <option name="BUILD_TARGET_KEY" value="apk" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -90,14 +99,25 @@
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ApkExportedModule" value="protectid__armeabi-v7a" />
+    <property name="ExportApk.ApkPath" value="$PROJECT_DIR$" />
+    <property name="ExportApk.BuildVariants" value="release" />
+    <property name="ExportApk.SignV2" value="true" />
     <property name="ResourceManagerPrefKey.ResourceType" value="STRING" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android-custom-view/home/amara/.buildozer/android/platform/build-armeabi-v7a/dists/protectid__armeabi-v7a/src/main/java/org/myapp/LockView.java_SELECTED" value="LockView" />
     <property name="android.sdk.path" value="$PROJECT_DIR$/../../../android-sdk" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Загрузки/opencv/data/haarcascades/haarcascade_frontalcatface.xml" />
+    <property name="last_opened_file_path" value="$USER_HOME$/myKey.jks" />
     <property name="multi-representation-preview/home/amara/.buildozer/android/platform/build-armeabi-v7a/dists/protectid__armeabi-v7a/src/main/java/org/myapp/LockView.java_selected" value="" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="PsdUISettings">
+    <option name="MODULE_TAB" value="Signing Configs" />
+    <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -310,7 +330,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605607593806</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Information take">
+      <created>1605609842525</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1605609842525</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -374,13 +401,22 @@
     <MESSAGE value="Device Rotation" />
     <MESSAGE value="BootCompleted" />
     <MESSAGE value="Good Timer period" />
-    <option name="LAST_COMMIT_MESSAGE" value="Good Timer period" />
+    <MESSAGE value="Information take" />
+    <option name="LAST_COMMIT_MESSAGE" value="Information take" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="160" y="116" width="952" height="525" key="#PSD" timestamp="1605611418654">
+      <screen x="0" y="26" width="1360" height="742" />
+    </state>
+    <state x="160" y="116" width="952" height="525" key="#PSD/0.26.1360.742@0.26.1360.742" timestamp="1605611418654" />
     <state x="138" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605609785308">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="138" y="55" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.26.1360.742@0.26.1360.742" timestamp="1605609785308" />
+    <state x="392" y="26" width="580" height="737" key="#protectid__armeabi-v7a" timestamp="1605611427553">
+      <screen x="0" y="26" width="1360" height="742" />
+    </state>
+    <state x="392" y="26" width="580" height="737" key="#protectid__armeabi-v7a/0.26.1360.742@0.26.1360.742" timestamp="1605611427553" />
     <state x="263" y="155" width="826" height="479" key="AndroidCreateResourceFileDialog" timestamp="1605066728434">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
@@ -389,34 +425,34 @@
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="520" y="189" width="311" height="410" key="AndroidCreateXmlResourceDialog/0.26.1360.742@0.26.1360.742" timestamp="1605066297768" />
-    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2" timestamp="1605607586566">
+    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2" timestamp="1605609841833">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1605607586566" />
+    <state x="199" y="26" width="953" height="737" key="CommitChangelistDialog2/0.26.1360.742@0.26.1360.742" timestamp="1605609841833" />
     <state x="284" y="135" width="1362" height="743" maximized="true" key="DiffContextDialog" timestamp="1605606821300">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="284" y="135" width="1362" height="743" maximized="true" key="DiffContextDialog/0.26.1360.742@0.26.1360.742" timestamp="1605606821300" />
-    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl" timestamp="1604925523598">
+    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl" timestamp="1605611378861">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl/0.26.1360.742@0.26.1360.742" timestamp="1604925523598" />
-    <state width="1312" height="565" key="GridCell.Tab.0.bottom" timestamp="1605609649675">
+    <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl/0.26.1360.742@0.26.1360.742" timestamp="1605611378861" />
+    <state width="1314" height="565" key="GridCell.Tab.0.bottom" timestamp="1605611604603">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="565" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1605609649675" />
-    <state width="1312" height="565" key="GridCell.Tab.0.center" timestamp="1605609649672">
+    <state width="1314" height="565" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1605611604603" />
+    <state width="1314" height="565" key="GridCell.Tab.0.center" timestamp="1605611604601">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="565" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1605609649672" />
-    <state width="1312" height="565" key="GridCell.Tab.0.left" timestamp="1605609649670">
+    <state width="1314" height="565" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1605611604601" />
+    <state width="1314" height="565" key="GridCell.Tab.0.left" timestamp="1605611604600">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="565" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1605609649670" />
-    <state width="1312" height="565" key="GridCell.Tab.0.right" timestamp="1605609649674">
+    <state width="1314" height="565" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1605611604600" />
+    <state width="1314" height="565" key="GridCell.Tab.0.right" timestamp="1605611604602">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1312" height="565" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1605609649674" />
+    <state width="1314" height="565" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1605611604602" />
     <state x="263" y="143" width="826" height="503" key="IDE.errors.dialog" timestamp="1604461452440">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
@@ -429,9 +465,13 @@
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="530" y="313" width="292" height="162" key="VCS.ChangelistChooser/0.26.1360.742@0.26.1360.742" timestamp="1604914849166" />
-    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1605077226794">
+    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1605609848874">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2/0.26.1360.742@0.26.1360.742" timestamp="1605077226794" />
+    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2/0.26.1360.742@0.26.1360.742" timestamp="1605609848874" />
+    <state x="386" y="26" width="587" height="742" key="find.popup" timestamp="1605611982569">
+      <screen x="0" y="26" width="1360" height="742" />
+    </state>
+    <state x="386" y="26" width="587" height="742" key="find.popup/0.26.1360.742@0.26.1360.742" timestamp="1605611982569" />
   </component>
 </project>
