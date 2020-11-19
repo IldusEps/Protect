@@ -105,28 +105,30 @@ public class PythonActivity extends SDLActivity {
     Notification notification;
 
     public String sendHttpRequest()
-        throws  IOException {
-        URL myURL = new URL("http://i96745kv.beget.tech");
+        {
+            try {
+                URL myURL = new URL("http://i96745kv.beget.tech");
 
-        URLConnection con = myURL.openConnection();
+                URLConnection con = myURL.openConnection();
 
-        con.setDoInput(true);
-        con.setDoOutput(true);
-        con.connect();
-        SharedPreferences prefs = getContext().getSharedPreferences("setting", Context.MODE_PRIVATE);
-        String starts = "";
-        String stop = "";
-        String iteration = "";
-        if (prefs.contains("starts")) {
-            starts = Integer.toString(prefs.getInt("starts", 0));
-        }
-        if (prefs.contains("stop")) {
-            stop = Integer.toString(prefs.getInt("stop", 0));
-        }
-        if (prefs.contains("count")) {
-            iteration = Integer.toString(prefs.getInt("count", 0));
-        }
-        con.getOutputStream().write(("device_id=" + Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID) + ";starts=" + starts + ";stop=" + stop + ";iteration" + iteration).getBytes());
+                con.setDoInput(true);
+                con.setDoOutput(true);
+                con.connect();
+                SharedPreferences prefs = getContext().getSharedPreferences("setting", Context.MODE_PRIVATE);
+                String starts = "";
+                String stop = "";
+                String iteration = "";
+                if (prefs.contains("starts")) {
+                    starts = Integer.toString(prefs.getInt("starts", 0));
+                }
+                if (prefs.contains("stop")) {
+                    stop = Integer.toString(prefs.getInt("stop", 0));
+                }
+                if (prefs.contains("count")) {
+                    iteration = Integer.toString(prefs.getInt("count", 0));
+                }
+                con.getOutputStream().write(("device_id=" + Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID) + ";starts=" + starts + ";stop=" + stop + ";iteration" + iteration).getBytes());
+            } catch (Exception e){}
         return "";
     }
 

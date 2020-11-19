@@ -3702,77 +3702,11 @@
       <change afterPath="$PROJECT_DIR$/../protect_id__armeabi-v7a/templates/AndroidManifest.tmpl.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../protect_id__armeabi-v7a/templates/Service.tmpl.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../protect_id__armeabi-v7a/templates/custom_rules.tmpl.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____src_main_libs_ffmpeg_android_arm_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____src_main_libs_javacpp_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____src_main_libs_javacv_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle____src_main_libs_opencv_3_2_0_1_3_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_common_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_common_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_navigation_navigation_fragment_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cardview_v7_28_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_collections_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_28_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/protectid__armeabi-v7a.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/java/com/androidhiddencamera/CameraCallbacks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/java/com/androidhiddencamera/CameraError.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/java/com/androidhiddencamera/CameraPreview.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/java/com/androidhiddencamera/HiddenCameraActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/java/com/androidhiddencamera/HiddenCameraFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/java/com/androidhiddencamera/PictureSizeComparator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/java/com/androidhiddencamera/config/CameraFocus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/java/com/androidhiddencamera/config/CameraResolution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/java/com/androidhiddencamera/config/CameraRotation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/java/com/example/myapplication/MainActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/java/com/kevalpatel2106/sample/DemoCamActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/libs/javacpp.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/libs/opencv-android-arm.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/res/layout/fragment_hidden_cam.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/res/values/dimens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyApplication/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/release/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/release/protectid__armeabi-v7a-release.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/libs/.gitkeep" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../protect_id__armeabi-v7a/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../protect_id__armeabi-v7a/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../protect_id__armeabi-v7a/src/main/java/org/kivy/android/PythonActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../protect_id__armeabi-v7a/src/main/java/org/kivy/android/PythonActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../protect_id__armeabi-v7a/src/main/res/values-ru/Devices.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/protectid__armeabi-v7a.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/protectid__armeabi-v7a.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/HideService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/HideService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/MyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kivy/android/PythonActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kivy/android/PythonActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/myapp/Hardware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/myapp/Hardware.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -4083,7 +4017,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605612625066</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="LastGood">
+      <created>1605795877043</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1605795877044</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -4190,22 +4131,22 @@
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="463" y="155" width="426" height="479" key="FileChooserDialogImpl/0.26.1360.742@0.26.1360.742" timestamp="1605795705665" />
-    <state width="1314" height="565" key="GridCell.Tab.0.bottom" timestamp="1605795523990">
+    <state width="1314" height="565" key="GridCell.Tab.0.bottom" timestamp="1605796338725">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1314" height="565" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1605795523990" />
-    <state width="1314" height="565" key="GridCell.Tab.0.center" timestamp="1605795523988">
+    <state width="1314" height="565" key="GridCell.Tab.0.bottom/0.26.1360.742@0.26.1360.742" timestamp="1605796338725" />
+    <state width="1314" height="565" key="GridCell.Tab.0.center" timestamp="1605796338722">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1314" height="565" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1605795523988" />
-    <state width="1314" height="565" key="GridCell.Tab.0.left" timestamp="1605795523986">
+    <state width="1314" height="565" key="GridCell.Tab.0.center/0.26.1360.742@0.26.1360.742" timestamp="1605796338722" />
+    <state width="1314" height="565" key="GridCell.Tab.0.left" timestamp="1605796338721">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1314" height="565" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1605795523986" />
-    <state width="1314" height="565" key="GridCell.Tab.0.right" timestamp="1605795523989">
+    <state width="1314" height="565" key="GridCell.Tab.0.left/0.26.1360.742@0.26.1360.742" timestamp="1605796338721" />
+    <state width="1314" height="565" key="GridCell.Tab.0.right" timestamp="1605796338724">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state width="1314" height="565" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1605795523989" />
+    <state width="1314" height="565" key="GridCell.Tab.0.right/0.26.1360.742@0.26.1360.742" timestamp="1605796338724" />
     <state x="263" y="143" width="826" height="503" key="IDE.errors.dialog" timestamp="1604461452440">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
@@ -4218,10 +4159,10 @@
       <screen x="0" y="26" width="1360" height="742" />
     </state>
     <state x="530" y="313" width="292" height="162" key="VCS.ChangelistChooser/0.26.1360.742@0.26.1360.742" timestamp="1604914849166" />
-    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1605612712613">
+    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1605796828663">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
-    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2/0.26.1360.742@0.26.1360.742" timestamp="1605612712613" />
+    <state x="275" y="133" width="802" height="523" key="Vcs.Push.Dialog.v2/0.26.1360.742@0.26.1360.742" timestamp="1605796828663" />
     <state x="386" y="26" width="587" height="742" key="find.popup" timestamp="1605611982569">
       <screen x="0" y="26" width="1360" height="742" />
     </state>
