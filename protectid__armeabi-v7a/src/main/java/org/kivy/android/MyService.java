@@ -57,7 +57,7 @@ import org.bytedeco.javacpp.opencv_core;
 import org.bytedeco.javacpp.opencv_face;
 import org.bytedeco.javacpp.opencv_imgproc;
 import org.bytedeco.javacpp.opencv_objdetect;
-import org.kivy.protect_id.R;
+import org.IldusEps.protect_id.R;
 import org.renpy.android.ResourceManager;
 
 import java.io.File;
@@ -296,7 +296,7 @@ public class MyService extends HiddenCameraService {
 
             Log.v("Hi", imageFile.getAbsolutePath());
             opencv_core.Mat image = imread(imageFile.getAbsolutePath(), CV_LOAD_IMAGE_GRAYSCALE);
-            //imwrite(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/fff.png",image);
+            //imwrite(Environment.getDataDirectory().getAbsolutePath()+"/data/org.IldusEps.protect_id/files/app/fff.png",image);
             int predicted_label = -1;
             double predicted_confidence = 0.0;
             // Get the prediction and associated confidence from the model
@@ -314,7 +314,7 @@ public class MyService extends HiddenCameraService {
                     //for (int j = 0; j < label.sizeof(); j++) {
                     Log.v("Hie", Integer.toString(label.get(0)));
                     Log.v("Hie", Double.toString(confidence.get(0)));
-                    //imwrite(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/fff"+Integer.toString(i)+".png",mat);
+                    //imwrite(Environment.getDataDirectory().getAbsolutePath()+"/data/org.IldusEps.protect_id/files/app/fff"+Integer.toString(i)+".png",mat);
                     if (confidence.get(0) > 1) bool = true;
                     //}
                 }

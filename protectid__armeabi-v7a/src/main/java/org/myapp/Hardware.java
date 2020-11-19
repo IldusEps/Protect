@@ -47,8 +47,8 @@ public class Hardware {
 
     public static void train() {
         state=0;
-        Log.v("My",Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files");
-        String[] args = {Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files" ,Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/1-selfie_1.png"};
+        Log.v("My",Environment.getDataDirectory().getAbsolutePath()+"/data/org.IldusEps.protect_id/files");
+        String[] args = {Environment.getDataDirectory().getAbsolutePath()+"/data/org.IldusEps.protect_id/files" ,Environment.getDataDirectory().getAbsolutePath()+"/data/org.IldusEps.protect_id/files/1-selfie_1.png"};
         String trainingDir = args[0];
         Log.v("My","Hi");
         Mat testImage = imread(args[1], CV_LOAD_IMAGE_GRAYSCALE);
@@ -77,7 +77,7 @@ public class Hardware {
         IntBuffer labelsBuf = labels.createBuffer();
         Log.v("My","Hi");
         opencv_objdetect.CascadeClassifier face_cascade = new opencv_objdetect.CascadeClassifier(
-                Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/lbpcascade_frontalface_improved.xml");
+                Environment.getDataDirectory().getAbsolutePath()+"/data/org.IldusEps.protect_id/files/app/lbpcascade_frontalface_improved.xml");
         Log.v("My","Hero");
         opencv_core.RectVector faces = new opencv_core.RectVector();
 
@@ -85,7 +85,7 @@ public class Hardware {
 
         int counter = 0;
         for (int i=0; i<7; i++){
-            Mat img = imread(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/gg"+Integer.toString(i)+"g.png", CV_LOAD_IMAGE_GRAYSCALE);
+            Mat img = imread(Environment.getDataDirectory().getAbsolutePath()+"/data/org.IldusEps.protect_id/files/app/gg"+Integer.toString(i)+"g.png", CV_LOAD_IMAGE_GRAYSCALE);
             face_cascade.detectMultiScale(img, faces);
             int label = Integer.parseInt("0");
             Mat mat = new Mat(img,faces.get(0));
@@ -104,7 +104,7 @@ public class Hardware {
                 Mat mat = new Mat(img,faces.get(0));
                     if (counter != 0) opencv_imgproc.resize(mat, mat, images.get(0).size());
                 images.put(counter, mat);
-                imwrite(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/app/ggfff"+Integer.toString(counter)+"g.png",mat);
+                imwrite(Environment.getDataDirectory().getAbsolutePath()+"/data/org.IldusEps.protect_id/files/app/ggfff"+Integer.toString(counter)+"g.png",mat);
                 labelsBuf.put(counter, label);
                 counter++;
             }
@@ -133,7 +133,7 @@ public class Hardware {
         Log.v("My","Hi");
         //int predictedLabel = label.get(0);
         Log.v("My","Hi");
-        faceRecognizer.save(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files/mymodel.xml");
+        faceRecognizer.save(Environment.getDataDirectory().getAbsolutePath()+"/data/org.IldusEps.protect_id/files/mymodel.xml");
         //System.out.println("Predicted label: " + predictedLabel);
         //System.out.println("Predicted: " + confidence.get(0));
         state=1;

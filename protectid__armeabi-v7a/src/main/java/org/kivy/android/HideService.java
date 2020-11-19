@@ -19,7 +19,7 @@ import android.view.SurfaceView;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
-import org.kivy.protect_id.R;
+import org.IldusEps.protect_id.R;
 
 public class HideService extends Service  {
     public HideService() {

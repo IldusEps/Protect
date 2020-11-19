@@ -42,7 +42,7 @@ import org.bytedeco.javacpp.opencv_face;
 import org.bytedeco.javacpp.opencv_imgproc;
 import org.bytedeco.javacpp.opencv_objdetect;
 import org.kivy.android.launcher.Project;
-import org.kivy.protect_id.R;
+import org.IldusEps.protect_id.R;
 import org.libsdl.app.SDLActivity;
 import org.myapp.Hardware;
 import org.renpy.android.ResourceManager;
@@ -209,7 +209,7 @@ public void delete(int i){
 
         }
     };
-    File root = new File(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files");
+    File root = new File(Environment.getDataDirectory().getAbsolutePath()+"/data/org.IldusEps.protect_id/files");
     File[] imageFiles = root.listFiles(imgFilter);
     for (File image : imageFiles) {
         if (image.getName().startsWith(Integer.toString(i))) {
@@ -277,6 +277,7 @@ public boolean Predict (String line) {
 
 }
     public String[] Images(){
+        Log.v("Its Me!", "");
         FilenameFilter imgFilter = new FilenameFilter() {
             public boolean accept(File dir, String name) {
                 name = name.toLowerCase();
@@ -290,7 +291,7 @@ public boolean Predict (String line) {
                 return bool_;
             }
         };
-        File root = new File(Environment.getDataDirectory().getAbsolutePath()+"/data/org.kivy.protectid/files");
+        File root = new File(Environment.getDataDirectory().getAbsolutePath()+"/data/org.IldusEps.protect_id/files");
         File[] imageFiles = root.listFiles(imgFilter);
         String[] images=new String[imageFiles.length/5];
         Log.v("Hie", Integer.toString(imageFiles.length/5));

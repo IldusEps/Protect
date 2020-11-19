@@ -24,13 +24,23 @@ apply plugin: 'com.android.application'
 
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('/home/amara/.buildozer/android/platform/build-armeabi-v7a/dists/Key.jks')
+            storePassword 'Gonka083002'
+            keyAlias 'protectid'
+            keyPassword 'gonka083002'
+        }
+    }
     compileSdkVersion 28
     buildToolsVersion '30.0.1'
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 7213
-        versionName '0.3'
+        versionName '1'
+        applicationId 'org.IldusEps.protect_id'
+        signingConfig signingConfigs.release
     }
 
 	packagingOptions {
@@ -48,7 +58,9 @@ android {
             
         }
     }
-
+    lintOptions{
+        checkReleaseBuilds false
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
