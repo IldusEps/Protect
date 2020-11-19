@@ -54,6 +54,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.security.Permission;
 import java.security.Permissions;
 import java.util.ArrayList;
@@ -66,6 +70,7 @@ import java.util.TimerTask;
 
 import static android.app.PendingIntent.getActivity;
 import static android.content.Context.DEVICE_POLICY_SERVICE;
+import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 import static android.support.v4.content.ContextCompat.startActivity;
 import static org.bytedeco.javacpp.opencv_face.createFisherFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_face.createLBPHFaceRecognizer;
@@ -81,20 +86,60 @@ public class PythonActivity extends SDLActivity {
     private ResourceManager resourceManager = null;
     private Bundle mMetaData = null;
     private PowerManager.WakeLock mWakeLock = null;
+
     public String getAppRoot() {
-        String app_root =  getFilesDir().getAbsolutePath() + "/app";
+        String app_root = getFilesDir().getAbsolutePath() + "/app";
         return app_root;
     }
+
     public opencv_face.FaceRecognizer faceRecognizer;
     public opencv_objdetect.CascadeClassifier face_cascade;
     AlarmManager alarmManager;
     PendingIntent pendingIntent;
 
-    public String getLang(){
-        Log.v("Hie",Locale.getDefault().getLanguage());
+    public String getLang() {
+        Log.v("Hie", Locale.getDefault().getLanguage());
         return Locale.getDefault().getLanguage();
     }
+
     Notification notification;
+
+    public String sendHttpRequest()
+        throws  IOException {
+        URL myURL = new URL("http://i96745kv.beget.tech");
+
+        URLConnection con = myURL.openConnection();
+
+        con.setDoInput(true);
+        con.setDoOutput(true);
+        con.connect();
+        SharedPreferences prefs = getContext().getSharedPreferences("setting", Context.MODE_PRIVATE);
+        String starts = "";
+        String stop = "";
+        String iteration = "";
+        if (prefs.contains("starts")) {
+            starts = Integer.toString(prefs.getInt("starts", 0));
+        }
+        if (prefs.contains("stop")) {
+            stop = Integer.toString(prefs.getInt("stop", 0));
+        }
+        if (prefs.contains("count")) {
+            iteration = Integer.toString(prefs.getInt("count", 0));
+        }
+        con.getOutputStream().write(("device_id=" + Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID) + ";starts=" + starts + ";stop=" + stop + ";iteration" + iteration).getBytes());
+        return "";
+    }
+
+    private class SendHttp extends AsyncTask<String, Void, String>
+    {
+
+        @Override
+        protected String doInBackground(String... params ){
+                sendHttpRequest();
+                return "";
+            }
+
+    }
 
     public void restartNotify(String line, String line1) {
         Log.v("Helllo","I an");
@@ -106,8 +151,8 @@ public class PythonActivity extends SDLActivity {
                 editor.putString("state","off").apply();
             }
         int clicks = 0;
-        if (prefs.contains("clicks"))
-            clicks = prefs.getInt("clicks", 0);
+        if (prefs.contains("starts"))
+            clicks = prefs.getInt("starts", 0);
 
         Log.v("hi",line);
         int gg=2;
@@ -123,7 +168,7 @@ public class PythonActivity extends SDLActivity {
         }
         if (line1 != "") Log.v("Hi",line1);
         editor.putInt("wait",gg);
-        editor.putInt("clicks",clicks+1);
+        editor.putInt("starts",clicks+1);
         editor.putString("state","on").apply();
 
         //requestPermissions(new String[] {Manifest.permission.SYSTEM_ALERT_WINDOW});
@@ -171,7 +216,8 @@ public class PythonActivity extends SDLActivity {
         } else {
             alarmManager.set(AlarmManager.RTC_WAKEUP, 0, pendingIntent);
         }
-
+        SendHttp sendHttp = new SendHttp();
+        sendHttp.execute();
 
     }
     public void stopNotify() {
