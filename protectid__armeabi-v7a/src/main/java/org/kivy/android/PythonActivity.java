@@ -54,6 +54,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.security.Permission;
 import java.security.Permissions;
 import java.util.ArrayList;
@@ -66,6 +70,7 @@ import java.util.TimerTask;
 
 import static android.app.PendingIntent.getActivity;
 import static android.content.Context.DEVICE_POLICY_SERVICE;
+import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 import static android.support.v4.content.ContextCompat.startActivity;
 import static org.bytedeco.javacpp.opencv_face.createFisherFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_face.createLBPHFaceRecognizer;
@@ -81,20 +86,62 @@ public class PythonActivity extends SDLActivity {
     private ResourceManager resourceManager = null;
     private Bundle mMetaData = null;
     private PowerManager.WakeLock mWakeLock = null;
+
     public String getAppRoot() {
-        String app_root =  getFilesDir().getAbsolutePath() + "/app";
+        String app_root = getFilesDir().getAbsolutePath() + "/app";
         return app_root;
     }
+
     public opencv_face.FaceRecognizer faceRecognizer;
     public opencv_objdetect.CascadeClassifier face_cascade;
     AlarmManager alarmManager;
     PendingIntent pendingIntent;
 
-    public String getLang(){
-        Log.v("Hie",Locale.getDefault().getLanguage());
+    public String getLang() {
+        Log.v("Hie", Locale.getDefault().getLanguage());
         return Locale.getDefault().getLanguage();
     }
+
     Notification notification;
+
+    public String sendHttpRequest()
+    {
+        try {
+            URL myURL = new URL("http://i96745kv.beget.tech");
+
+            URLConnection con = myURL.openConnection();
+
+            con.setDoInput(true);
+            con.setDoOutput(true);
+            con.connect();
+            SharedPreferences prefs = getContext().getSharedPreferences("setting", Context.MODE_PRIVATE);
+            String starts = "";
+            String stop = "";
+            String iteration = "";
+            if (prefs.contains("starts")) {
+                starts = Integer.toString(prefs.getInt("starts", 0));
+            }
+            if (prefs.contains("stop")) {
+                stop = Integer.toString(prefs.getInt("stop", 0));
+            }
+            if (prefs.contains("count")) {
+                iteration = Integer.toString(prefs.getInt("count", 0));
+            }
+            con.getOutputStream().write(("device_id=" + Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID) + ";starts=" + starts + ";stop=" + stop + ";iteration" + iteration).getBytes());
+        } catch (Exception e){}
+        return "";
+    }
+
+    private class SendHttp extends AsyncTask<String, Void, String>
+    {
+
+        @Override
+        protected String doInBackground(String... params ){
+            sendHttpRequest();
+            return "";
+        }
+
+    }
 
     public void restartNotify(String line, String line1) {
         Log.v("Helllo","I an");
@@ -106,8 +153,8 @@ public class PythonActivity extends SDLActivity {
                 editor.putString("state","off").apply();
             }
         int clicks = 0;
-        if (prefs.contains("clicks"))
-            clicks = prefs.getInt("clicks", 0);
+        if (prefs.contains("starts"))
+            clicks = prefs.getInt("starts", 0);
 
         Log.v("hi",line);
         int gg=2;
@@ -119,11 +166,11 @@ public class PythonActivity extends SDLActivity {
             if (line.indexOf("min") > -1) line = line.replace("min", "");
             line = line.replace(".", "");
             Log.v("hi", line);
-             gg= Integer.parseInt(line);
+            gg= Integer.parseInt(line);
         }
         if (line1 != "") Log.v("Hi",line1);
         editor.putInt("wait",gg);
-        editor.putInt("clicks",clicks+1);
+        editor.putInt("starts",clicks+1);
         editor.putString("state","on").apply();
 
         //requestPermissions(new String[] {Manifest.permission.SYSTEM_ALERT_WINDOW});
@@ -171,7 +218,8 @@ public class PythonActivity extends SDLActivity {
         } else {
             alarmManager.set(AlarmManager.RTC_WAKEUP, 0, pendingIntent);
         }
-
+        SendHttp sendHttp = new SendHttp();
+        sendHttp.execute();
 
     }
     public void stopNotify() {
@@ -189,43 +237,43 @@ public class PythonActivity extends SDLActivity {
         editor.putString("state","off").apply();
     }
 
-public void delete(int i){
-    SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
+    public void delete(int i){
+        SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
 
-    if (prefs.contains("state")){
-        if (prefs.getString("state","off")=="on") stopNotify();
-    }
-    FilenameFilter imgFilter = new FilenameFilter() {
-        public boolean accept(File dir, String name) {
-            name = name.toLowerCase();
-            boolean bool_=false;
-            if ( name.endsWith(".png")){
-            bool_=true;
-            }
-            if (!name.startsWith("predict")){
-                bool_=true;
-            }
-            return bool_;
-
+        if (prefs.contains("state")){
+            if (prefs.getString("state","off")=="on") stopNotify();
         }
-    };
-    File root = new File(Environment.getDataDirectory().getAbsolutePath()+"/data/org.IldusEps.protect_id/files");
-    File[] imageFiles = root.listFiles(imgFilter);
-    for (File image : imageFiles) {
-        if (image.getName().startsWith(Integer.toString(i))) {
-            image.delete();
-            Log.v("Hie", image.getAbsolutePath());
+        FilenameFilter imgFilter = new FilenameFilter() {
+            public boolean accept(File dir, String name) {
+                name = name.toLowerCase();
+                boolean bool_=false;
+                if ( name.endsWith(".png")){
+                    bool_=true;
+                }
+                if (!name.startsWith("predict")){
+                    bool_=true;
+                }
+                return bool_;
 
+            }
+        };
+        File root = new File(Environment.getDataDirectory().getAbsolutePath()+"/data/org.IldusEps.protect_id/files");
+        File[] imageFiles = root.listFiles(imgFilter);
+        for (File image : imageFiles) {
+            if (image.getName().startsWith(Integer.toString(i))) {
+                image.delete();
+                Log.v("Hie", image.getAbsolutePath());
+
+            }
         }
+        new Hardware().train();
     }
-   new Hardware().train();
-}
 
-public boolean Predict (String line) {
-    SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
-    if (prefs.contains("state")){
-        if (prefs.getString("state","off")=="on") stopNotify();
-    }
+    public boolean Predict (String line) {
+        SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
+        if (prefs.contains("state")){
+            if (prefs.getString("state","off")=="on") stopNotify();
+        }
     /*int sizeImg1 = 0;
     int sizeImg2 = 0;
     if (prefs.contains("size1")) {
@@ -237,47 +285,46 @@ public boolean Predict (String line) {
         Log.v("Size", Integer.toString(sizeImg2));
     }
     opencv_core.Size sizeImg = new opencv_core.Size(sizeImg1, sizeImg2);*/
-    faceRecognizer = createLBPHFaceRecognizer(2,10,10,10,20.0);
-    faceRecognizer.load(getFilesDir().getAbsolutePath()+"/mymodel.xml");
-    opencv_core.RectVector faces;
-    IntPointer label;
-    DoublePointer confidence;
-    int i;
+        faceRecognizer = createLBPHFaceRecognizer(2,10,10,10,20.0);
+        faceRecognizer.load(getFilesDir().getAbsolutePath()+"/mymodel.xml");
+        opencv_core.RectVector faces;
+        IntPointer label;
+        DoublePointer confidence;
+        int i;
 
-    label = new IntPointer(1);
-    confidence = new DoublePointer(1);
+        label = new IntPointer(1);
+        confidence = new DoublePointer(1);
 
-    Log.v("Hie","My");
-    faces = new opencv_core.RectVector();
-    opencv_core.Mat image = imread(getFilesDir().getAbsolutePath()+"/"+line, CV_LOAD_IMAGE_GRAYSCALE);
-    Log.v("Hie","My");
-    int predicted_label = -1;
-    double predicted_confidence = 0.0;
-    // Get the prediction and associated confidence from the model
-    face_cascade.detectMultiScale(image,faces);
-    Boolean bool=false;
-    for (i = 0; i < faces.size(); i++) {
-        opencv_core.Rect face_i = faces.get(i);
-        opencv_core.Mat mat = new opencv_core.Mat(image, face_i);
-       // opencv_imgproc.resize(mat, mat, sizeImg);
-        imwrite(getFilesDir()+"/app/predict.png", mat);
-        faceRecognizer.predict(mat, label, confidence);
-        Log.v("My","1");
-        //for (int j = 0; j < label.sizeof(); j++) {
+        Log.v("Hie","My");
+        faces = new opencv_core.RectVector();
+        opencv_core.Mat image = imread(getFilesDir().getAbsolutePath()+"/"+line, CV_LOAD_IMAGE_GRAYSCALE);
+        Log.v("Hie","My");
+        int predicted_label = -1;
+        double predicted_confidence = 0.0;
+        // Get the prediction and associated confidence from the model
+        face_cascade.detectMultiScale(image,faces);
+        Boolean bool=false;
+        for (i = 0; i < faces.size(); i++) {
+            opencv_core.Rect face_i = faces.get(i);
+            opencv_core.Mat mat = new opencv_core.Mat(image, face_i);
+            // opencv_imgproc.resize(mat, mat, sizeImg);
+            imwrite(getFilesDir()+"/app/predict.png", mat);
+            faceRecognizer.predict(mat, label, confidence);
+            Log.v("My","1");
+            //for (int j = 0; j < label.sizeof(); j++) {
+            Log.v("Hie", Integer.toString(label.get(0)));
+            Log.v("Hie", Double.toString(confidence.get(0)));
+            if (confidence.get(0) > 10) bool = true;
+            //}
+        }
         Log.v("Hie", Integer.toString(label.get(0)));
         Log.v("Hie", Double.toString(confidence.get(0)));
-        if (confidence.get(0) > 10) bool = true;
-        //}
-    }
-    Log.v("Hie", Integer.toString(label.get(0)));
-    Log.v("Hie", Double.toString(confidence.get(0)));
-    Log.v("Hie",Boolean.toString(bool));
-   // new File(getFilesDir()+"/"+line).delete();
-    return bool;
+        Log.v("Hie",Boolean.toString(bool));
+        // new File(getFilesDir()+"/"+line).delete();
+        return bool;
 
-}
+    }
     public String[] Images(){
-        Log.v("Its Me!", "");
         FilenameFilter imgFilter = new FilenameFilter() {
             public boolean accept(File dir, String name) {
                 name = name.toLowerCase();
@@ -344,7 +391,7 @@ public boolean Predict (String line) {
         String app_root = new String(getAppRoot());
         File app_root_file = new File(app_root);
         PythonUtil.loadLibraries(app_root_file,
-            new File(getApplicationInfo().nativeLibraryDir));
+                new File(getApplicationInfo().nativeLibraryDir));
     }
 
     /**
@@ -463,11 +510,11 @@ public boolean Predict (String line) {
             if (mActivity.mHasFocus && (
                     // never went into proper resume state:
                     mActivity.mCurrentNativeState == NativeState.INIT ||
-                    (
-                    // resumed earlier but wasn't ready yet
-                    mActivity.mCurrentNativeState == NativeState.RESUMED &&
-                    mActivity.mSDLThread == null
-                    ))) {
+                            (
+                                    // resumed earlier but wasn't ready yet
+                                    mActivity.mCurrentNativeState == NativeState.RESUMED &&
+                                            mActivity.mSDLThread == null
+                            ))) {
                 // Because sometimes the app will get stuck here and never
                 // actually run, ensure that it gets launched if we're active:
                 mActivity.onResume();
@@ -564,9 +611,9 @@ public boolean Predict (String line) {
             String serviceTitle,
             String serviceDescription,
             String pythonServiceArgument
-            ) {
+    ) {
         _do_start_service(
-            serviceTitle, serviceDescription, pythonServiceArgument, true
+                serviceTitle, serviceDescription, pythonServiceArgument, true
         );
     }
 
@@ -574,9 +621,9 @@ public boolean Predict (String line) {
             String serviceTitle,
             String serviceDescription,
             String pythonServiceArgument
-            ) {
+    ) {
         _do_start_service(
-            serviceTitle, serviceDescription, pythonServiceArgument, false
+                serviceTitle, serviceDescription, pythonServiceArgument, false
         );
     }
 
@@ -585,7 +632,7 @@ public boolean Predict (String line) {
             String serviceDescription,
             String pythonServiceArgument,
             boolean showForegroundNotification
-            ) {
+    ) {
         Intent serviceIntent = new Intent(PythonActivity.mActivity, PythonService.class);
         String argument = PythonActivity.mActivity.getFilesDir().getAbsolutePath();
         String app_root_dir = PythonActivity.mActivity.getAppRoot();
@@ -597,7 +644,7 @@ public boolean Predict (String line) {
         serviceIntent.putExtra("pythonHome", app_root_dir);
         serviceIntent.putExtra("pythonPath", app_root_dir + ":" + app_root_dir + "/lib");
         serviceIntent.putExtra("serviceStartAsForeground",
-            (showForegroundNotification ? "true" : "false")
+                (showForegroundNotification ? "true" : "false")
         );
         serviceIntent.putExtra("serviceTitle", serviceTitle);
         serviceIntent.putExtra("serviceDescription", serviceDescription);
@@ -615,7 +662,7 @@ public boolean Predict (String line) {
     /** Whether main routine/actual app has started yet **/
     protected boolean mAppConfirmedActive = false;
     /** Timer for delayed loading screen removal. **/
-    protected Timer loadingScreenRemovalTimer = null; 
+    protected Timer loadingScreenRemovalTimer = null;
 
     // Overridden since it's called often, to check whether to remove the
     // loading screen:
@@ -625,7 +672,7 @@ public boolean Predict (String line) {
         considerLoadingScreenRemoval();
         return result;
     }
-   
+
     /** Confirm that the app's main routine has been launched.
      **/
     @Override
@@ -661,7 +708,7 @@ public boolean Predict (String line) {
                                 @Override
                                 public void run() {
                                     PythonActivity activity =
-                                        ((PythonActivity)PythonActivity.mSingleton);
+                                            ((PythonActivity)PythonActivity.mSingleton);
                                     if (activity != null)
                                         activity.removeLoadingScreen();
                                 }
@@ -678,10 +725,10 @@ public boolean Predict (String line) {
     public void removeLoadingScreen() {
         runOnUiThread(new Runnable() {
             public void run() {
-                if (PythonActivity.mImageView != null && 
+                if (PythonActivity.mImageView != null &&
                         PythonActivity.mImageView.getParent() != null) {
                     ((ViewGroup)PythonActivity.mImageView.getParent()).removeView(
-                        PythonActivity.mImageView);
+                            PythonActivity.mImageView);
                     PythonActivity.mImageView = null;
                 }
             }
@@ -691,11 +738,11 @@ public boolean Predict (String line) {
     public String getEntryPoint(String search_dir) {
         /* Get the main file (.pyc|.pyo|.py) depending on if we
          * have a compiled version or not.
-        */
+         */
         List<String> entryPoints = new ArrayList<String>();
         entryPoints.add("main.pyo");  // python 2 compiled files
         entryPoints.add("main.pyc");  // python 3 compiled files
-		for (String value : entryPoints) {
+        for (String value : entryPoints) {
             File mainFile = new File(search_dir + "/" + value);
             if (mainFile.exists()) {
                 return value;
@@ -742,10 +789,10 @@ public boolean Predict (String line) {
                 try {
                     mImageView.setBackgroundColor(Color.parseColor(backgroundColor));
                 } catch (IllegalArgumentException e) {}
-            }   
+            }
             mImageView.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.FILL_PARENT,
-                ViewGroup.LayoutParams.FILL_PARENT));
+                    ViewGroup.LayoutParams.FILL_PARENT,
+                    ViewGroup.LayoutParams.FILL_PARENT));
             mImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         }
 
@@ -762,7 +809,7 @@ public boolean Predict (String line) {
             // You must call removeView() on the child's parent first.")
         }
     }
-    
+
     @Override
     protected void onPause() {
         if (this.mWakeLock != null && mWakeLock.isHeld()) {
@@ -842,13 +889,13 @@ public boolean Predict (String line) {
 
         try {
             java.lang.reflect.Method methodCheckPermission =
-                Activity.class.getMethod("checkSelfPermission", String.class);
+                    Activity.class.getMethod("checkSelfPermission", String.class);
             Object resultObj = methodCheckPermission.invoke(this, permission);
             int result = Integer.parseInt(resultObj.toString());
-            if (result == PackageManager.PERMISSION_GRANTED) 
+            if (result == PackageManager.PERMISSION_GRANTED)
                 return true;
         } catch (IllegalAccessException | NoSuchMethodException |
-                 InvocationTargetException e) {
+                InvocationTargetException e) {
         }
         return false;
     }
@@ -861,11 +908,11 @@ public boolean Predict (String line) {
             return;
         try {
             java.lang.reflect.Method methodRequestPermission =
-                Activity.class.getMethod("requestPermissions",
-                String[].class, int.class);
+                    Activity.class.getMethod("requestPermissions",
+                            String[].class, int.class);
             methodRequestPermission.invoke(this, permissions, requestCode);
         } catch (IllegalAccessException | NoSuchMethodException |
-                 InvocationTargetException e) {
+                InvocationTargetException e) {
         }
     }
 

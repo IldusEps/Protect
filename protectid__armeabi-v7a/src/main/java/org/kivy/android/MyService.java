@@ -115,6 +115,7 @@ public class MyService extends HiddenCameraService {
                         .setDefaults(Notification.COLOR_DEFAULT)
                         .setPriority(NotificationManager.IMPORTANCE_LOW);
 
+        prefs = getApplicationContext().getSharedPreferences("setting", Context.MODE_PRIVATE);
         editor = prefs.edit();
 
         notification = builder.build();
@@ -131,7 +132,6 @@ public class MyService extends HiddenCameraService {
                 getFilesDir().getAbsolutePath() + "/app/lbpcascade_frontalface_improved.xml");
         faces = new opencv_core.RectVector();
         boolHideServ = false;
-        prefs = getSharedPreferences("setting", Context.MODE_PRIVATE);
         if (prefs.contains("wait")) {
             wait_int = prefs.getInt("wait", 2) * 1000;
         } else wait_int = 2000;
@@ -173,7 +173,6 @@ public class MyService extends HiddenCameraService {
     public class TimerTask_ extends TimerTask {
         @Override
         public void run() {
-                    SharedPreferences prefs=getSharedPreferences("setting",Context.MODE_PRIVATE);
                     if (prefs.contains("state")){
                         if (prefs.getString("state","off")=="off"){
                             stopSelf();
@@ -217,7 +216,6 @@ public class MyService extends HiddenCameraService {
                     Log.v("Hi", "Locked");
                     mWindowManager.removeView(view);
                     boolHideServ = false;
-                    prefs = getSharedPreferences("setting", Context.MODE_PRIVATE);
                     if (prefs.contains("wait")) {
                         wait_int = prefs.getInt("wait", 5) * 1000;
                     } else wait_int = 5000;
