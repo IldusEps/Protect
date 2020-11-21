@@ -1,4 +1,4 @@
-name: Android CI
+name: Build Android App
 
 on:
   push:
@@ -9,7 +9,8 @@ on:
 
 jobs:
  build:
-  steps:
+   runs-on: ubuntu-18.04
+   steps:
     - uses: sparkfabrik/android-build-action@v1.0.0
       with:
         project-path: protectid__armeabi-v7a
