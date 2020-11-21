@@ -16,3 +16,35 @@ jobs:
         project-path: protectid__armeabi-v7a
         output-path: my-app.apk
         browserstack-upload: false
+  build1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Run static checks
+        run: ./gradlew checkAll
+      - name: Run some unit tests
+        run: ./gradlew testStageDebugUnitTest
+
+      - name: prepare gcloud
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          version: latest
+          service_account_email:  ${{ secrets.SA_EMAIL }}
+          service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+      - name: gcloud Set up project
+        run: |
+          gcloud config set project ${{ secrets.PROJECT_ID }}
+      - name: Assemble apks for smoke test
+        run: ./gradlew Smoke
+      - name: Run tests in test lab
+        run: |
+          gcloud firebase test android run \
+            --app app/build/outputs/apk/production/debug/app.apk \
+            --test app/build/outputs/apk/androidTest/production/debug/appTest.apk \
+            --device model=Nexus6P,version=25,orientation=portrait,locale=en_US \
+            --device model=athene,version=23,orientation=portrait,locale=en_US \
+            --device model=sailfish,version=26,orientation=portrait,locale=en_US
